@@ -24,4 +24,6 @@
 //
 
 
-view('coordinator/create.view.php');
+view('coordinator/create.view.php', [
+    'heading' => 'Dashboard'
+]);
