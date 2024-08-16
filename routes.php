@@ -31,3 +31,4 @@
 
 $router->get('/', 'index.php');
 
+$router->get('/coordinator', '/coordinator/create.php');
