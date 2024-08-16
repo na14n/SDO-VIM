@@ -31,5 +31,3 @@
 
 $router->get('/', 'index.php');
 
-$router->get('/disclaimer', 'disclaimer/create.php');
-
