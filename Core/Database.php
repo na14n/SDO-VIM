@@ -26,6 +26,8 @@
 namespace Core;
 
 use PDO;
+use Core\ValidationException;
+use PDOException;
 
 class Database
 {
@@ -52,12 +54,20 @@ class Database
 
     public function get()
     {
-        return $this->statement->fetchAll();
+        try {
+            return $this->statement->fetchAll();
+        } catch (PDOException $e) {
+            ValidationException::throw(['database' => $e], []);
+        }
     }
 
     public function find()
     {
-        return $this->statement->fetch();
+        try {
+            return $this->statement->fetch();
+        } catch (PDOException $e) {
+            ValidationException::throw(['database' => $e], []);
+        }
     }
 
     public function findOrFail()
@@ -65,7 +75,7 @@ class Database
         $result = $this->find();
 
         if (!$result) {
-            abort();
+            ValidationException::throw(['database' => 'No result found.'], []);
         }
 
         return $result;
