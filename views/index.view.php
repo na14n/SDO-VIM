@@ -41,8 +41,33 @@ require base_path('views/partials/head.php')
 <!-- Your HTML code goes here -->
 
 <main class="main">
-    <p class="font-black tracking-widest text-2xl">Hello World!</p>
-    <a href="/disclaimer" class="mt-8 text-red-500 underline hover:text-red-700">Please read my Disclaimer !!! </a>
+    <div>
+        <form action="/session" method="POST">
+
+            <i class="bi bi-person-circle person"></i>
+            <h4 class="font-black signin">Sign In</h4>
+
+            <input type="text" name="username" required placeholder="your username" value="<?= old('email') ?>" class="input" style="margin-top: 2rem;" />
+            <?php if (isset($errors['email'])): ?>
+                <p class="error"><?= $errors['email'] ?></p>
+            <?php endif; ?>
+
+            <input type="password" name="password" required placeholder="your password" class="input" style="margin-top: 1rem;" />
+
+            <?php if (isset($errors['password'])): ?>
+                <p class="error"><?= $errors['password'] ?></p>
+            <?php endif; ?>
+
+            <a href="#" class="forgot-password">Forgot your password?</a>
+
+            <button class="btn-signin">Log In</button>
+        </form>
+        <section>
+            <i class="bi bi-boxes boxes"></i>
+            <h2>ICT - Resource</h2>
+            <h2>Inventory System</h2>
+        </section>
+    </div>
 </main>
 
 <?php require base_path('views/partials/footer.php') ?>

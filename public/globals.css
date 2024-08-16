@@ -21,3 +21,10 @@ body {
 .test {
   border: red 1px solid;
 }
+
+.error {
+  width: 100%;
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
