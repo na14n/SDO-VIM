@@ -18,7 +18,9 @@ class Coordinator
 {
     public function handle()
     {
-        if (! $_SESSION['user'] ?? false && $_SESSION['user']['role'] !== 1) {
+        if (
+            !isset($_SESSION['user']) || $_SESSION['user']['role'] !== 1
+        ) {
             redirect('/');
         }
     }

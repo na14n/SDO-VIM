@@ -16,13 +16,26 @@
 
 namespace Core\Middleware;
 
+use Core\Authenticator;
+
 class Guest
 {
+
+    protected array $role_routes = [
+        0 => '/custodian',
+        1 => '/coordinator',
+    ];
+
     public function handle()
     {
-        if ($_SESSION['user'] ?? false) {
-            header('location: /');
-            exit();
+        if (isset($_SESSION['user'])) {
+            $role = $_SESSION['user']['role'];
+            if (!isset($this->role_routes[$role])) {
+                (new Authenticator)->logout();
+                redirect('/');
+            }
+
+            redirect($this->role_routes[$role]);
         }
     }
 }
