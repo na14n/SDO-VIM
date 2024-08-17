@@ -67,8 +67,8 @@ function get_uid()
     return Session::get('user')['id'];
 }
 
-function formatTimestamp($timestamp)
+function formatTimestamp($timestamp, $format = 'M d, Y')
 {
     $date = new DateTime($timestamp);
-    return $date->format('M d, Y');
+    return $date->format($format);
 }

@@ -6,8 +6,18 @@ require base_path('views/partials/head.php') ?>
 <!-- Your HTML code goes here -->
 
 <main class="main-col">
-   <?php require base_path('views/partials/banner.php') ?>
-   <section class="table-responsive h-dvh m-16 bg-zinc-50 rounded border-[1px] border-zinc-300">
+   <section class="flex items-center pr-12 gap-3">
+      <?php require base_path('views/partials/banner.php') ?>
+      <button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-green-500 text-white gap-2 font-bold">
+         <i class="bi bi-building-fill-add"></i>
+         <p>Add new School</p>
+      </button>
+      <button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-blue-500 text-white gap-2 font-bold">
+         <i class="bi bi-file-earmark-ruled-fill"></i>
+         <p>Export Schools</p>
+      </button>
+   </section>
+   <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
       <table class="table table-striped">
          <thead>
             <th>ID</th>
@@ -33,22 +43,43 @@ require base_path('views/partials/head.php') ?>
                   <td><?= htmlspecialchars($school['contact_no']) ?></td>
                   <td><?= htmlspecialchars($school['contact_email']) ?></td>
                   <td><?= htmlspecialchars(formatTimestamp($school['date_added'])) ?></td>
-                  <td class="flex gap-2 items-center">
-                     <button class="w-8 h-8 rounded bg-blue-500 p-2 text-zinc-50 flex items-center justify-center hover:bg-blue-700 transition-color ease-in-out">
-                        <i class="bi bi-eye-fill"></i>
-                     </button>
-                     <button class="w-8 h-8 rounded bg-green-500 p-2 text-zinc-50 flex items-center justify-center hover:bg-green-700 transition-color ease-in-out">
-                        <i class="bi bi-pencil-fill"></i>
-                     </button>
-                     <button class="w-8 h-8 rounded bg-red-500 p-2 text-zinc-50 flex items-center justify-center hover:bg-red-700 transition-color ease-in-out">
-                        <i class="bi bi-trash-fill"></i>
-                     </button>
+                  <td>
+                     <div class="h-full w-full flex items-center gap-2">
+                        <button class="view-btn">
+                           <i class="bi bi-eye-fill"></i>
+                        </button>
+                        <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                           <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button class="del-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                           <i class="bi bi-trash-fill"></i>
+                        </button>
+                     </div>
                   </td>
                </tr>
             <?php endforeach; ?>
          </tbody>
       </table>
    </section>
+   <!-- Modal -->
+   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               ...
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+               <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
 </main>
 
 <?php require base_path('views/partials/footer.php') ?>
