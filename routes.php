@@ -38,3 +38,7 @@ $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
+
+$router->get('/403', 'http_errors/403.php');
+$router->get('/404', 'http_errors/404.php');
+$router->get('/500', 'http_errors/500.php');
