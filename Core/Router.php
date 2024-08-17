@@ -85,7 +85,7 @@ class Router
     {
         http_response_code($code);
 
-        redirect($code);
+        redirect("/{$code}");
 
         die();
     }
