@@ -7,6 +7,11 @@ require base_path('views/partials/head.php') ?>
 
 <main class="main-col">
    <?php require base_path('views/partials/banner.php') ?>
+   <section>
+      <pre>
+         <?= print_r($schools) ?>
+      </pre>
+   </section>
 </main>
 
 <?php require base_path('views/partials/footer.php') ?>
