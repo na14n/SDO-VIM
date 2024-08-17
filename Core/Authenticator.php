@@ -12,18 +12,19 @@ namespace Core;
 
 class Authenticator
 {
-    public function attempt($email, $password)
+    public function attempt($user_name, $password)
     {
-        $user = App::resolve(Database::class)->query('select * from users where email = :email', [
-            'email' => $email
+        $user = App::resolve(Database::class)->query('select * from users where user_name = :user_name', [
+            'user_name' => $user_name
         ])->find();
 
         if ($user) {
             if (password_verify($password, $user['password'])) {
                 $this->login([
-                    'id' => $user['id'],
-                    'name' => $user['name'],
-                    'email' => $email,
+                    'user_id' => $user['user_id'],
+                    'user_name' => $user['user_name'],
+                    'role' => $user['role'],
+                    'school_id' => $user['school_id'],
                 ]);
 
                 return true;
@@ -36,9 +37,10 @@ class Authenticator
     public function login($user)
     {
         $_SESSION['user'] = [
-            'id' => $user['id'],
-            'name' => $user['name'],
-            'email' => $user['email'],
+            'user_id' => $user['user_id'],
+            'user_name' => $user['user_name'],
+            'role' => $user['role'],
+            'school_id' => $user['school_id'],
         ];
 
         session_regenerate_id(true);
