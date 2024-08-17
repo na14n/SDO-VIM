@@ -85,7 +85,7 @@ class Router
     {
         http_response_code($code);
 
-        require base_path("views/{$code}.php");
+        redirect($code);
 
         die();
     }
