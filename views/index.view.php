@@ -42,14 +42,14 @@ require base_path('views/partials/head.php')
 
 <main class="main">
     <div>
-        <form action="/session" method="POST">
+        <form action="/" method="POST">
 
             <i class="bi bi-person-circle person"></i>
             <h4 class="font-black signin">Sign In</h4>
 
-            <input type="text" name="username" required placeholder="your username" value="<?= old('email') ?>" class="input" style="margin-top: 2rem;" />
+            <input type="text" name="user_name" required placeholder="your username" value="<?= old('user_name') ?>" class="input" style="margin-top: 2rem;" />
             <?php if (isset($errors['email'])): ?>
-                <p class="error"><?= $errors['email'] ?></p>
+                <p class="error"><?= $errors['user_name'] ?></p>
             <?php endif; ?>
 
             <input type="password" name="password" required placeholder="your password" class="input" style="margin-top: 1rem;" />

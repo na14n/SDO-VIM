@@ -17,5 +17,13 @@
             <i class="bi bi-people-fill sidebar-li-icon"></i>
             <h6 class="sidebar-li-text">Users</h6>
         </a>
+        <div class="w-full h-[1px] bg-slate-500 mt-2" />
+        <form method="POST" action="/" style="width: 100%; margin-top: 1rem;">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button class="logout">
+                <i class="bi bi-escape sidebar-li-icon"></i>
+                <h6 class="sidebar-li-text">Sign Out</h6>
+            </button>
+        </form>
     </ul>
 </main>

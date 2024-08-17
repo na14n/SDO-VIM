@@ -29,6 +29,8 @@
 //  to be used in the route.
 // 
 
-$router->get('/', 'index.php');
+$router->get('/', 'index.php')->only('guest');
+$router->post('/', 'session/store.php')->only('guest');
+$router->delete('/', 'session/destroy.php')->only('auth');
 
-$router->get('/coordinator', '/coordinator/create.php');
+$router->get('/coordinator', 'coordinator/create.php')->only('coordinator');

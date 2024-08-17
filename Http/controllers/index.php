@@ -1,5 +1,7 @@
 <?php
 
+use Core\Session;
+
 //  ==========================================
 //           This is the Controller 
 // ===========================================
@@ -24,4 +26,6 @@
 //
 
 
-view('index.view.php');
+view('index.view.php', [
+    'errors' => Session::get('errors') ?? [],
+]);
