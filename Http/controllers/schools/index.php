@@ -24,6 +24,6 @@
 //
 
 
-view('resources/create.view.php', [
-    'heading' => 'Resources'
+view('schools/index.view.php', [
+    'heading' => 'Schools'
 ]);
