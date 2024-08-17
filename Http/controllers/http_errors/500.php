@@ -27,5 +27,5 @@ use Core\Session;
 
 view('500.php', [
     'heading' => 'Oh No!',
-    'errors' => Session::get('errors') ?? [],
+    'errors' => Session::get('errors') ?? '',
 ]);

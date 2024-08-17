@@ -9,8 +9,6 @@
 <?php $page_styles = ['/styles/banner.css'];
 require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/sidebar.php') ?>
-<?php $heading = 'Error 403 :(' ?>
-
 
 <main class="w-full h-dvh flex flex-col">
     <?php require base_path('views/partials/banner.php') ?>
