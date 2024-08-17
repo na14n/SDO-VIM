@@ -1,7 +1,7 @@
 <main class="sidebar">
     <img src="/sdo.png" class="sidebar-icon" />
     <ul class="sidebar-list">
-        <a href="/coordinator" class="<?php echo $_SERVER['REQUEST_URI'] === '/coordinator/dashboard' ? 'sidebar-li-alt' : 'sidebar-li' ?>">
+        <a href="/coordinator" class="<?php echo $_SERVER['REQUEST_URI'] === '/coordinator' ? 'sidebar-li-alt' : 'sidebar-li' ?>">
             <i class="bi bi-bar-chart-line-fill sidebar-li-icon"></i>
             <h6 class="sidebar-li-text">Dashboard</h6>
         </a>
