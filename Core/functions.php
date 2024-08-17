@@ -66,3 +66,9 @@ function get_uid()
 {
     return Session::get('user')['id'];
 }
+
+function formatTimestamp($timestamp)
+{
+    $date = new DateTime($timestamp);
+    return $date->format('M d, Y');
+}

@@ -34,7 +34,7 @@ $schools = $db->query('
     SELECT 
         s.school_id,
         s.school_name,
-        s.type_id,
+        t.school_type AS type,
         d.school_division AS division,
         di.school_district AS district,
         sc.contact_id,
@@ -43,6 +43,7 @@ $schools = $db->query('
         sc.contact_email,
         s.date_added
     FROM schools s
+    JOIN types t ON s.type_id = t.id 
     JOIN divisions d ON s.division_id = d.id
     JOIN districts di ON s.district_id = di.id
     LEFT JOIN school_contacts sc ON s.school_id = sc.school_id;
