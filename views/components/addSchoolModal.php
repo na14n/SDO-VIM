@@ -1,5 +1,6 @@
 <?php require base_path('views/components/text-input.php') ?>
 <?php require base_path('views/components/select-input.php') ?>
+<?php require base_path('views/components/radio-group.php') ?>
 
 <!-- Modal Button -->
 
@@ -20,7 +21,7 @@
                 </div>
                 <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="modal-body h-fit flex flex-col gap-2">
+            <form action="#" method="POST" class="modal-body h-fit flex flex-col gap-2">
                 <div class="flex items-center gap-2">
                     <span class="w-[12ch]">
                         <?php text_input('School ID', 'school_id', 'School ID') ?>
@@ -32,13 +33,17 @@
                 </div>
                 <div class="flex items-center gap-2 p-0 m-0">
                     <div class="w-fit">
-                        <h5 class="ml-2 text-zinc-500 mb-2 text-xs">Type of School</h5>
-                        <span class="flex gap-1">
-                            <input type="radio" class="peer/public text-zinc-300 accent-[#434F72]" id="public" name="school_type" value="<?php echo 1; ?>" checked>
-                            <label class="mr-2 peer-checked/public:text-[#434F72] text-zinc-400" for="public">Public</label>
-                            <input type="radio" class="peer/private text-zinc-300 accent-[#434F72]" id="private" name="school_type" value="<?php echo 2; ?>">
-                            <label class="mr-2 peer-checked/private:text-[#434F72] text-zinc-400" for="private">Private</label>
-                        </span>
+                        <?php
+                        radio_group(
+                            'Type of School',
+                            'school_type',
+                            [
+                                1 => 'Public',
+                                2 => 'Private',
+                            ],
+                            1
+                        );
+                        ?>
                     </div>
                     <span class="w-full">
                         <?php
@@ -80,7 +85,7 @@
             </form>
             <div class="modal-footer">
                 <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Save changes</button>
+                <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Save changes</button>
             </div>
         </div>
     </div>
