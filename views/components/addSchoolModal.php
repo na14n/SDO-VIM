@@ -1,4 +1,5 @@
 <?php require base_path('views/components/text-input.php') ?>
+<?php require base_path('views/components/select-input.php') ?>
 
 <!-- Modal Button -->
 
@@ -39,20 +40,33 @@
                             <label class="mr-2 peer-checked/private:text-[#434F72] text-zinc-400" for="private">Private</label>
                         </span>
                     </div>
-                    <div class="w-full">
-                        <label for="school_division" class="ml-2 text-zinc-500 mb-1 text-xs">School Division</label>
-                        <select id="school_division" name="school_division" class="flex w-full bg-white gap-1 p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] active:text-[#434F72] focus:text-[#434F72] valid:text-[#434F72] shadow-inner">
-                            <option type="radio" value="<?php echo 1; ?>" selected>Option 1</option>
-                            <option type="radio" value="<?php echo 2; ?>">Option 2123132</option>
-                        </select>
-                    </div>
+                    <span class="w-full">
+                        <?php
+                        select_input(
+                            'School Division',
+                            'school_division',
+                            'school_division',
+                            [
+                                1 => 'DCS Valenzuela',
+                            ],
+                            1
+                        );
+                        ?>
+                    </span>
                 </div>
                 <div class="w-full">
-                    <label for="school_district" class="ml-2 text-zinc-500 mb-1 text-xs">School District</label>
-                    <select id="school_district" name="school_district" class="flex w-full bg-white gap-1 p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] active:text-[#434F72] focus:text-[#434F72] valid:text-[#434F72] shadow-inner">
-                        <option type="radio" value="<?php echo 1; ?>" selected>Option 1</option>
-                        <option type="radio" value="<?php echo 2; ?>">Option 2123132</option>
-                    </select>
+                    <?php
+                    select_input(
+                        'School District',
+                        'school_district',
+                        'school_district',
+                        [
+                            1 => 'Congressional I',
+                            2 => 'Congressional II',
+                        ],
+                        1
+                    );
+                    ?>
                 </div>
                 <?php text_input('School Contact', 'contact_name', 'Contact Name') ?>
                 <div class="flex items-center gap-2">
