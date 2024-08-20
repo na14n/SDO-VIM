@@ -37,6 +37,7 @@ $page_styles = [
 require base_path('views/partials/head.php')
 
 ?>
+<?php require base_path('views/components/text-input.php') ?>
 
 <!-- Your HTML code goes here -->
 
@@ -47,16 +48,18 @@ require base_path('views/partials/head.php')
             <i class="bi bi-person-circle person"></i>
             <h4 class="font-black signin">Sign In</h4>
 
-            <input type="text" name="user_name" required placeholder="your username" value="<?= old('user_name') ?>" class="input" style="margin-top: 2rem;" />
-            <?php if (isset($errors['email'])): ?>
-                <p class="error"><?= $errors['user_name'] ?></p>
-            <?php endif; ?>
-
-            <input type="password" name="password" required placeholder="your password" class="input" style="margin-top: 1rem;" />
-
-            <?php if (isset($errors['password'])): ?>
-                <p class="error"><?= $errors['password'] ?></p>
-            <?php endif; ?>
+            <span class="w-full mb-2">
+                <?php text_input('Username', 'user_name', 'your username', old('user_name')) ?>
+                <?php if (isset($errors['email'])): ?>
+                    <p class="error"><?= $errors['user_name'] ?></p>
+                <?php endif; ?>
+            </span>
+            <span class="w-full">
+                <?php text_input('Password', 'password', 'your password') ?>
+                <?php if (isset($errors['password'])): ?>
+                    <p class="error"><?= $errors['password'] ?></p>
+                <?php endif; ?>
+            </span>
 
             <a href="#" class="forgot-password">Forgot your password?</a>
 
