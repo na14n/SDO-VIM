@@ -1,3 +1,5 @@
+<?php require base_path('views/components/text-input.php') ?>
+
 <!-- Modal Button -->
 
 <button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-green-500 text-white gap-2 font-bold hover:bg-green-600" data-bs-toggle="modal" data-bs-target="#addSchoolModal">
@@ -20,17 +22,14 @@
             <form class="modal-body h-fit flex flex-col gap-2">
                 <div class="flex items-center gap-2">
                     <span class="w-[12ch]">
-                        <span class="flex flex-col">
-                            <label class="ml-2 text-xs text-zinc-500 mb-1">School ID</label>
-                            <input class="p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] shadow-inner" name="school_id" placeholder="School ID" required />
-                        </span>
+                        <?php text_input('School ID', 'school_id', 'School ID') ?>
                     </span>
-                    <span class="flex flex-col w-full">
-                        <label class="ml-2 text-xs text-zinc-500 mb-1">School Name</label>
-                        <input class="p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] shadow-inner" name="school_name" placeholder="School Name" required />
+                    <span class="w-full">
+                        <?php text_input('School Name', 'school_name', 'School Name') ?>
                     </span>
+
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 p-0 m-0">
                     <div class="w-fit">
                         <h5 class="ml-2 text-zinc-500 mb-2 text-xs">Type of School</h5>
                         <span class="flex gap-1">
@@ -55,19 +54,14 @@
                         <option type="radio" value="<?php echo 2; ?>">Option 2123132</option>
                     </select>
                 </div>
-                <span class="flex flex-col">
-                    <label class="ml-2 text-xs text-zinc-500 mb-1">School Contact</label>
-                    <input class="p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] shadow-inner" name="contact_name" placeholder="Contact Name" required />
-                </span>
+                <?php text_input('School Contact', 'contact_name', 'Contact Name') ?>
                 <div class="flex items-center gap-2">
-                    <div class="flex flex-col w-[15ch]">
-                        <label class="ml-2 text-xs text-zinc-500 mb-1">Contact Number</label>
-                        <input class="p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] shadow-inner" name="contact_no" placeholder="09XX XXX XXXX" required />
-                    </div>
-                    <div class="flex flex-col w-full">
-                        <label class="ml-2 text-xs text-zinc-500 mb-1">Contact Email</label>
-                        <input class="p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] shadow-inner" name="contact_email" placeholder="contact@email.me" required />
-                    </div>
+                    <span class="w-[15ch]">
+                        <?php text_input('Contact Number', 'contact_no', '09XX XXX XXXX') ?>
+                    </span>
+                    <span class="w-full">
+                        <?php text_input('Contact Email', 'contact_email', 'contact@email.me') ?>
+                    </span>
                 </div>
             </form>
             <div class="modal-footer">
