@@ -34,6 +34,7 @@ $schools = $db->query('
     SELECT 
         s.school_id,
         s.school_name,
+        s.type_id,
         t.school_type AS type,
         d.school_division AS division,
         di.school_district AS district,
