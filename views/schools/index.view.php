@@ -49,29 +49,7 @@ require base_path('views/partials/head.php') ?>
                            <i class="bi bi-eye-fill"></i>
                         </button>
                         <?php require base_path('views/partials/coordinator/edit_school_modal.php') ?>
-                        <!-- <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editSchool<?php echo $school['school_id']; ?>">
-                           <i class="bi bi-pencil-fill"></i>
-                        </button> -->
-                        <!-- <div class="modal fade " id="editSchool<?php echo $school['school_id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                           <div class="modal-dialog modal-dialog-centered">
-                              <div class="modal-content">
-                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                 </div>
-                                 <div class="modal-body">
-                                    ...
-                                 </div>
-                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                 </div>
-                              </div>
-                           </div>
-                        </div> -->
-                        <button class="del-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                           <i class="bi bi-trash-fill"></i>
-                        </button>
+                        <?php require base_path('views/partials/coordinator/delete_school_modal.php') ?>
                      </div>
                   </td>
                </tr>
