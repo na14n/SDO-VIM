@@ -13,8 +13,6 @@ require BASE_PATH . 'Core/functions.php';
 
 require base_path('db.php');
 
-dd(BASE_PATH);
-
 $router = new \Core\Router();
 $routes = require base_path('routes.php');
 
