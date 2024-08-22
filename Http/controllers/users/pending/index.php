@@ -50,7 +50,7 @@ $users = $db->query("
     LEFT JOIN school_contacts c ON u.school_id = c.school_id
 ")->get();
 
-view('users/index.view.php', [
-    'heading' => 'Users',
+view('users/pending/index.view.php', [
+    'heading' => 'Pending Requests',
     'users' => $users
 ]);

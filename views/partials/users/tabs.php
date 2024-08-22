@@ -27,7 +27,7 @@
         <a
             class="nav-link <?php echo str_contains($_SERVER['REQUEST_URI'], 'denied') ? 'active' : '' ?>"
             aria-current="<?php echo str_contains($_SERVER['REQUEST_URI'], 'denied') ? 'page' : '' ?>"
-            href="/coordinator/users/pending">
+            href="/coordinator/users/denied">
             Denied Requests
         </a>
     </li>
