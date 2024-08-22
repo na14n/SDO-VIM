@@ -5,6 +5,7 @@ function text_input(
     $name = 'text_input',
     $placeholder = 'Text Input',
     $value = '',
+    $type = 'text',
 ) {
 ?>
     <span class="flex flex-col">
@@ -16,6 +17,7 @@ function text_input(
             name="<?php echo htmlspecialchars($name); ?>"
             placeholder="<?php echo htmlspecialchars($placeholder); ?>"
             value="<?php echo htmlspecialchars($value); ?>"
+            type="<?php echo htmlspecialchars($type); ?>"
             required />
     </span>
 <?php

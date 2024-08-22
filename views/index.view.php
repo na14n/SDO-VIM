@@ -55,7 +55,7 @@ require base_path('views/partials/head.php')
                 <?php endif; ?>
             </span>
             <span class="w-full">
-                <?php text_input('Password', 'password', 'your password') ?>
+                <?php text_input('Password', 'password', 'your password', '', 'password') ?>
                 <?php if (isset($errors['password'])): ?>
                     <p class="error"><?= $errors['password'] ?></p>
                 <?php endif; ?>
