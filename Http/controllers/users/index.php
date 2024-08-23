@@ -37,6 +37,7 @@ $users = $db->query("
         u.user_name,
         u.date_added,
         u.date_modified,
+        u.role as user_role,
         CASE
             WHEN u.role = 1 THEN 'Coordinator'
             WHEN u.role = 2 THEN 'Custodian'
