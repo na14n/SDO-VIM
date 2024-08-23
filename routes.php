@@ -42,6 +42,8 @@ $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 $router->post('/coordinator/schools/store', '/schools/store.php')->only('coordinator');
 //Edit School Details
 $router->patch('/coordinator/schools/edit', '/schools/edit.php')->only('coordinator');
+//Delete School
+$router->delete('/coordinator/schools/destroy', '/schools/destroy.php')->only('coordinator');
 
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
