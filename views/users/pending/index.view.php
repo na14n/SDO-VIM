@@ -19,7 +19,8 @@ require base_path('views/partials/head.php') ?>
     <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
         <?php require base_path('views/partials/coordinator/users/tabs.php') ?>
         <div class="grow mt-4 bg-zinc-50 rounded border-[1px] overflow-hidden">
-            <?php require base_path('views/partials/coordinator/users/requests_table.php') ?>
+            <?php $options = true;
+            require base_path('views/partials/coordinator/users/requests_table.php') ?>
         </div>
     </section>
 
