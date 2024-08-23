@@ -42,6 +42,9 @@ $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 $router->post('/coordinator/schools/store', '/schools/store.php')->only('coordinator');
 
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
+$router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
+$router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
+$router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');

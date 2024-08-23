@@ -30,6 +30,10 @@ try {
 } catch (PDOException $exception) {
     Session::flash('errors', $exception->getMessage());
     redirect('/500');
-} 
+} catch (Exception $exception) {
+    Session::flash('errors', $exception->getMessage());
+    dd($exception->getMessage());
+    redirect('/500');
+}
 
 Session::unflash();

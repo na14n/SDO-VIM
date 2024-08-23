@@ -30,12 +30,18 @@ $db = App::resolve(Database::class);
 
 $users = [];
 
-$users = $db->query('
+$users = $db->query("
     SELECT 
         u.user_id,
         u.school_id,
         u.user_name,
-        u.role,
+        u.date_added,
+        u.date_modified,
+        u.role as user_role,
+        CASE
+            WHEN u.role = 1 THEN 'Coordinator'
+            WHEN u.role = 2 THEN 'Custodian'
+        END as role,
         s.school_name AS school,
         c.contact_name,
         c.contact_no,
@@ -43,7 +49,7 @@ $users = $db->query('
     FROM users u
     JOIN schools s ON u.school_id = s.school_id
     LEFT JOIN school_contacts c ON u.school_id = c.school_id
-')->get();
+")->get();
 
 view('users/index.view.php', [
     'heading' => 'Users',

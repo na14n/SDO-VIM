@@ -20,3 +20,23 @@
   gap: 3;
   font-size: 0.95rem;
 }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: rgba(53, 62, 90, 1);
+  background-color: rgb(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.nav-link{
+  color: rgba(67, 79, 114, 0.7);
+  font-weight: 500;
+}
+
+.nav-link:hover{
+  color: rgba(67, 79, 114, 0.9);
+}
+
+
+
+

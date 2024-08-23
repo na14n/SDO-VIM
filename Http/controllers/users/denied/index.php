@@ -28,9 +28,29 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$resources = [];
+$users = [];
 
-view('resources/index.view.php', [
-    'heading' => 'Resources',
-    'resources' => $resources,
+$users = $db->query("
+    SELECT 
+        u.user_id,
+        u.school_id,
+        u.user_name,
+        u.date_added,
+        u.date_modified,
+        CASE
+            WHEN u.role = 1 THEN 'Coordinator'
+            WHEN u.role = 2 THEN 'Custodian'
+        END as role,
+        s.school_name AS school,
+        c.contact_name,
+        c.contact_no,
+        c.contact_email
+    FROM users u
+    JOIN schools s ON u.school_id = s.school_id
+    LEFT JOIN school_contacts c ON u.school_id = c.school_id
+")->get();
+
+view('users/denied/index.view.php', [
+    'heading' => 'Denied Requests',
+    'users' => $users
 ]);
