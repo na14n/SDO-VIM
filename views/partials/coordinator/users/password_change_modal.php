@@ -1,11 +1,11 @@
 <!-- Modal Button -->
 
-<button class="view-btn" data-bs-toggle="modal" data-bs-target="#editUser<?php echo $user['user_id']; ?>">
+<button class="view-btn" data-bs-toggle="modal" data-bs-target="#changePassword<?php echo $user['user_id']; ?>">
     <i class="bi bi-key-fill"></i>
 </button>
 
 <!-- Modal -->
-<main class="modal fade " id="editUser<?php echo $user['user_id']; ?>" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+<main class="modal fade " id="changePassword<?php echo $user['user_id']; ?>" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
             <form action="#" method="POST" class="modal-body h-fit flex flex-col gap-2">
