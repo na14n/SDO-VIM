@@ -12,7 +12,7 @@
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-person-fill-add"></i>
-                        <h1 class="modal-title fs-5 font-bold" id="addSchoolModalLabel">Edit User</h1>
+                        <h1 class="modal-title fs-5 font-bold" id="addSchoolModalLabel">Edit <?= $user['user_name'] ?? 'User' ?></h1>
                     </div>
                     <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

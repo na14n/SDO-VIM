@@ -18,7 +18,7 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <h3 class="text-lg">
-                        Are you sure you want to delete <span class="font-bold text-[#434F72]"><?php echo $user['user_name'] ?></span>?
+                        Are you sure you want to delete user <span class="font-bold text-[#434F72]"><?php echo $user['user_name'] ?></span>?
                     </h3>
                     <p>This action cannot be undone.</p>
                 </div>

@@ -30,9 +30,7 @@
                                 <i class="bi bi-key-fill"></i>
                             </button>
                             <?php require base_path('views/partials/coordinator/users/edit_user_modal.php') ?>
-                            <button class="del-btn" data-bs-toggle="modal" data-bs-target="#deleteUser<?php echo $user['user_id']; ?>">
-                                <i class="bi bi-trash-fill"></i>
-                            </button>
+                            <?php require base_path('views/partials/coordinator/users/delete_user_modal.php') ?>
                         </div>
                     </td>
                 </tr>
