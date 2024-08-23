@@ -11,15 +11,16 @@ require base_path('views/partials/head.php') ?>
 <main class="main-col">
     <section class="flex items-center pr-12 gap-3">
         <?php require base_path('views/partials/banner.php') ?>
+        <?php require base_path('views/partials/coordinator/users/add_user_modal.php') ?>
         <button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-blue-500 text-white gap-2 font-bold">
             <i class="bi bi-file-earmark-ruled-fill"></i>
             <p>Export Users</p>
         </button>
     </section>
     <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
-        <?php require base_path('views/partials/users/tabs.php') ?>
+        <?php require base_path('views/partials/coordinator/users/tabs.php') ?>
         <div class="grow mt-4 bg-zinc-50 rounded border-[1px] overflow-hidden">
-            <?php require base_path('views/partials/users/users_table.php') ?>
+            <?php require base_path('views/partials/coordinator/users/users_table.php') ?>
         </div>
     </section>
 

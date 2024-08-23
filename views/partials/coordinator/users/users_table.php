@@ -10,7 +10,7 @@
             <th class="w-[24ch]">Email</th>
             <th class="w-[12ch]">Date Added</th>
             <th class="w-[12ch]">Date Modified</th>
-            <th class="w-[12ch]">Actions</th>
+            <th class="w-[16ch]">Actions</th>
         </thead>
         <tbody>
             <?php foreach ($users as $user): ?>
@@ -27,7 +27,13 @@
                     <td>
                         <div class="h-full w-full flex items-center gap-2">
                             <button class="view-btn">
-                                <i class="bi bi-eye-fill"></i>
+                                <i class="bi bi-key-fill"></i>
+                            </button>
+                            <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#deleteUser<?php echo $user['user_id']; ?>">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <button class="del-btn" data-bs-toggle="modal" data-bs-target="#deleteUser<?php echo $user['user_id']; ?>">
+                                <i class="bi bi-trash-fill"></i>
                             </button>
                         </div>
                     </td>

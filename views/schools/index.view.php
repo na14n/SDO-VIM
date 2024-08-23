@@ -11,7 +11,7 @@ require base_path('views/partials/head.php') ?>
 <main class="main-col">
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
-      <?php require base_path('views/partials/coordinator/add_school_modal.php') ?>
+      <?php require base_path('views/partials/coordinator/schools/add_school_modal.php') ?>
       <button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-blue-500 text-white gap-2 font-bold">
          <i class="bi bi-file-earmark-ruled-fill"></i>
          <p>Export Schools</p>
@@ -48,8 +48,8 @@ require base_path('views/partials/head.php') ?>
                         <button class="view-btn">
                            <i class="bi bi-eye-fill"></i>
                         </button>
-                        <?php require base_path('views/partials/coordinator/edit_school_modal.php') ?>
-                        <?php require base_path('views/partials/coordinator/delete_school_modal.php') ?>
+                        <?php require base_path('views/partials/coordinator/schools/edit_school_modal.php') ?>
+                        <?php require base_path('views/partials/coordinator/schools/delete_school_modal.php') ?>
                      </div>
                   </td>
                </tr>
