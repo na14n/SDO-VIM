@@ -26,9 +26,7 @@
                     <td><?= htmlspecialchars(formatTimestamp($user['date_modified'])) ?></td>
                     <td>
                         <div class="h-full w-full flex items-center gap-2">
-                            <button class="view-btn">
-                                <i class="bi bi-key-fill"></i>
-                            </button>
+                            <?php require base_path('views/partials/coordinator/users/password_change_modal.php') ?>
                             <?php require base_path('views/partials/coordinator/users/edit_user_modal.php') ?>
                             <?php require base_path('views/partials/coordinator/users/delete_user_modal.php') ?>
                         </div>

@@ -7,14 +7,14 @@
 
 <!-- Modal -->
 
-<main class="modal fade " id="addSchoolModal" tabindex="-1" aria-labelledby="addSchoolModalLabel" aria-hidden="true">
+<main class="modal fade " id="addSchoolModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
             <form action="/coordinator/users/create" method="POST" class="modal-body h-fit flex flex-col gap-2">
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-person-fill-add"></i>
-                        <h1 class="modal-title fs-5 font-bold" id="addSchoolModalLabel">Add New User</h1>
+                        <h1 class="modal-title fs-5 font-bold" id="addUserModalLabel">Add New User</h1>
                     </div>
                     <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
