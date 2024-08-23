@@ -6,7 +6,38 @@ require base_path('views/partials/head.php') ?>
 <!-- Your HTML code goes here -->
 
 <main class="main-col">
-   <?php require base_path('views/partials/banner.php') ?>
+   <section class="flex items-center pr-12 gap-3">
+      <?php require base_path('views/partials/banner.php') ?>
+   </section>
+   <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
+      <table class="table table-striped">
+         <thead>
+            <th>ID</th>
+            <th>Item Article</th>
+            <th>School</th>
+            <th>Status</th>
+            <th>Date Acquired</th>
+            <th>Actions</th>
+         </thead>
+         <tbody>
+            <?php foreach ($resources as $resource): ?>
+               <tr>
+                  <td><?= htmlspecialchars($resource['item_code']) ?></td>
+                  <td><?= htmlspecialchars($resource['item_article']) ?></td>
+                  <td><?= htmlspecialchars($resource['school_name']) ?></td>
+                  <td><?= htmlspecialchars($resource['status']) ?></td>
+                  <td><?= htmlspecialchars(formatTimestamp($resource['date_acquired'])) ?></td>
+                  <td>
+                     <div class="h-full w-full flex items-center gap-2">
+                        <button class="view-btn">
+                           <i class="bi bi-eye-fill"></i>
+                        </button>
+                  </td>
+               </tr>
+            <?php endforeach; ?>
+         </tbody>
+      </table>
+   </section>
 </main>
 
 <?php require base_path('views/partials/footer.php') ?>

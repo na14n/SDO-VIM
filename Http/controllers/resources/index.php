@@ -23,7 +23,14 @@
 //   pairs as illustrated in the example above.
 //
 
+use Core\Database;
+use Core\App;
+
+$db = App::resolve(Database::class);
+
+$resources = [];
 
 view('resources/index.view.php', [
-    'heading' => 'Resources'
+    'heading' => 'Resources',
+    'resources' => $resources,
 ]);

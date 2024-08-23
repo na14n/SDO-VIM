@@ -53,18 +53,18 @@ require base_path('views/partials/head.php') ?>
                      </div>
                   </td>
                </tr>
-               <?php endforeach; ?>
-            </tbody>
-         </table>
-      </section>
-      <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <?php endforeach; ?>
+         </tbody>
+      </table>
+   </section>
+   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
             <div class="modal-header">
                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-bodsy">
                ...
             </div>
             <div class="modal-footer">
