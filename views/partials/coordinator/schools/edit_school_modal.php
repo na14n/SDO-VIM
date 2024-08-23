@@ -8,7 +8,9 @@
 <main class="modal fade " id="editSchool<?php echo $school['school_id']; ?>" tabindex="-1" aria-labelledby="editSchoolModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="#" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/schools/edit" method="POST" class="modal-body h-fit flex flex-col gap-2">
+                <input name="id_to_update" value = "<?php echo $school["school_id"]; ?>" hidden />
+                <input name="_method" value="PATCH" hidden />
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-pencil-fill"></i>
