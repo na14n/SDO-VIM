@@ -6,7 +6,7 @@
             <th>Request</th>
             <th class="w-[16ch]">Date Added</th>
             <th class="w-[16ch]">Date Modified</th>
-            <th class="w-[16ch]">Actions</th>
+            <th class="w-[12ch]">Actions</th>
         </thead>
         <tbody>
             <?php foreach ($users as $user): ?>
@@ -18,9 +18,8 @@
                     <td></td>
                     <td>
                         <div class="h-full w-full flex items-center gap-2">
-                            <button class="view-btn">
-                                <i class="bi bi-eye-fill"></i>
-                            </button>
+                            <?php require base_path('views/partials/coordinator/users/approve.php') ?>
+                            <?php require base_path('views/partials/coordinator/users/deny.php') ?>
                         </div>
                     </td>
                 </tr>
