@@ -73,9 +73,15 @@
                 <div class="flex items-center gap-2">
                     <span class="w-[15ch]">
                         <?php text_input('Contact Number', 'contact_no', '09XX XXX XXXX', $school['contact_no'] ?? '') ?>
+                        <?php if (isset($errors['contact_no'])): ?>
+                            <p class="error"><?= $errors['contact_no'] ?></p>
+                        <?php endif; ?>
                     </span>
                     <span class="w-full">
                         <?php text_input('Contact Email', 'contact_email', 'contact@email.me', $school['contact_email' ?? '']) ?>
+                        <?php if (isset($errors['contact_email'])): ?>
+                            <p class="error"><?= $errors['contact_email'] ?></p>
+                        <?php endif; ?>
                     </span>
                 </div>
                 <div class="modal-footer mt-4">

@@ -25,8 +25,14 @@
 
 use Core\Database;
 use Core\App;
+use Http\Forms\AddEditSchoolForm;
 
 $db = App::resolve(Database::class);
+
+$form = AddEditSchoolForm::validate($attributes = [
+    'contact_no' => $_POST['contact_no'],
+    'contact_email' => $_POST['contact_email'],
+]);
 
 $db->query('INSERT INTO schools( 
     school_id,
