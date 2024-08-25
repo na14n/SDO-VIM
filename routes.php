@@ -48,6 +48,8 @@ $router->delete('/coordinator/schools/destroy', '/schools/destroy.php')->only('c
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
 $router->post('/coordinator/users/store', '/users/store.php')->only('coordinator');
+//Edit User Details
+$router->patch('/coordinator/users/edit', '/users/edit.php')->only('coordinator');
 
 $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
