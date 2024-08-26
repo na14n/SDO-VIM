@@ -44,7 +44,7 @@ $router->post('/coordinator/schools/store', '/schools/store.php')->only('coordin
 $router->patch('/coordinator/schools/edit', '/schools/edit.php')->only('coordinator');
 //Delete School
 $router->delete('/coordinator/schools/destroy', '/schools/destroy.php')->only('coordinator');
-//Export School Data
+//Export School Data to CSV
 $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php')->only('coordinator');
 
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
@@ -56,6 +56,8 @@ $router->patch('/coordinator/users/edit', '/users/edit.php')->only('coordinator'
 $router->delete('/coordinator/users/destroy', '/users/destroy.php')->only('coordinator');
 //Change User Password
 $router->patch('/coordinator/users/changePassword', '/users/changePassword.php')->only('coordinator');
+//Export User Data to CSV
+$router->post('/coordinator/users/exportcsv', '/users/export_user_csv.php')->only('coordinator');
 
 $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
