@@ -36,6 +36,10 @@ $router->delete('/', 'session/destroy.php')->only('auth');
 $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
 
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');
+$router->get('/coordinator/resources/new', 'resources/new/index.php')->only('coordinator');
+$router->get('/coordinator/resources/working', 'resources/working/index.php')->only('coordinator');
+$router->get('/coordinator/resources/repair', 'resources/repair/index.php')->only('coordinator');
+$router->get('/coordinator/resources/condemned', 'resources/condemned/index.php')->only('coordinator');
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 
@@ -44,6 +48,7 @@ $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coo
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
 $router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
 
+$router->get('/custodian', 'custodian/create.php')->only('custodian');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');

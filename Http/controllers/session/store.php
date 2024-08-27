@@ -23,6 +23,8 @@ if (!$signedIn) {
         'password',
         'No matching account found for that email address or password.'
     )->throw();
+} elseif ($_SESSION['user']['role'] === 1) {
+    redirect('/coordinator');
+} elseif ($_SESSION['user']['role'] === 2) {
+    redirect('/custodian');
 }
-
-redirect('/coordinator');
