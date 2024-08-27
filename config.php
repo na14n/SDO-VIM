@@ -1,17 +1,32 @@
 <?php
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->safeLoad();
+// LOCAL
 
-return [
+ return [
+     'database' => [
+         'host' => 'localhost',
+         'port' => 3306,
+         'dbname' => 'sdo_vim',
+         'charset' => 'utf8mb4',
+     ],
+     'user' => [
+         'username' => 'root',
+         'password' => '',
+     ],
+ ];
+
+
+// FREE-DB
+
+/*return [
     'database' => [
-        'host' => $_ENV['DATABASE_HOST'],
-        'port' => $_ENV['DATABASE_PORT'],
-        'dbname' => $_ENV['DATABASE_NAME'],
-        'charset' => $_ENV['DATABASE_CHARSET'],
+        'host' => 'sql.freedb.tech',
+        'port' => 3306,
+        'dbname' => 'freedb_sdo_vim',
+        'charset' => 'utf8mb4',
     ],
     'user' => [
-        'username' => $_ENV['DATABASE_USERNAME'],
-        'password' => $_ENV['DATABASE_PASSWORD'],
+        'username' => 'freedb_sdovim',
+        'password' => '4e*Bn5bnQg!$uwN',
     ],
-];
+];*/
