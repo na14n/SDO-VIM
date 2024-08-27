@@ -29,11 +29,11 @@
                     <h6 class="sidebar-li-text">Inventory</h6>
                 </a>
                 <a href="/custodian/report" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'report') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
-                    <i class="bi bi-building-fill sidebar-li-icon"></i>
+                    <i class="bi bi-file-earmark-bar-graph-fill sidebar-li-icon"></i>
                     <h6 class="sidebar-li-text">Report</h6>
                 </a>
                 <a href="/custodian/profile" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'profile') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
-                    <i class="bi bi-people-fill sidebar-li-icon"></i>
+                    <i class="bi bi-person-fill sidebar-li-icon"></i>
                     <h6 class="sidebar-li-text">Profile</h6>
                 </a>
             <?php endif; ?>
