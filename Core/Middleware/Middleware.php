@@ -16,6 +16,7 @@ class Middleware
         'guest' => Guest::class,
         'auth' => Auth::class,
         'coordinator' => Coordinator::class,
+        'custodian' => Custodian::class,
     ];
 
     public static function resolve($key)
