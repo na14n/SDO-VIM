@@ -36,6 +36,7 @@ $router->delete('/', 'session/destroy.php')->only('auth');
 $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
 
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');
+$router->get('/coordinator/resources/new', 'resources/new/index.php')->only('coordinator');
 $router->get('/coordinator/resources/working', 'resources/working/index.php')->only('coordinator');
 $router->get('/coordinator/resources/repair', 'resources/repair/index.php')->only('coordinator');
 $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php')->only('coordinator');

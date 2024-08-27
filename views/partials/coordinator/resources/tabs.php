@@ -9,6 +9,14 @@
     </li>
     <li class="nav-item">
         <a
+            class="nav-link <?php echo str_contains($_SERVER['REQUEST_URI'], 'new') ? 'active' : '' ?>"
+            aria-current="<?php echo str_contains($_SERVER['REQUEST_URI'], 'new') ? 'page' : '' ?>"
+            href="/coordinator/resources/new">
+            New
+        </a>
+    </li>
+    <li class="nav-item">
+        <a
             class="nav-link <?php echo str_contains($_SERVER['REQUEST_URI'], 'working') ? 'active' : '' ?>"
             aria-current="<?php echo str_contains($_SERVER['REQUEST_URI'], 'working') ? 'page' : '' ?>"
             href="/coordinator/resources/working">
