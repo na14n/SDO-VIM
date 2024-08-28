@@ -10,7 +10,7 @@
 <main class="modal fade " id="addSchoolModal" tabindex="-1" aria-labelledby="addSchoolModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="/coordinator/schools/create" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/schools/store" method="POST" class="modal-body h-fit flex flex-col gap-2">
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-building-fill-add"></i>
@@ -73,9 +73,15 @@
                 <div class="flex items-center gap-2">
                     <span class="w-[15ch]">
                         <?php text_input('Contact Number', 'contact_no', '09XX XXX XXXX') ?>
+                        <?php if (isset($errors['contact_no'])): ?>
+                            <p class="error"><?= $errors['contact_no'] ?></p>
+                        <?php endif; ?>
                     </span>
                     <span class="w-full">
                         <?php text_input('Contact Email', 'contact_email', 'contact@email.me') ?>
+                        <?php if (isset($errors['contact_email'])): ?>
+                            <p class="error"><?= $errors['contact_email'] ?></p>
+                        <?php endif; ?>
                     </span>
                 </div>
                 <div class="modal-footer mt-4">

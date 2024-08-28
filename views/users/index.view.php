@@ -12,10 +12,7 @@ require base_path('views/partials/head.php') ?>
     <section class="flex items-center pr-12 gap-3">
         <?php require base_path('views/partials/banner.php') ?>
         <?php require base_path('views/partials/coordinator/users/add_user_modal.php') ?>
-        <button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-blue-500 text-white gap-2 font-bold">
-            <i class="bi bi-file-earmark-ruled-fill"></i>
-            <p>Export Users</p>
-        </button>
+        <?php require base_path('views/partials/coordinator/users/export_user_modal.php') ?>
     </section>
     <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
         <?php require base_path('views/partials/coordinator/users/tabs.php') ?>

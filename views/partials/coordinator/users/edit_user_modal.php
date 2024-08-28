@@ -8,7 +8,9 @@
 <main class="modal fade " id="editUser<?php echo $user['user_id']; ?>" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="#" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/users/edit" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <input name="_method" value="PATCH" hidden />
+            <input name="id_to_update" value = "<?php echo $user["user_id"]; ?>" hidden />
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-person-fill-add"></i>

@@ -8,7 +8,9 @@
 <main class="modal fade " id="editSchool<?php echo $school['school_id']; ?>" tabindex="-1" aria-labelledby="editSchoolModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="#" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/schools/edit" method="POST" class="modal-body h-fit flex flex-col gap-2">
+                <input name="id_to_update" value = "<?php echo $school["school_id"]; ?>" hidden />
+                <input name="_method" value="PATCH" hidden />
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-pencil-fill"></i>
@@ -71,9 +73,15 @@
                 <div class="flex items-center gap-2">
                     <span class="w-[15ch]">
                         <?php text_input('Contact Number', 'contact_no', '09XX XXX XXXX', $school['contact_no'] ?? '') ?>
+                        <?php if (isset($errors['contact_no'])): ?>
+                            <p class="error"><?= $errors['contact_no'] ?></p>
+                        <?php endif; ?>
                     </span>
                     <span class="w-full">
                         <?php text_input('Contact Email', 'contact_email', 'contact@email.me', $school['contact_email' ?? '']) ?>
+                        <?php if (isset($errors['contact_email'])): ?>
+                            <p class="error"><?= $errors['contact_email'] ?></p>
+                        <?php endif; ?>
                     </span>
                 </div>
                 <div class="modal-footer mt-4">
