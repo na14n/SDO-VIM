@@ -18,10 +18,10 @@
                     <td><?= htmlspecialchars($user['user_id']) ?></td>
                     <td><?= htmlspecialchars($user['user_name']) ?></td>
                     <td><?= htmlspecialchars($user['role']) ?></td>
-                    <td><?= htmlspecialchars($user['school']) ?></td>
-                    <td><?= htmlspecialchars($user['contact_name']) ?></td>
-                    <td><?= htmlspecialchars($user['contact_no']) ?></td>
-                    <td><?= htmlspecialchars($user['contact_email']) ?></td>
+                    <td><?= htmlspecialchars($user['school'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($user['contact_name'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($user['contact_no'] ?? '') ?></td>
+                    <td><?= htmlspecialchars($user['contact_email'] ?? '') ?></td>
                     <td><?= htmlspecialchars(formatTimestamp($user['date_added'])) ?></td>
                     <td><?= htmlspecialchars(formatTimestamp($user['date_modified'])) ?></td>
                     <td>
