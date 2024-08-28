@@ -42,7 +42,7 @@ namespace Http\Forms;
 use Core\ValidationException;
 use Core\Validator;
 
-class AddEditSchoolForm
+class EditSchoolForm
 {
     protected $errors = [];
 
@@ -50,36 +50,35 @@ class AddEditSchoolForm
     {
 
         if (!Validator::regex($attributes['school_id'], '/^\d{6}/')) {
-            $this->errors['school_id'] = 'Please enter a valid 6-digit School ID.';
+            $this->errors[$attributes['_school_id']]['school_id'] = 'Please enter a valid 6-digit School ID.';
         }
 
         if (!Validator::string($attributes['school_name'], 1, 32)) {
-            $this->errors['school_name'] = 'Please enter a valid School Name.';
+            $this->errors[$attributes['_school_id']]['school_name'] = 'Please enter a valid School Name.';
         }
 
         if (!Validator::regex($attributes['school_type'], '/^1|2/')) {
-            $this->errors['school_type'] = 'Please select a valid School Type.';
+            $this->errors[$attributes['_school_id']]['school_type'] = 'Please select a valid School Type.';
         }
 
         if (!Validator::regex($attributes['school_district'], '/^1|2|3|4/')) {
-            $this->errors['school_district'] = 'Please select a valid School District.';
+            $this->errors[$attributes['_school_id']]['school_district'] = 'Please select a valid School District.';
         }
 
         if (!Validator::regex($attributes['school_division'], '/^1|2|3|4/')) {
-            $this->errors['school_division'] = 'Please select a valid School Division.';
+            $this->errors[$attributes['_school_id']]['school_division'] = 'Please select a valid School Division.';
         }
 
-
         if (!Validator::string($attributes['contact_name'], 1, 32)) {
-            $this->errors['contact_name'] = 'Please enter a valid Contact Name that is under 32 characters.';
+            $this->errors[$attributes['_school_id']]['contact_name'] = 'Please enter a valid Contact Name that is under 32 characters.';
         }
 
         if (!Validator::regex($attributes['contact_no'], '/^\d{11}/')) {
-            $this->errors['contact_no'] = 'Please enter a valid contact number.';
+            $this->errors[$attributes['_school_id']]['contact_no'] = 'Please enter a valid contact number.';
         }
 
         if (!Validator::email($attributes['contact_email'])) {
-            $this->errors['contact_email'] = 'Please enter a valid email address.';
+            $this->errors[$attributes['_school_id']]['contact_email'] = 'Please enter a valid email address.';
         }
     }
 
