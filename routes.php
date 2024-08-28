@@ -43,11 +43,11 @@ $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php'
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 //Create School
-$router->post('/coordinator/schools/store', '/schools/store.php')->only('coordinator');
+$router->post('/coordinator/schools', '/schools/store.php')->only('coordinator');
 //Edit School Details
-$router->patch('/coordinator/schools/edit', '/schools/edit.php')->only('coordinator');
+$router->patch('/coordinator/schools', '/schools/edit.php')->only('coordinator');
 //Delete School
-$router->delete('/coordinator/schools/destroy', '/schools/destroy.php')->only('coordinator');
+$router->delete('/coordinator/schools', '/schools/destroy.php')->only('coordinator');
 //Export School Data to CSV
 $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php')->only('coordinator');
 
