@@ -25,18 +25,25 @@
 
 use Core\Database;
 use Core\App;
+use Http\Forms\EditUserForm;
 
 $db = App::resolve(Database::class);
+
+$form = EditUserForm::validate($attributes = [
+    'user_name' => $_POST['user_name'],
+    'school_id' => $_POST['school_id'] ?? '',
+]);
 
 $db->query('UPDATE users
     SET
     user_name = :user_name,
-    role = :role
+    school_id = :school_id,
+    date_modified = current_timestamp
     WHERE user_id = :id_to_update
 ',  [
     'user_name' => $_POST['user_name'],
-    'role' => $_POST['school_type'],
-    'id_to_update' => $_POST['id_to_update']
+    'school_id' => $_POST['school_id'] ?? null,
+    'id_to_update' => $_POST['id_to_update'],
 ]);
 
 redirect('/coordinator/users');
