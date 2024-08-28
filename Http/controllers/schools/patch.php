@@ -26,10 +26,18 @@
 use Core\Database;
 use Core\App;
 use Http\Forms\AddEditSchoolForm;
+use Http\Forms\EditSchoolForm;
 
 $db = App::resolve(Database::class);
 
-$form = AddEditSchoolForm::validate($attributes = [
+$form = EditSchoolForm::validate($attributes = [
+    '_school_id' => $_POST['id_to_update'],
+    'school_id' => $_POST['school_id'],
+    'school_name' => $_POST['school_name'],
+    'school_type' => $_POST['school_type'],
+    'school_division' => $_POST['school_division'],
+    'school_district' => $_POST['school_district'],
+    'contact_name' => $_POST['contact_name'],
     'contact_no' => $_POST['contact_no'],
     'contact_email' => $_POST['contact_email'],
 ]);
@@ -43,7 +51,8 @@ $db->query('UPDATE schools
     'current_school_id' => $_POST['id_to_update']
 ]);
 
-$db->query('UPDATE schools 
+$db->query(
+    'UPDATE schools 
             SET 
             school_id = :school_id,
             school_name = :school_name,
@@ -51,14 +60,15 @@ $db->query('UPDATE schools
             division_id = :school_division,
             district_id = :school_district
             WHERE school_id = :id_to_update',
-            [
-            'school_id' => $_POST['school_id'],
-            'school_name' => $_POST['school_name'],
-            'school_type' => $_POST['school_type'],
-            'school_division'=> $_POST['school_division'],
-            'school_district' => $_POST['school_district'],
-            'id_to_update' => $_POST['id_to_update']
-]);
+    [
+        'school_id' => $_POST['school_id'],
+        'school_name' => $_POST['school_name'],
+        'school_type' => $_POST['school_type'],
+        'school_division' => $_POST['school_division'],
+        'school_district' => $_POST['school_district'],
+        'id_to_update' => $_POST['id_to_update']
+    ]
+);
 
 $db->query('UPDATE school_contacts
     SET
@@ -67,10 +77,10 @@ $db->query('UPDATE school_contacts
     contact_email = :contact_email
     WHERE school_id = :school_id
 ', [
-     'contact_name' => $_POST['contact_name'],
-     'contact_no' => $_POST['contact_no'],
-     'contact_email' => $_POST['contact_email'],
-     'school_id' => $_POST['school_id']
+    'contact_name' => $_POST['contact_name'],
+    'contact_no' => $_POST['contact_no'],
+    'contact_email' => $_POST['contact_email'],
+    'school_id' => $_POST['school_id']
 ]);
 
 redirect('/coordinator/schools');

@@ -45,7 +45,7 @@ $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 //Create School
 $router->post('/coordinator/schools', '/schools/store.php')->only('coordinator');
 //Edit School Details
-$router->patch('/coordinator/schools', '/schools/edit.php')->only('coordinator');
+$router->patch('/coordinator/schools', '/schools/patch.php')->only('coordinator');
 //Delete School
 $router->delete('/coordinator/schools', '/schools/destroy.php')->only('coordinator');
 //Export School Data to CSV
