@@ -24,6 +24,23 @@ $rowCount = "";
 //Initialize result to store data from query and later parse
 $result = "";
 
+// Table header
+$headers = [
+    'School ID',
+    'School Name',
+    'School Type',
+    'School Division',
+    'School District',
+    'Contact Name',
+    'Contact Number',
+    'Contact Email',
+    'Date Added',
+];
+
+// Add header titles to the CSV data
+array_walk($headers, 'filterData');
+$excelData .= implode(",", $headers) . "\n";
+
 // Fetch records from database 
 $rowCount = $query = $db->query('
 SELECT 
