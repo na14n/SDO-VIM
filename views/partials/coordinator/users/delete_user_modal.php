@@ -8,7 +8,7 @@
 <main class="modal fade " id="deleteUser<?php echo $user['user_id']; ?>" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="/coordinator/users/destroy" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/users" method="POST" class="modal-body h-fit flex flex-col gap-2">
             <input type="hidden" name="_method" value="DELETE" />
             <input name="id_to_delete" value = "<?php echo $user["user_id"]; ?>" hidden />
                 <div class="modal-header mb-4">
