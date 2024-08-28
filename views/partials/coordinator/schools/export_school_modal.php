@@ -29,6 +29,9 @@
                     <form action="/coordinator/schools/exportcsv" method="POST">
                         <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Export as CSV</button>
                     </form>
+                    <form action="/coordinator/schools/exportxls" method="POST">
+                        <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Export as XLS</button>
+                    </form>
                 </div>
             </form>
         </div>
