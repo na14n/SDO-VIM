@@ -25,6 +25,7 @@
 
 use Core\Database;
 use Core\App;
+use Core\Session;
 
 $db = App::resolve(Database::class);
 
@@ -53,4 +54,6 @@ $schools = $db->query('
 view('schools/index.view.php', [
     'heading' => 'Schools',
     'schools' => $schools,
+    'errors' => Session::get('errors') ?? [],
+    'old' => Session::get('old') ?? [],
 ]);

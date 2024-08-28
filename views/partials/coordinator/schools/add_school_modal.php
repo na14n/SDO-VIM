@@ -10,7 +10,7 @@
 <main class="modal fade " id="addSchoolModal" tabindex="-1" aria-labelledby="addSchoolModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="/coordinator/schools/store" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/schools" method="POST" class="modal-body h-fit flex flex-col">
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-building-fill-add"></i>
@@ -20,14 +20,19 @@
                 </div>
                 <div class="flex items-center gap-2">
                     <span class="w-[12ch]">
-                        <?php text_input('School ID', 'school_id', 'School ID') ?>
+                        <?php text_input('School ID', 'school_id', 'School ID', $old['school_id'] ?? '') ?>
                     </span>
                     <span class="w-full">
-                        <?php text_input('School Name', 'school_name', 'School Name') ?>
+                        <?php text_input('School Name', 'school_name', 'School Name', $old['school_name'] ?? '') ?>
                     </span>
-
                 </div>
-                <div class="flex items-center gap-2 p-0 m-0">
+                <?php if (isset($errors['add_school']['school_name'])): ?>
+                    <p class="error"><?= $errors['add_school']['school_name'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors['add_school']['school_id'])): ?>
+                    <p class="error"><?= $errors['add_school']['school_id'] ?></p>
+                <?php endif; ?>
+                <div class="flex items-center gap-2 p-0 mt-2">
                     <div class="w-fit">
                         <?php
                         radio_group(
@@ -37,7 +42,7 @@
                                 1 => 'Public',
                                 2 => 'Private',
                             ],
-                            1
+                            $old['school_type'] ?? 1
                         );
                         ?>
                     </div>
@@ -50,12 +55,18 @@
                             [
                                 1 => 'DCS Valenzuela',
                             ],
-                            1
+                            $old['school_division'] ?? 1
                         );
                         ?>
                     </span>
                 </div>
-                <div class="w-full">
+                <?php if (isset($errors['add_school']['school_division'])): ?>
+                    <p class="error"><?= $errors['add_school']['school_division'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors['add_school']['school_type'])): ?>
+                    <p class="error"><?= $errors['add_school']['school_type'] ?></p>
+                <?php endif; ?>
+                <div class="w-full mt-2">
                     <?php
                     select_input(
                         'School District',
@@ -64,26 +75,41 @@
                         [
                             1 => 'Congressional I',
                             2 => 'Congressional II',
+                            3 => 'East District',
+                            4 => 'South District',
                         ],
-                        1
+                        $old['school_district'] ?? 1
                     );
                     ?>
+                    <?php if (isset($errors['add_school']['school_district'])): ?>
+                        <p class="error"><?= $errors['add_school']['school_district'] ?></p>
+                    <?php endif; ?>
                 </div>
-                <?php text_input('School Contact', 'contact_name', 'Contact Name') ?>
-                <div class="flex items-center gap-2">
+                <div class="mt-2">
+                    <?php text_input('School Contact', 'contact_name', 'Contact Name', $old['contact_name'] ?? '') ?>
+                    <?php if (isset($errors['add_school']['contact_name'])): ?>
+                        <p class="error"><?= $errors['add_school']['contact_name'] ?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="flex items-center gap-2 mt-2">
                     <span class="w-[15ch]">
-                        <?php text_input('Contact Number', 'contact_no', '09XX XXX XXXX') ?>
-                        <?php if (isset($errors['contact_no'])): ?>
-                            <p class="error"><?= $errors['contact_no'] ?></p>
-                        <?php endif; ?>
+                        <?php text_input('Contact Number', 'contact_no', '09XX XXX XXXX', $old['contact_no'] ?? '') ?>
                     </span>
                     <span class="w-full">
-                        <?php text_input('Contact Email', 'contact_email', 'contact@email.me') ?>
-                        <?php if (isset($errors['contact_email'])): ?>
-                            <p class="error"><?= $errors['contact_email'] ?></p>
-                        <?php endif; ?>
+                        <?php text_input('Contact Email', 'contact_email', 'contact@email.me', $old['contact_email'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors['add_school']['contact_no']) || isset($errors['add_school']['contact_email'])): ?>
+                    <p class="error flex gap-2"><?= $errors['add_school']['contact_no'] ?> <?= $errors['add_school']['contact_no'] ?></p>
+                <?php endif; ?>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if (<?php echo json_encode(array_key_exists('add_school', $errors) && count($errors['add_school']) > 0) ?>) {
+                            var addSchoolModal = new bootstrap.Modal(document.getElementById('addSchoolModal'));
+                            addSchoolModal.show();
+                        }
+                    });
+                </script>
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Add New School</button>
