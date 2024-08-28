@@ -53,11 +53,11 @@ $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php'
 
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
-$router->post('/coordinator/users/store', '/users/store.php')->only('coordinator');
+$router->post('/coordinator/users', 'users/store.php')->only('coordinator');
 //Edit User Details
-$router->patch('/coordinator/users/edit', '/users/edit.php')->only('coordinator');
+$router->patch('/coordinator/users', 'users/patch.php')->only('coordinator');
 //Delete School
-$router->delete('/coordinator/users/destroy', '/users/destroy.php')->only('coordinator');
+$router->delete('/coordinator/users', 'users/destroy.php')->only('coordinator');
 //Change User Password
 $router->patch('/coordinator/users/changePassword', '/users/changePassword.php')->only('coordinator');
 //Export User Data to CSV
