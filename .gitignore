@@ -1,3 +1,5 @@
 /vendor/
 /uploads/receipts/*
+!/uploads/receipts/
+!/uploads/receipts/.gitkeep
 .env
