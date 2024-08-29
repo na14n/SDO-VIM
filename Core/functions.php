@@ -8,6 +8,7 @@
 
 use Core\Response;
 use Core\Session;
+use Core\ValidationException;
 
 function dd($value)
 {
@@ -64,11 +65,16 @@ function extractPattern($uri)
 
 function get_uid()
 {
-    return Session::get('user')['id'];
+    return Session::get('user')['user_id'];
 }
 
 function formatTimestamp($timestamp, $format = 'M d, Y')
 {
     $date = new DateTime($timestamp);
     return $date->format($format);
+}
+
+function error_throw($errors = [], $old = [])
+{
+    ValidationException::throw($errors, $old);
 }
