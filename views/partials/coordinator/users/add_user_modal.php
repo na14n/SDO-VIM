@@ -60,7 +60,7 @@
                 </span>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        if (<?php echo json_encode(isset($errors['add_user']) &&  count($errors['add_user']) > 0); ?> ? > ) {
+                        if (<?php echo json_encode(isset($errors['add_user']) &&  count($errors['add_user']) > 0); ?>) {
                             var addSchoolModal = new bootstrap.Modal(document.getElementById('addSchoolModal'));
                             addSchoolModal.show();
                         }
