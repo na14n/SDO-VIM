@@ -25,12 +25,11 @@
 
 use Core\Database;
 use Core\App;
-use Http\Forms\AddEditSchoolForm;
-use Http\Forms\EditSchoolForm;
+use Http\Forms\SchoolEditForm;
 
 $db = App::resolve(Database::class);
 
-$form = EditSchoolForm::validate($attributes = [
+$form = SchoolEditForm::validate($attributes = [
     '_school_id' => $_POST['id_to_update'],
     'school_id' => $_POST['school_id'],
     'school_name' => $_POST['school_name'],

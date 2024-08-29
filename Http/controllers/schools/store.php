@@ -25,11 +25,11 @@
 
 use Core\Database;
 use Core\App;
-use Http\Forms\AddSchoolForm;
+use Http\Forms\SchoolAddForm;
 
 $db = App::resolve(Database::class);
 
-$form = AddSchoolForm::validate($attributes = [
+$form = SchoolAddForm::validate($attributes = [
     'school_id' => $_POST['school_id'],
     'school_name' => $_POST['school_name'],
     'school_type' => $_POST['school_type'],

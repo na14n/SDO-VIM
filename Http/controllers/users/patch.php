@@ -25,11 +25,12 @@
 
 use Core\Database;
 use Core\App;
-use Http\Forms\EditUserForm;
+use Http\Forms\UserEditForm;
 
 $db = App::resolve(Database::class);
 
-$form = EditUserForm::validate($attributes = [
+$form = UserEditForm::validate($attributes = [
+    'user_id' => $_POST['id_to_update'],
     'user_name' => $_POST['user_name'],
     'school_id' => $_POST['school_id'] ?? '',
 ]);

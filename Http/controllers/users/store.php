@@ -25,11 +25,11 @@
 
 use Core\Database;
 use Core\App;
-use Http\Forms\AddUserForm;
+use Http\Forms\UserAddForm;
 
 $db = App::resolve(Database::class);
 
-$form = AddUserForm::validate($attributes = [
+$form = UserAddForm::validate($attributes = [
     'user_name' => $_POST['user_name'],
     'password' => $_POST['password'],
     'password_confirm' => $_POST['password_confirm'],
