@@ -49,23 +49,23 @@ class AddUserForm
     public function __construct(public array $attributes)
     {
         if (!Validator::string($attributes['user_name'], 1)) {
-            $this->errors['user_name'] = 'Please enter a valid user name.';
+            $this->errors['add_user']['user_name'] = 'Please enter a valid user name.';
         }
 
         if (!Validator::string($attributes['password'], 1)) {
-            $this->errors['password'] = 'Please enter a valid password.';
+            $this->errors['add_user']['password'] = 'Please enter a valid password.';
         }
 
         if (!Validator::password_confirm($attributes['password'], $attributes['password_confirm'])) {
-            $this->errors['password'] = 'Your Password does not match.';
+            $this->errors['add_user']['password'] = 'Your Password does not match.';
         }
 
         if (!Validator::regex($attributes['school_id'], '/^(\d{6})?$/')) {
-            $this->errors['school_id'] = 'Please enter an existing valid ID.';
+            $this->errors['add_user']['school_id'] = 'Please enter an existing valid ID.';
         }
 
         if (!Validator::regex($attributes['user_role'], '/^1|2$/')) {
-            $this->errors['user_role'] = 'Please select a valid user role.';
+            $this->errors['add_user']['user_role'] = 'Please select a valid user role.';
         }
     }
 

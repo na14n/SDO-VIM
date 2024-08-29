@@ -20,20 +20,20 @@
                 </div>
                 <div>
                     <?php text_input('Username', 'user_name', 'username', $old['user_name'] ?? '') ?>
-                    <?php if (isset($errors['user_name'])): ?>
-                        <p class="error"><?= $errors['user_name'] ?></p>
+                    <?php if (isset($errors['add_user']['user_name'])): ?>
+                        <p class="error"><?= $errors['add_user']['user_name'] ?></p>
                     <?php endif; ?>
                 </div>
                 <div>
                     <?php text_input('Password', 'password', 'password', '', 'password') ?>
-                    <?php if (isset($errors['password'])): ?>
-                        <p class="error"><?= $errors['password'] ?></p>
+                    <?php if (isset($errors['add_user']['password'])): ?>
+                        <p class="error"><?= $errors['add_user']['password'] ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="mb-1">
                     <?php text_input('Confirm Password', 'password_confirm', 'confirm password', '', 'password') ?>
-                    <?php if (isset($errors['password'])): ?>
-                        <p class="error"><?= $errors['password'] ?></p>
+                    <?php if (isset($errors['add_user']['password'])): ?>
+                        <p class="error"><?= $errors['add_user']['password'] ?></p>
                     <?php endif; ?>
                 </div>
                 <div class="w-fit mb-1">
@@ -48,19 +48,19 @@
                         $old['user_role'] ?? 1
                     );
                     ?>
-                    <?php if (isset($errors['user_role'])): ?>
-                        <p class="error"><?= $errors['user_role'] ?></p>
+                    <?php if (isset($errors['add_user']['user_role'])): ?>
+                        <p class="error"><?= $errors['add_user']['user_role'] ?></p>
                     <?php endif; ?>
                 </div>
                 <span id="school_id_container" style="display: none;">
                     <?php text_input('School ID', 'school_id', '123456', '', 'text', false) ?>
-                    <?php if (isset($errors['school_id'])): ?>
-                        <p class="error"><?= $errors['school_id'] ?></p>
+                    <?php if (isset($errors['add_user']['school_id'])): ?>
+                        <p class="error"><?= $errors['add_user']['school_id'] ?></p>
                     <?php endif; ?>
                 </span>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        if (<?php echo json_encode(isset($errors)); ?> && <?php echo json_encode(count($errors) > 0); ?>) {
+                        if (<?php echo json_encode(isset($errors['add_user']) &&  count($errors['add_user']) > 0); ?> ? > ) {
                             var addSchoolModal = new bootstrap.Modal(document.getElementById('addSchoolModal'));
                             addSchoolModal.show();
                         }
@@ -81,7 +81,6 @@
                             schoolIdContainer.style.display = 'none';
                         }
                     });
-
                 </script>
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
