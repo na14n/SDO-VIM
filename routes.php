@@ -80,6 +80,8 @@ $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('c
 $router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
 $router->get('/custodian', 'custodian/create.php')->only('custodian');
 
+$router->post('/custodian/receipt', 'custodian/receipt/store.php')->only('custodian');
+
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');
 $router->get('/500', 'http_errors/500.php');
