@@ -23,7 +23,9 @@
 //   pairs as illustrated in the example above.
 //
 
+use Core\Session;
 
 view('custodian/create.view.php', [
-    'heading' => 'Dashboard'
+    'heading' => 'Dashboard',
+    'errors' => Session::get('errors'),
 ]);
