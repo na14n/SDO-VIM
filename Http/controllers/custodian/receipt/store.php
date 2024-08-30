@@ -30,3 +30,5 @@ if (move_uploaded_file($_FILES['receipt']['tmp_name'], $uploads_filename)) {
 } else {
     error_throw(['add_receipt' => ['receipt' => 'Oh No! Something happenned while uploading.']]);
 }
+
+redirect('/custodian');
