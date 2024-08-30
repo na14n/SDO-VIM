@@ -9,10 +9,11 @@ if ($_FILES['receipt']['error'] > 0) {
     error_throw(['add_receipt' => ['receipt' => 'Oh No! Something happenned while uploading, please try again.']]);
 }
 
-$uploads_filename = base_path("uploads/receipts/receipt_" . $_POST['id'] . "_" . date('mdy') . "." . pathinfo($_FILES['receipt']['name'], PATHINFO_EXTENSION));
-$db_filename = "uploads/receipts/receipt_" . $_POST['id'] . "_" . date('mdy') . "." . pathinfo($_FILES['receipt']['name'], PATHINFO_EXTENSION);
+$filename = base_path("uploads/receipts/receipt_" . $_POST['id'] . "_" .  (new \DateTime())->format('mdYgi'));
 
-if (move_uploaded_file($_FILES['receipt']['tmp_name'], $uploads_filename)) {
+$db_filename = "uploads/receipts/receipt_" . $_POST['id'] . "_" .  (new \DateTime())->format('mdYgi');
+
+if (move_uploaded_file($_FILES['receipt']['tmp_name'], $filename)) {
     $db->query('
     INSERT INTO receipts(
     user_id, 
