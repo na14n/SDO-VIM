@@ -42,9 +42,7 @@ require base_path('views/partials/head.php') ?>
                   <td><?= htmlspecialchars(formatTimestamp($school['date_added'])) ?></td>
                   <td>
                      <div class="h-full w-full flex items-center gap-2">
-                        <button class="view-btn">
-                           <i class="bi bi-eye-fill"></i>
-                        </button>
+                        <?php require base_path('views/partials/coordinator/schools/view_receipt_modal.php') ?>
                         <?php require base_path('views/partials/coordinator/schools/edit_school_modal.php') ?>
                         <?php require base_path('views/partials/coordinator/schools/delete_school_modal.php') ?>
                      </div>
@@ -54,23 +52,5 @@ require base_path('views/partials/head.php') ?>
          </tbody>
       </table>
    </section>
-   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-bodsy">
-               ...
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-               <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-         </div>
-      </div>
-   </div>
-
 </main>
 <?php require base_path('views/partials/footer.php') ?>
