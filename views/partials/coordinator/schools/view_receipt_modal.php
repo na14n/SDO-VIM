@@ -16,8 +16,12 @@
                 </div>
                 <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <img class="mb-2 border-2 border-[#434F72] rounded" src="<?php echo '/' . $school['receipt'] ?>">
-            <p class="text-sm ml-2 mb-4"><?php echo $school['school_name'] ?>'s receipt issued in <?php echo formatTimestamp($school['receipt_date_added'], 'M d, Y g:i A ') ?></p>
+            <?php if (isset($school['receipt'])) : ?>
+                <img class="mb-2 border-2 border-[#434F72] rounded" src="<?php echo '/' . $school['receipt'] ?>">
+                <p class="text-sm ml-2 mb-4"><?php echo $school['school_name'] ?>'s receipt issued in <?php echo formatTimestamp($school['receipt_date_added'], 'M d, Y g:i A ') ?></p>
+            <?php else : ?>
+                <p class="text-sm mb-4"><?php echo $school['school_name'] ?> has no receipts uploaded.</p>
+            <?php endif; ?>
         </div>
     </div>
 </main>
