@@ -24,46 +24,13 @@
                     <span style="font-size: 0.8em; color: red;">Upload the Provided Form Only</span>
                 </div>
 
-                <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download" type="button" role="tab" aria-controls="download" aria-selected="false">Download</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="upload-tab" data-bs-toggle="tab" data-bs-target="#upload" type="button" role="tab" aria-controls="upload" aria-selected="true">Upload</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade" id="download" role="tabpanel" aria-labelledby="download-tab">
-                        <form action="/coordinator/schools/importcsv" method="GET">
-                            <i class="bi bi-download"></i>
-                            Download
-                            <button type="submit" style="color: blue;">School_Form.pdf</button>
-                        </form>
-                        <form action="/coordinator/schools/importcsv" method="GET">
-                            <i class="bi bi-upload"></i>
-                            <button type="submit" style="color: blue;">Upload School Form</button>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade show active" id="upload" role="tabpanel" aria-labelledby="upload-tab">
-                        <form action="/coordinator/schools/importcsv" method="POST" enctype="multipart/form-data" class="flex flex-col items-center gap-3">
-                            <div class="mb-3">
-                                <input class="form-control" type="file" id="formFile" name="uploadedForm">
-                            </div>
-                            <button type="submit" class="btn font-bold text-white bg-blue-500 hover:bg-blue-400">Upload Form</button>
-                        </form>
-                    </div>
 
-                </div>
-
-                <div class="modal-footer mt-4">
-                    <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
-                </div> -->
 
                 <div class="modal-footer mt-4 flex justify-between items-center">
-                    <form action="/coordinator/schools/importcsv" method="GET" class="flex items-center gap-2">
+                    <div class="flex items-center gap-2">
                         <span>Download The School Form</span>
-                        <button type="submit" style="color: blue;" class="btn p-0 text-blue-500 underline">HERE</button>
-                    </form>
+                        <a href="/uploads/export_with_letterhead" style="color: blue;" class="btn p-0 text-blue-500 underline">HERE</a>
+                    </div>
                     <form action="/coordinator/schools/importcsv" method="POST" enctype="multipart/form-data">
                         Upload The Form Below:
                         <div class="mb-3 flex items-center gap-2">
@@ -72,12 +39,22 @@
                         </div>
                     </form>
 
+                    <?php if (isset($errors['import_school']['uploadedForm'])): ?>
+                        <p class="error"><?= $errors['import_school']['uploadedForm'] ?></p>
+                    <?php endif; ?>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            if (<?php echo json_encode(isset($errors['import_school']) &&  count($errors['import_school']) > 0); ?>) {
+                                var importSchoolModal = new bootstrap.Modal(document.getElementById('importSchoolModal'));
+                                importSchoolModal.show();
+                            }
+                        });
+                    </script>
+
                 </div>
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
                 </div>
-
-                </form>
             </div>
         </div>
 </main>
