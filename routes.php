@@ -43,11 +43,11 @@ $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php'
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 //Create School
-$router->post('/coordinator/schools/store', '/schools/store.php')->only('coordinator');
+$router->post('/coordinator/schools', '/schools/store.php')->only('coordinator');
 //Edit School Details
-$router->patch('/coordinator/schools/edit', '/schools/edit.php')->only('coordinator');
+$router->patch('/coordinator/schools', '/schools/patch.php')->only('coordinator');
 //Delete School
-$router->delete('/coordinator/schools/destroy', '/schools/destroy.php')->only('coordinator');
+$router->delete('/coordinator/schools', '/schools/destroy.php')->only('coordinator');
 //Export School Data to CSV
 $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php')->only('coordinator');
 //Import School
@@ -57,11 +57,11 @@ $router->get('/coordinator/schools/importcsv', '/schools/import/create.php')->on
 
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
-$router->post('/coordinator/users/store', '/users/store.php')->only('coordinator');
+$router->post('/coordinator/users', 'users/store.php')->only('coordinator');
 //Edit User Details
-$router->patch('/coordinator/users/edit', '/users/edit.php')->only('coordinator');
+$router->patch('/coordinator/users', 'users/patch.php')->only('coordinator');
 //Delete School
-$router->delete('/coordinator/users/destroy', '/users/destroy.php')->only('coordinator');
+$router->delete('/coordinator/users', 'users/destroy.php')->only('coordinator');
 //Change User Password
 $router->patch('/coordinator/users/changePassword', '/users/changePassword.php')->only('coordinator');
 //Export User Data to CSV
@@ -83,6 +83,8 @@ $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coo
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
 $router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
 $router->get('/custodian', 'custodian/create.php')->only('custodian');
+
+$router->post('/custodian/receipt', 'custodian/receipt/store.php')->only('custodian');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');

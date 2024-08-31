@@ -6,6 +6,7 @@ function text_input(
     $placeholder = 'Text Input',
     $value = '',
     $type = 'text',
+    $required = true
 ) {
 ?>
     <span class="flex flex-col">
@@ -15,10 +16,11 @@ function text_input(
         <input
             class="p-2 outline-none rounded border-1 border-zinc-300 hover:border-zinc-400 active:border-[#434F72] focus:border-[#434F72] valid:border-[#434F72] shadow-inner"
             name="<?php echo htmlspecialchars($name); ?>"
+            id="<?php echo htmlspecialchars($name); ?>"
             placeholder="<?php echo htmlspecialchars($placeholder); ?>"
             value="<?php echo htmlspecialchars($value); ?>"
             type="<?php echo htmlspecialchars($type); ?>"
-            required />
+            <?php echo $required ? 'required' : '' ?> />
     </span>
 <?php
 }

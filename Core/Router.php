@@ -56,6 +56,20 @@ class Router
     public function route($uri, $method)
     {
 
+        if (preg_match('#^/uploads/(.+)$#', $uri, $matches)) {
+            $file = base_path('uploads/' . $matches[1]);
+            if (file_exists($file)) {
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime_type = finfo_file($finfo, $file);
+                finfo_close($finfo);
+                header('Content-Type: ' . $mime_type);
+                readfile($file);
+                exit;
+            } else {
+                $this->abort(404);
+            }
+        }
+
         foreach ($this->routes as $route) {
 
             if (preg_match(extractPattern($route['uri']), $uri, $matches) && $route['method'] === strtoupper($method)) {

@@ -8,7 +8,7 @@
 <main class="modal fade " id="deleteSchool<?php echo $school['school_id']; ?>" tabindex="-1" aria-labelledby="deleteSchoolModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
-            <form action="/coordinator/schools/destroy" method="POST" class="modal-body h-fit flex flex-col gap-2">
+            <form action="/coordinator/schools" method="POST" class="modal-body h-fit flex flex-col gap-2">
             <input type="hidden" name="_method" value="DELETE" />
             <input name="id_to_delete" value = "<?php echo $school["school_id"]; ?>" hidden />
                 <div class="modal-header mb-4">

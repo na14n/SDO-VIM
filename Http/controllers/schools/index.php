@@ -25,6 +25,7 @@
 
 use Core\Database;
 use Core\App;
+use Core\Session;
 
 $db = App::resolve(Database::class);
 
@@ -42,15 +43,29 @@ $schools = $db->query('
         sc.contact_name,
         sc.contact_no,
         sc.contact_email,
-        s.date_added
+        s.date_added,
+        r.id AS receipt_id,
+        r.receipt,
+        r.date_added AS receipt_date_added
     FROM schools s
     JOIN types t ON s.type_id = t.id 
     JOIN divisions d ON s.division_id = d.id
     JOIN districts di ON s.district_id = di.id
-    LEFT JOIN school_contacts sc ON s.school_id = sc.school_id;
+    LEFT JOIN school_contacts sc ON s.school_id = sc.school_id
+    LEFT JOIN (
+        SELECT r1.*
+        FROM receipts r1
+        WHERE r1.date_added = (
+            SELECT MAX(r2.date_added)
+            FROM receipts r2
+            WHERE r2.school_id = r1.school_id
+        )
+    ) r ON s.school_id = r.school_id;
 ')->get();
 
 view('schools/index.view.php', [
     'heading' => 'Schools',
     'schools' => $schools,
+    'errors' => Session::get('errors') ?? [],
+    'old' => Session::get('old') ?? [],
 ]);

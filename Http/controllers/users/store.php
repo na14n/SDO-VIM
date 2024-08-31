@@ -25,31 +25,37 @@
 
 use Core\Database;
 use Core\App;
+use Http\Forms\UserAddForm;
 
 $db = App::resolve(Database::class);
 
-$password = $_POST['password'];
-$confirm_password = $_POST['confirm_password'];
-// Hash the password
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+$form = UserAddForm::validate($attributes = [
+    'user_name' => $_POST['user_name'],
+    'password' => $_POST['password'],
+    'password_confirm' => $_POST['password_confirm'],
+    'password_confirm' => $_POST['password_confirm'],
+    'school_id' => $_POST['school_id'] ?? '',
+    'user_role' => $_POST['user_role'],
+]);
 
-if ($password === $confirm_password) {
+// Hash the password
+$hashed_password = password_hash($password_confirm, PASSWORD_DEFAULT);
+
 $db->query('INSERT INTO users (
     user_name,
     role,
-    password
+    password,
+    school_id
 ) VALUES (
     :user_name,
     :role,
-    :password
+    :password,
+    :school_id
 )', [
     'user_name' => $_POST['user_name'],
-    'role' => $_POST['school_type'],
+    'role' => $_POST['user_role'],
     'password' => $hashed_password,
+    'school_id' => $_POST['school_id'] ?? null,
 ]);
-} else {
-    //put error handling for verification failure
-    echo "Passwords do not match.";
-}
 
 redirect('/coordinator/users');

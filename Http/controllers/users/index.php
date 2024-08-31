@@ -25,6 +25,7 @@
 
 use Core\Database;
 use Core\App;
+use Core\Session;
 
 $db = App::resolve(Database::class);
 
@@ -47,11 +48,13 @@ $users = $db->query("
         c.contact_no,
         c.contact_email
     FROM users u
-    JOIN schools s ON u.school_id = s.school_id
+    LEFT JOIN schools s ON u.school_id = s.school_id
     LEFT JOIN school_contacts c ON u.school_id = c.school_id
 ")->get();
 
 view('users/index.view.php', [
     'heading' => 'Users',
-    'users' => $users
+    'users' => $users,
+    'errors' => Session::get('errors') ?? [],
+    'old' => Session::get('old') ?? [],
 ]);

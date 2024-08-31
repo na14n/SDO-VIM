@@ -19,10 +19,10 @@
                     <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div>
-                    <?php text_input('Password', 'password', 'password') ?>
+                    <?php text_input('Password', 'password', 'password', '', 'password') ?>
                 </div>
                 <div>
-                    <?php text_input('Confirm Password', 'confirm_password', 'confirm password') ?>
+                    <?php text_input('Confirm Password', 'confirm_password', 'confirm password', '', 'password') ?>
                 </div>
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>

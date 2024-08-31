@@ -42,19 +42,30 @@ namespace Http\Forms;
 use Core\ValidationException;
 use Core\Validator;
 
-class AddEditUserForm
+class UserAddForm
 {
     protected $errors = [];
 
     public function __construct(public array $attributes)
     {
-
-        if (!Validator::string($attributes['contact_no'], 11, 11)) {
-            $this->errors['contact_no'] = 'Please enter a valid contact number';
+        if (!Validator::string($attributes['user_name'], 1)) {
+            $this->errors['add_user']['user_name'] = 'Please enter a valid user name.';
         }
 
-        if (!Validator::email($attributes['contact_email'], 1)) {
-            $this->errors['contact_email'] = 'Please enter a valid email address';
+        if (!Validator::string($attributes['password'], 1)) {
+            $this->errors['add_user']['password'] = 'Please enter a valid password.';
+        }
+
+        if (!Validator::password_confirm($attributes['password'], $attributes['password_confirm'])) {
+            $this->errors['add_user']['password'] = 'Your Password does not match.';
+        }
+
+        if (!Validator::regex($attributes['school_id'], '/^(\d{6})?$/')) {
+            $this->errors['add_user']['school_id'] = 'Please enter an existing valid ID.';
+        }
+
+        if (!Validator::regex($attributes['user_role'], '/^1|2$/')) {
+            $this->errors['add_user']['user_role'] = 'Please select a valid user role.';
         }
     }
 
