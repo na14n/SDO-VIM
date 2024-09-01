@@ -33,13 +33,12 @@ $form = UserAddForm::validate($attributes = [
     'user_name' => $_POST['user_name'],
     'password' => $_POST['password'],
     'password_confirm' => $_POST['password_confirm'],
-    'password_confirm' => $_POST['password_confirm'],
     'school_id' => $_POST['school_id'] ?? '',
     'user_role' => $_POST['user_role'],
 ]);
 
 // Hash the password
-$hashed_password = password_hash($password_confirm, PASSWORD_DEFAULT);
+$hashed_password = password_hash($attributes['password'], PASSWORD_DEFAULT);
 
 $db->query('INSERT INTO users (
     user_name,
