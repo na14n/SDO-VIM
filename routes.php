@@ -51,6 +51,9 @@ $router->delete('/coordinator/schools', '/schools/destroy.php')->only('coordinat
 //Export School Data to CSV
 $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php')->only('coordinator');
 
+
+$router->get('/coordinator/school-inventory/{id}', 'school-inventory/index.php');
+
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
 $router->post('/coordinator/users', 'users/store.php')->only('coordinator');
