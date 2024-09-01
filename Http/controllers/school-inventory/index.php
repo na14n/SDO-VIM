@@ -62,6 +62,7 @@ $schoolName = $db->query('
 $schoolName = $schoolName['school_name'] ?? 'Unnamed School';
 
 view('school-inventory/index.view.php', [
+    'id' => $params['id'] ?? null,
     'heading' => $schoolName,
     'items' => $items,
     'errors' => Session::get('errors') ?? [],

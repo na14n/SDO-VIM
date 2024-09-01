@@ -11,7 +11,7 @@ require base_path('views/partials/head.php') ?>
 <main class="main-col">
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
-      <?php require base_path('views/partials/coordinator/schools/add_school_modal.php') ?>
+      <?php require base_path('views/partials/coordinator/school-inventory/add_item_modal.php') ?>
       <?php require base_path('views/partials/coordinator/schools/export_school_modal.php') ?>
    </section>
    <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
@@ -48,7 +48,7 @@ require base_path('views/partials/head.php') ?>
                     <td><?= htmlspecialchars($item['date_updated']) ?></td>
                 <td>
                      <div class="h-full w-full flex items-center gap-2">
-                        ooga booga
+                        
                      </div>
                   </td>
                </tr>

@@ -53,6 +53,8 @@ $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php'
 
 
 $router->get('/coordinator/school-inventory/{id}', 'school-inventory/index.php');
+//Create Item
+$router->post('/coordinator/school-inventory', '/school-inventory/store.php')->only('coordinator');
 
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
