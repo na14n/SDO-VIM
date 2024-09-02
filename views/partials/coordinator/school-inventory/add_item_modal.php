@@ -1,13 +1,13 @@
 <!-- Modal Button -->
 
-<button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-green-500 text-white gap-2 font-bold hover:bg-green-600" data-bs-toggle="modal" data-bs-target="#addSchoolModal">
+<button class="flex items-center w-fit shrink-0 px-3 py-2 rounded shadow-md bg-green-500 text-white gap-2 font-bold hover:bg-green-600" data-bs-toggle="modal" data-bs-target="#addItemModal">
     <i class="bi bi-plus-circle-fill"></i>
     <p>Add Item</p>
 </button>
 
 <!-- Modal -->
 
-<main class="modal fade " id="addSchoolModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+<main class="modal fade " id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered w-1/2">
         <div class="modal-content">
             <form action="/coordinator/school-inventory" method="POST" class="modal-body h-fit flex flex-col gap-2">
@@ -15,7 +15,7 @@
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-box-seam-fill"></i>
-                        <h1 class="modal-title fs-5 font-bold" id="addUserModalLabel">Add New Item</h1>
+                        <h1 class="modal-title fs-5 font-bold" id="addItemModalLabel">Add New Item</h1>
                     </div>
                     <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

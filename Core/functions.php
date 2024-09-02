@@ -80,7 +80,7 @@ function generateSKU($category, $productName, $fundsName) {
     $productPart = strtoupper(substr(preg_replace('/[^A-Za-z0-9]/', '', $productName), 0, 3));
     $fundsPart = strtoupper(substr(preg_replace('/[^A-Za-z0-9]/', '', $fundsName), 0, 3));
 
-    $sku = $categoryPart . '-' . $productPart . '-' . $fundsName;
+    $sku = $categoryPart . '-' . $productPart . '-' . $fundsPart;
 
     return $sku;
 }

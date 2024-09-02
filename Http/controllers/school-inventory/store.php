@@ -29,7 +29,7 @@ use Core\App;
 $db = App::resolve(Database::class);
 
 $id = $_POST['id'];
-$item_code = $id . ' - ' . generateSKU($_POST['item_article'], $_POST['item_desc'], $_POST['item_funds_source']);
+$item_code = $id . '-' . generateSKU($_POST['item_article'], $_POST['item_desc'], $_POST['item_funds_source']);
 
 $db->query('INSERT INTO school_inventory (
     item_code, item_article, item_desc, date_acquired,

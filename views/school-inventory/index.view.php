@@ -48,7 +48,8 @@ require base_path('views/partials/head.php') ?>
                     <td><?= htmlspecialchars($item['date_updated']) ?></td>
                 <td>
                      <div class="h-full w-full flex items-center gap-2">
-                        
+                        <?php require base_path('views/partials/coordinator/school-inventory/delete_item_modal.php') ?>
+                        <?php require base_path('views/partials/coordinator/school-inventory/edit_item_modal.php') ?>
                      </div>
                   </td>
                </tr>
