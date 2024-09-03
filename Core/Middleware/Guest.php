@@ -22,7 +22,7 @@ class Guest
 {
 
     protected array $role_routes = [
-        0 => '/custodian',
+        2 => '/custodian',
         1 => '/coordinator',
     ];
 
