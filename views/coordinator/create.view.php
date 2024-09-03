@@ -16,17 +16,19 @@ require base_path('views/partials/head.php') ?>
       <?php dashboard_card('For Repair', '2', 'bi-tools'); ?>
       <?php dashboard_card('Condemned', '1', 'bi-exclamation-diamond-fill'); ?>
    </section>
-   <section class="grow mx-12 px-6 py-6 mb-6 flex flex-col gap-6 text-red-500">
+   <section class="grow mx-12 px-6 py-6 flex flex-col gap-6 text-red-500">
       <div class="flex items-center gap-6 h-1/2">
-         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 flex-1"><canvas id="myChart"></canvas></div>
-         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 shrink-0 w-1/4">b</div>
+         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 flex-1"><canvas id="article"></canvas></div>
+         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 shrink-0 w-1/4"><canvas id="ratio"></canvas></div>
       </div>
       <div class="flex items-center gap-6 h-1/2">
-         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 shrink-0 w-1/3">b</div>
-         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 flex-1">a</div>
+         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 shrink-0 w-1/3"><canvas id="i_ratio"></canvas></div>
+         <div class="h-full bg-zinc-50 border-[1px] rounded-lg p-3 flex-1"><canvas id="inventory"></canvas></div>
       </div>
    </section>
 </main>
+
+<!-- bar chart -->
 <script>
    const ctx = document.getElementById('myChart').getContext('2d');
    const myChart = new Chart(ctx, {
@@ -59,6 +61,146 @@ require base_path('views/partials/head.php') ?>
          scales: {
             y: {
                beginAtZero: true
+            }
+         }
+      }
+   });
+</script>
+
+<script>
+   const article_ctx = document.getElementById('article').getContext('2d');
+   const article = new Chart(article_ctx, {
+      type: 'bar',
+      data: {
+         labels: ['Mouse', 'Laptops', 'Keyboard', 'RAM Sticks', 'Desktop Sets', 'Monitors'],
+         datasets: [{
+            label: '# of Equipments',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+               'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+               'rgba(54, 162, 235, 1)',
+            ],
+            borderWidth: 1
+         }]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         scales: {
+            y: {
+               beginAtZero: true
+            }
+         },
+         plugins: {
+            title: {
+               display: true,
+               text: 'No. of Equipments per Article'
+            }
+         }
+      }
+   });
+</script>
+
+<script>
+   const inventory_ctx = document.getElementById('inventory').getContext('2d');
+   const inventory = new Chart(inventory_ctx, {
+      type: 'line', 
+      data: {
+         labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], 
+         datasets: [{
+            label: 'Inventory Received per Month', 
+            data: [5, 11, 9, 5, 12, 9], 
+            backgroundColor: 'rgba(54, 162, 235, 0.2)', 
+            borderColor: 'rgba(54, 162, 235, 1)', 
+            borderWidth: 2, 
+            fill: false, 
+            tension: 0.1 
+         }]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         scales: {
+            y: {
+               beginAtZero: true, 
+               title: {
+                  display: true,
+                  text: 'Number of Items Received' 
+               }
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: 'Month' 
+               }
+            }
+         },
+         plugins: {
+            title: {
+               display: true,
+               text: 'Monthly Inventory Stock Status' 
+            }
+         }
+      }
+   });
+</script>
+
+
+<script>
+   const ratio_ctx = document.getElementById('ratio').getContext('2d');
+   const ratio = new Chart(ratio_ctx, {
+      type: 'pie',
+      data: {
+         labels: ['Working', 'Repair', 'Condemned'],
+         datasets: [{
+            data: [65, 20, 25],
+            backgroundColor: [
+               'rgba(22, 163, 72, 0.5)',
+               'rgba(255, 159, 64, 0.5)',
+               'rgba(255, 99, 132, 0.5)',
+            ],
+            borderColor: [
+               'rgba(22, 163, 74, 1)',
+               'rgba(255, 144, 32, 1)',
+               'rgba(255, 64, 105, 1)',
+            ],
+            borderWidth: 1
+         }]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+            title: {
+               display: true,
+               text: 'Inventory Status Ratio'
+            }
+         }
+      }
+   });
+</script>
+
+<script>
+   const i_ratio_ctx = document.getElementById('i_ratio').getContext('2d');
+   const i_ratio = new Chart(i_ratio_ctx, {
+      type: 'doughnut',
+      data: {
+         labels: ['Mouse', 'Laptops', 'Keyboard', 'RAM Sticks', 'Desktop Sets', 'Monitors'],
+         datasets: [{
+            label: 'Inventory Item Ratio',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+         }]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+            title: {
+               display: true,
+               text: 'Inventory Item Ratio'
             }
          }
       }
