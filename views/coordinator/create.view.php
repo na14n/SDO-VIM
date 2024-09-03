@@ -67,7 +67,6 @@ require base_path('views/partials/head.php') ?>
    });
 </script>
 
-<!-- pie chart (temporary status card) -->
 <script>
    const article_ctx = document.getElementById('article').getContext('2d');
    const article = new Chart(article_ctx, {
@@ -104,23 +103,20 @@ require base_path('views/partials/head.php') ?>
    });
 </script>
 
-<!-- donut chart -->
 <script>
    const inventory_ctx = document.getElementById('inventory').getContext('2d');
    const inventory = new Chart(inventory_ctx, {
-      type: 'bar',
+      type: 'line', 
       data: {
-         labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+         labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], 
          datasets: [{
-            label: 'Inventory Received per Month',
-            data: [5, 11, 9, 5, 12, 9],
-            backgroundColor: [
-               'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-               'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
+            label: 'Inventory Received per Month', 
+            data: [5, 11, 9, 5, 12, 9], 
+            backgroundColor: 'rgba(54, 162, 235, 0.2)', 
+            borderColor: 'rgba(54, 162, 235, 1)', 
+            borderWidth: 2, 
+            fill: false, 
+            tension: 0.1 
          }]
       },
       options: {
@@ -128,20 +124,30 @@ require base_path('views/partials/head.php') ?>
          maintainAspectRatio: false,
          scales: {
             y: {
-               beginAtZero: true
+               beginAtZero: true, 
+               title: {
+                  display: true,
+                  text: 'Number of Items Received' 
+               }
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: 'Month' 
+               }
             }
          },
          plugins: {
             title: {
                display: true,
-               text: 'Monthly Inventory Stock Status'
+               text: 'Monthly Inventory Stock Status' 
             }
          }
       }
    });
 </script>
 
-<!-- line chart (ratio) -->
+
 <script>
    const ratio_ctx = document.getElementById('ratio').getContext('2d');
    const ratio = new Chart(ratio_ctx, {
@@ -175,6 +181,7 @@ require base_path('views/partials/head.php') ?>
       }
    });
 </script>
+
 <script>
    const i_ratio_ctx = document.getElementById('i_ratio').getContext('2d');
    const i_ratio = new Chart(i_ratio_ctx, {
