@@ -1,4 +1,5 @@
 /vendor/
+/node_modules/
 /uploads/receipts/*
 !/uploads/receipts/
 !/uploads/receipts/.gitkeep
