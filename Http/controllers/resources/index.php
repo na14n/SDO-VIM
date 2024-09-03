@@ -30,6 +30,17 @@ $db = App::resolve(Database::class);
 
 $resources = [];
 
+$resources = $db->query('
+    SELECT 
+       si.item_code,
+       si.item_article,
+       s.school_name,
+       si.item_status AS status,
+       si.date_acquired
+       FROM school_inventory si
+       JOIN schools s ON  s.school_id = si.school_id
+')->get();
+
 view('resources/index.view.php', [
     'heading' => 'Resources',
     'resources' => $resources,

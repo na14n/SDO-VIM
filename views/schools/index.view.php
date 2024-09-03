@@ -12,6 +12,7 @@ require base_path('views/partials/head.php') ?>
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/coordinator/schools/add_school_modal.php') ?>
+      <?php require base_path('views/partials/coordinator/schools/import_school_modal.php') ?>
       <?php require base_path('views/partials/coordinator/schools/export_school_modal.php') ?>
    </section>
    <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
