@@ -65,5 +65,4 @@ require base_path('views/partials/head.php') ?>
    });
 </script>
 
-
 <?php require base_path('views/partials/footer.php') ?>
