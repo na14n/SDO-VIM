@@ -63,9 +63,14 @@ $schoolName = $schoolName['school_name'] ?? 'Unnamed School';
 
 $histories = [];
 $histories = $db->query('
-    SELECT h.action, h.modified_at, h.item_code, u.user_name
-    FROM school_inventory_history h
-    INNER JOIN users u ON h.user_id = u.user_id;
+SELECT h.action, h.modified_at, h.item_code, u.user_name
+FROM school_inventory_history h
+INNER JOIN users u ON h.user_id = u.user_id
+INNER JOIN (
+    SELECT item_code, MAX(modified_at) AS latest_update
+    FROM school_inventory_history
+    GROUP BY item_code
+) latest ON h.item_code = latest.item_code AND h.modified_at = latest.latest_update;
 ')->get();
 
 view('custodian-inventory/index.view.php', [

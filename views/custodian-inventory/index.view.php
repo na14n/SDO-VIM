@@ -57,7 +57,7 @@ require base_path('views/partials/head.php') ?>
                 <td>
                      <div class="h-full w-full flex items-center gap-2">
                         <?php require base_path('views/partials/custodian/custodian-inventory/edit_item_modal.php') ?>
-                        <?//php require base_path('views/partials/coordinator/school-inventory/edit_item_modal.php') ?>
+                        <?php require base_path('views/partials/custodian/custodian-inventory/delete_item_modal.php') ?>
                      </div>
                   </td>
                </tr>
