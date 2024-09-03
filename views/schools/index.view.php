@@ -45,6 +45,7 @@ require base_path('views/partials/head.php') ?>
                         <?php require base_path('views/partials/coordinator/schools/view_receipt_modal.php') ?>
                         <?php require base_path('views/partials/coordinator/schools/edit_school_modal.php') ?>
                         <?php require base_path('views/partials/coordinator/schools/delete_school_modal.php') ?>
+                        <?php require base_path('views/partials/coordinator/schools/view_school_inventory_button.php') ?>
                      </div>
                   </td>
                </tr>

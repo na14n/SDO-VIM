@@ -51,6 +51,15 @@ $router->delete('/coordinator/schools', '/schools/destroy.php')->only('coordinat
 //Export School Data to CSV
 $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php')->only('coordinator');
 
+
+$router->get('/coordinator/school-inventory/{id}', 'school-inventory/index.php');
+//Create Item
+$router->post('/coordinator/school-inventory', '/school-inventory/store.php')->only('coordinator');
+//Edit Item
+$router->patch('/coordinator/school-inventory', '/school-inventory/patch.php')->only('coordinator');
+//Delete Item
+$router->delete('/coordinator/school-inventory', '/school-inventory/destroy.php')->only('coordinator');
+
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
 $router->post('/coordinator/users', 'users/store.php')->only('coordinator');
@@ -81,6 +90,14 @@ $router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coord
 $router->get('/custodian', 'custodian/create.php')->only('custodian');
 
 $router->post('/custodian/receipt', 'custodian/receipt/store.php')->only('custodian');
+
+$router->get('/custodian/custodian-inventory', 'custodian-inventory/index.php')->only('custodian');
+//Create Item
+$router->post('/custodian/custodian-inventory', '/custodian-inventory/store.php')->only('custodian');
+//Edit Item
+$router->patch('/custodian/custodian-inventory', '/custodian-inventory/patch.php')->only('custodian');
+//Delete Item
+$router->delete('/custodian/custodian-inventory', '/custodian-inventory/destroy.php')->only('custodian');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');
