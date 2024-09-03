@@ -21,9 +21,9 @@ $db->query('UPDATE school_inventory SET
     item_inactive = :item_inactive,
     item_status = :item_status,
     updated_by = :updated_by
-WHERE school_id = :id;', [
+WHERE item_code = :id_to_update;', [
     'updated_by' => $_SESSION['user']['user_id'] ?? 'Admin',
-    'id' => $_POST['id'] ?? null,
+    'id_to_update' => $_POST['id_to_update'] ?? null,
     'item_code' => $item_code,
     'item_article' => $_POST['item_article'],
     'item_desc' => $_POST['item_desc'],
