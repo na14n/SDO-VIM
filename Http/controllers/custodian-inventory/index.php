@@ -73,11 +73,18 @@ INNER JOIN (
 ) latest ON h.item_code = latest.item_code AND h.modified_at = latest.latest_update;
 ')->get();
 
+$statusMap = [
+    1 => 'Working',
+    2 => 'Need Repair',
+    3 => 'Condemned'
+];
+
 view('custodian-inventory/index.view.php', [
     'id' => $_SESSION['user']['school_id'] ?? null,
     'histories' => $histories,
     'heading' => $schoolName,
     'items' => $items,
+    'statusMap' => $statusMap,
     'errors' => Session::get('errors') ?? [],
     'old' => Session::get('old') ?? [],
 ]);

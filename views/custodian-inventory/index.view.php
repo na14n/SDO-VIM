@@ -38,7 +38,7 @@ require base_path('views/partials/head.php') ?>
                     <td><?= htmlspecialchars($item['item_article']) ?></td>
                     <td><?= htmlspecialchars($item['item_desc']) ?></td>
                     <td><?= htmlspecialchars($item['date_acquired']) ?></td>
-                    <td><?= htmlspecialchars($item['item_status']) ?></td>
+                    <td><?= htmlspecialchars($statusMap[$item['item_status']]) ?></td>
                     <td><?= htmlspecialchars($item['item_funds_source']) ?></td>
                     <td><?= htmlspecialchars($item['item_unit_value']) ?></td>
                     <td><?= htmlspecialchars($item['item_quantity']) ?></td>

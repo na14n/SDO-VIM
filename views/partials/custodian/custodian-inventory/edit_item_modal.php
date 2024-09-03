@@ -50,7 +50,19 @@
                     <?php text_input('Source of Funds', 'item_funds_source', 'Source Of Funds', $item['item_funds_source'] ?? '') ?>
                 </div>
                 <div>
-                    <?php text_input('Status', 'item_status', 'Item Status', $item['item_status'] ?? '') ?>
+                <?php
+                    select_input(
+                        'Item Status',
+                        'item_status',
+                        'item_status',
+                        [
+                            1 => 'Working',
+                            2 => 'Need Repair',
+                            3 => 'Condemned'
+                        ],
+                        $old['item_status'] ?? 1
+                    );
+                    ?>
                 </div>
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
