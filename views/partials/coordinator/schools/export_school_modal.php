@@ -23,7 +23,7 @@
                </div>
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
-                    <form action="#" method="POST">
+                    <form action="/coordinator/schools/exportpdf" method="POST">
                         <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Export as PDF</button>
                     </form>
                     <form action="/coordinator/schools/exportcsv" method="POST">
