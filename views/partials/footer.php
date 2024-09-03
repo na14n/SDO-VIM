@@ -1,4 +1,20 @@
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
-
+        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                if (<?php echo json_encode(isset($_SESSION['_flash']['notification']) &&  count($_SESSION['_flash']['notification']) > 0); ?>) {
+                    Toastify({
+                        text: "<?php echo $_SESSION['_flash']['notification']['text'] ?? '' ?>",
+                        duration: <?php echo $_SESSION['_flash']['notification']['duration'] ?? 3000 ?>,
+                        close: true,
+                        gravity: "bottom",
+                        position: "<?php echo $_SESSION['_flash']['notification']['position'] ?? 'center' ?>",
+                        backgroundColor: "<?php echo $_SESSION['_flash']['notification']['bg'] ?? 'blue' ?>",
+                        stopOnFocus: true,
+                        offset: {
+                            y: '3rem'
+                        },
+                    }).showToast();
+                }
+            });          
+        </script>
 </html>

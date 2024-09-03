@@ -1,4 +1,4 @@
-<?php $page_styles = ['/styles/banner.css'];
+<?php $page_styles = ['/css/banner.css'];
 require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/sidebar.php') ?>
 
