@@ -62,6 +62,10 @@ $router->patch('/coordinator/school-inventory', '/school-inventory/patch.php')->
 //Delete Item
 $router->delete('/coordinator/school-inventory', '/school-inventory/destroy.php')->only('coordinator');
 
+
+//Export School Data to XLS
+$router->post('/coordinator/schools/exportxls', '/schools/export_school_xls.php')->only('coordinator');
+
 $router->get('/coordinator/users', 'users/index.php')->only('coordinator');
 //Create User
 $router->post('/coordinator/users', 'users/store.php')->only('coordinator');
