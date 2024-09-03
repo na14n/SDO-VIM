@@ -24,7 +24,7 @@
                     <i class="bi bi-bar-chart-line-fill sidebar-li-icon"></i>
                     <h6 class="sidebar-li-text">Dashboard</h6>
                 </a>
-                <a href="/custodian/inventory" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'inventory') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
+                <a href="/custodian/custodian-inventory" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'custodian-inventory') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
                     <i class="bi bi-box-seam-fill sidebar-li-icon"></i>
                     <h6 class="sidebar-li-text">Inventory</h6>
                 </a>

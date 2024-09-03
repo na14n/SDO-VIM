@@ -91,6 +91,10 @@ $router->get('/custodian', 'custodian/create.php')->only('custodian');
 
 $router->post('/custodian/receipt', 'custodian/receipt/store.php')->only('custodian');
 
+$router->get('/custodian/custodian-inventory', 'custodian-inventory/index.php')->only('custodian');
+//Create Item
+$router->post('/custodian/custodian-inventory', '/custodian-inventory/store.php')->only('custodian');
+
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');
 $router->get('/500', 'http_errors/500.php');
