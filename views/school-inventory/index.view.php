@@ -45,11 +45,19 @@ require base_path('views/partials/head.php') ?>
                     <td><?= htmlspecialchars($item['item_total_value']) ?></td>
                     <td><?= htmlspecialchars($item['item_active']) ?></td>
                     <td><?= htmlspecialchars($item['item_inactive']) ?></td>
-                    <td><?= htmlspecialchars($item['date_updated']) ?></td>
+                    <td>
+                        <?php 
+                           foreach ($histories as $history):
+                              if ($history['item_code'] == $item['item_code']) {
+                                 echo htmlspecialchars($history['action'] . ' by ' . $history['user_name'] . ' on ' . $history['modified_at']);
+                              }
+                           endforeach;
+                        ?>
+                    </td>
                 <td>
                      <div class="h-full w-full flex items-center gap-2">
-                        <?php require base_path('views/partials/coordinator/school-inventory/delete_item_modal.php') ?>
                         <?php require base_path('views/partials/coordinator/school-inventory/edit_item_modal.php') ?>
+                        <?php require base_path('views/partials/coordinator/school-inventory/delete_item_modal.php') ?>
                      </div>
                   </td>
                </tr>

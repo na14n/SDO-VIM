@@ -34,12 +34,13 @@ $item_code = $id . '-' . generateSKU($_POST['item_article'], $_POST['item_desc']
 $db->query('INSERT INTO school_inventory (
     item_code, item_article, item_desc, date_acquired,
     item_unit_value, item_quantity, item_funds_source,
-    item_active, item_inactive, school_id
+    item_active, item_inactive, school_id, updated_by
 ) VALUES (
     :item_code, :item_article, :item_desc, :date_acquired,
     :item_unit_value, :item_quantity, :item_funds_source,
-    :item_active, :item_inactive, :id
+    :item_active, :item_inactive, :id, :updated_by
 );', [
+    'updated_by' => $_SESSION['user']['user_id'],
     'id' => $_POST['id'] ?? null,
     'item_code' => $item_code,
     'item_article' => $_POST['item_article'],

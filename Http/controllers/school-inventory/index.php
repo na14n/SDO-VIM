@@ -61,8 +61,16 @@ $schoolName = $db->query('
 
 $schoolName = $schoolName['school_name'] ?? 'Unnamed School';
 
+$histories = [];
+$histories = $db->query('
+    SELECT h.action, h.modified_at, h.item_code, u.user_name
+    FROM school_inventory_history h
+    INNER JOIN users u ON h.user_id = u.user_id;
+')->get();
+
 view('school-inventory/index.view.php', [
     'id' => $params['id'] ?? null,
+    'histories' => $histories,
     'heading' => $schoolName,
     'items' => $items,
     'errors' => Session::get('errors') ?? [],

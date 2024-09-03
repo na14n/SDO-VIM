@@ -22,7 +22,7 @@ $db->query('UPDATE school_inventory SET
     item_status = :item_status,
     updated_by = :updated_by
 WHERE school_id = :id;', [
-    'updated_by' => $_SESSION['user']['user_id'] ?? 'Admin',
+    'updated_by' => $_SESSION['user']['user_id'],
     'id' => $_POST['id'] ?? null,
     'item_code' => $item_code,
     'item_article' => $_POST['item_article'],
@@ -36,4 +36,4 @@ WHERE school_id = :id;', [
     'item_status' => $_POST['item_status']
 ]);
 
-redirect('/coordinator/school-inventory/' . $id);
+redirect('/custodian/custodian-inventory');
