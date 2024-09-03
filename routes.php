@@ -50,6 +50,8 @@ $router->patch('/coordinator/schools', '/schools/patch.php')->only('coordinator'
 $router->delete('/coordinator/schools', '/schools/destroy.php')->only('coordinator');
 //Export School Data to CSV
 $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php')->only('coordinator');
+
+
 //Import School
 $router->post('/coordinator/schools/importcsv', '/schools/import/store.php')->only('coordinator'); //upload
 $router->get('/coordinator/schools/importcsv', '/schools/import/create.php')->only('coordinator'); //download file
