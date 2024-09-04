@@ -36,10 +36,13 @@ $router->delete('/', 'session/destroy.php')->only('auth');
 $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
 
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');
-$router->get('/coordinator/resources/new', 'resources/new/index.php')->only('coordinator');
+$router->get('/coordinator/resources/unassigned', 'resources/unassigned/index.php')->only('coordinator');
 $router->get('/coordinator/resources/working', 'resources/working/index.php')->only('coordinator');
 $router->get('/coordinator/resources/repair', 'resources/repair/index.php')->only('coordinator');
 $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php')->only('coordinator');
+
+//Assign resource to school
+$router->patch('/coordinator/resources/unassigned', '/resources/unassigned/patch.php')->only('coordinator');
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 //Create School

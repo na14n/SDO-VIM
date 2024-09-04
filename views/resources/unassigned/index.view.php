@@ -1,7 +1,7 @@
 <?php $page_styles = ['/css/banner.css'];
 require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/sidebar.php') ?>
-
+<?php require base_path('views/components/text-input.php') ?>
 
 <!-- Your HTML code goes here -->
 
@@ -25,13 +25,12 @@ require base_path('views/partials/head.php') ?>
                   <tr>
                      <td><?= htmlspecialchars($resource['item_code']) ?></td>
                      <td><?= htmlspecialchars($resource['item_article']) ?></td>
-                     <td><?= htmlspecialchars($resource['school_name']) ?></td>
+                     <td><?= htmlspecialchars($resource['school_name'] ?? 'Unassigned') ?></td>
                      <td><?= htmlspecialchars(formatTimestamp($resource['date_acquired'])) ?></td>
                      <td>
                         <div class="h-full w-full flex items-center gap-2">
-                           <button class="view-btn">
-                              <i class="bi bi-eye-fill"></i>
-                           </button>
+                           <?php require base_path('views/partials/coordinator/resources/assign_resource_modal.php') ?>
+                        </div>
                      </td>
                   </tr>
                <?php endforeach; ?>

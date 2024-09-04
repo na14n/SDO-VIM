@@ -28,29 +28,13 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$resources = [];
+$id = $_POST['id'];
 
-$resources = $db->query('
-    SELECT 
-    si.item_code,
-    si.item_article,
-    s.school_name,
-    si.item_status AS status,
-    si.date_acquired
-FROM 
-    school_inventory si
-LEFT JOIN 
-    schools s ON s.school_id = si.school_id
-')->get();
-
-$statusMap = [
-    1 => 'Working',
-    2 => 'Need Repair',
-    3 => 'Condemned'
-];
-
-view('resources/index.view.php', [
-    'statusMap' => $statusMap,
-    'heading' => 'Resources',
-    'resources' => $resources,
+$db->query('UPDATE school_inventory 
+        SET school_id = :school_id
+        WHERE item_code = :id;', [
+    'id' => $_POST['id'] ?? null,
+    'school_id' => $_POST['school_id']
 ]);
+
+redirect('/coordinator/resources/unassigned');
