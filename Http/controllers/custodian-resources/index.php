@@ -44,7 +44,14 @@ $resources = $db->query('
         'id' => $_SESSION['user']['school_id'] ?? null
     ])->get();
 
+    $statusMap = [
+        1 => 'Working',
+        2 => 'Need Repair',
+        3 => 'Condemned'
+    ];
+
 view('custodian-resources/index.view.php', [
+    'statusMap' => $statusMap,
     'heading' => 'Resources',
     'resources' => $resources,
 ]);

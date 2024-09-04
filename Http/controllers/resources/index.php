@@ -41,7 +41,14 @@ $resources = $db->query('
        JOIN schools s ON  s.school_id = si.school_id
 ')->get();
 
+$statusMap = [
+    1 => 'Working',
+    2 => 'Need Repair',
+    3 => 'Condemned'
+];
+
 view('resources/index.view.php', [
+    'statusMap' => $statusMap,
     'heading' => 'Resources',
     'resources' => $resources,
 ]);
