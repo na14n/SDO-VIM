@@ -28,17 +28,24 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$id = $_POST['id'];
-$item_code = $_POST['school_id'] . '-' . $id;
+$resources = [];
 
-$db->query('UPDATE school_inventory 
-            SET school_id = :school_id, 
-                item_code = :new_item_code
-            WHERE item_code = :id;', [
-    'id' => $_POST['id'] ?? null,
-    'new_item_code' => $item_code,
-    'school_id' => $_POST['school_id']
+$resources = $db->query('
+SELECT 
+    si.item_code,
+    si.item_article,
+    s.school_name,
+    si.item_status AS status,
+    si.date_acquired
+FROM 
+    school_inventory si
+LEFT JOIN 
+    schools s ON s.school_id = si.school_id
+WHERE 
+    si.school_id IS NULL;;
+')->get();
+
+view('custodian-resources/unassigned/index.view.php', [
+    'heading' => 'Unassigned Resources',
+    'resources' => $resources,
 ]);
-
-
-redirect('/coordinator/resources/unassigned');

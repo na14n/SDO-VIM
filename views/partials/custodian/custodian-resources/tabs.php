@@ -9,10 +9,10 @@
     </li>
     <li class="nav-item">
         <a
-            class="nav-link <?php echo str_contains($_SERVER['REQUEST_URI'], 'new') ? 'active' : '' ?>"
-            aria-current="<?php echo str_contains($_SERVER['REQUEST_URI'], 'new') ? 'page' : '' ?>"
-            href="/custodian/custodian-resources/new">
-            New
+            class="nav-link <?php echo str_contains($_SERVER['REQUEST_URI'], 'unassigned') ? 'active' : '' ?>"
+            aria-current="<?php echo str_contains($_SERVER['REQUEST_URI'], 'unassigned') ? 'page' : '' ?>"
+            href="/custodian/custodian-resources/unassigned">
+            Unassigned
         </a>
     </li>
     <li class="nav-item">

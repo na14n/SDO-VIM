@@ -28,29 +28,17 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$resources = [];
+$school_id = $_POST['school_id'];
+$item_code = $school_id . '-' . $_POST['item_code'];
 
-$resources = $db->query('
-    SELECT 
-       si.item_code,
-       si.item_article,
-       s.school_name,
-       si.item_status AS status,
-       si.date_acquired
-FROM school_inventory si
-JOIN schools s ON s.school_id = si.school_id
-WHERE si.date_acquired = (
-      SELECT MAX(inner_si.date_acquired)
-      FROM school_inventory inner_si
-      WHERE inner_si.item_code = si.item_code
-      AND inner_si.school_id = si.school_id
-)AND si.school_id = :id;
-',
-[
-    'id' => $_SESSION['user']['school_id'] ?? null
-])->get();
-
-view('custodian-resources/new/index.view.php', [
-    'heading' => 'New Resources',
-    'resources' => $resources,
+$db->query('UPDATE school_inventory 
+            SET school_id = :school_id, 
+                item_code = :new_item_code
+            WHERE item_code = :id;', [
+    'id' => $_POST['item_code'] ?? null,
+    'new_item_code' => $item_code,
+    'school_id' => $school_id
 ]);
+
+
+redirect('/custodian/custodian-resources/unassigned');

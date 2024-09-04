@@ -43,6 +43,8 @@ $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php'
 
 //Assign resource to school
 $router->patch('/coordinator/resources/unassigned', '/resources/unassigned/patch.php')->only('coordinator');
+//Add resource
+$router->post('/coordinator/resources', 'resources/store.php')->only('coordinator');
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 //Create School
@@ -105,10 +107,13 @@ $router->patch('/custodian/custodian-inventory', '/custodian-inventory/patch.php
 $router->delete('/custodian/custodian-inventory', '/custodian-inventory/destroy.php')->only('custodian');
 
 $router->get('/custodian/custodian-resources', 'custodian-resources/index.php')->only('custodian');
-$router->get('/custodian/custodian-resources/new', 'custodian-resources/new/index.php')->only('custodian');
+$router->get('/custodian/custodian-resources/unassigned', 'custodian-resources/unassigned/index.php')->only('custodian');
 $router->get('/custodian/custodian-resources/working', 'custodian-resources/working/index.php')->only('custodian');
 $router->get('/custodian/custodian-resources/repair', 'custodian-resources/repair/index.php')->only('custodian');
 $router->get('/custodian/custodian-resources/condemned', 'custodian-resources/condemned/index.php')->only('custodian');
+
+//Assign Item to School
+$router->patch('/custodian/custodian-resources/unassigned', '/custodian-resources/unassigned/patch.php')->only('custodian');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');
