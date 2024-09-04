@@ -30,6 +30,22 @@ $db = App::resolve(Database::class);
 
 $resources = [];
 
+$resources = $db->query('
+    SELECT 
+       si.item_code,
+       si.item_article,
+       s.school_name,
+       si.item_status AS status,
+       si.date_acquired
+    FROM school_inventory si
+    JOIN schools s ON s.school_id = si.school_id
+    WHERE si.date_acquired = (
+      SELECT MAX(inner_si.date_acquired)
+      FROM school_inventory inner_si
+      WHERE inner_si.item_code = si.item_code
+  );
+')->get();
+
 view('resources/new/index.view.php', [
     'heading' => 'New Resources',
     'resources' => $resources,

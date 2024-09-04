@@ -25,12 +25,12 @@
                     <h6 class="sidebar-li-text">Dashboard</h6>
                 </a>
                 <a href="/custodian/custodian-inventory" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'custodian-inventory') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
-                    <i class="bi bi-box-seam-fill sidebar-li-icon"></i>
+                    <i class="bi bi-clipboard2-data-fill"></i>
                     <h6 class="sidebar-li-text">Inventory</h6>
                 </a>
-                <a href="/custodian/report" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'report') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
-                    <i class="bi bi-file-earmark-bar-graph-fill sidebar-li-icon"></i>
-                    <h6 class="sidebar-li-text">Report</h6>
+                <a href="/custodian/custodian-resources" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'resources') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
+                    <i class="bi bi-box-seam-fill sidebar-li-icon"></i>
+                    <h6 class="sidebar-li-text">Resources</h6>
                 </a>
                 <a href="/custodian/profile" class="<?php echo str_contains($_SERVER['REQUEST_URI'], 'profile') ? 'sidebar-li-alt' : 'sidebar-li' ?>">
                     <i class="bi bi-person-fill sidebar-li-icon"></i>

@@ -39,10 +39,14 @@ $resources = $db->query('
     si.date_acquired
     FROM school_inventory si
     JOIN schools s ON s.school_id = si.school_id
-    WHERE si.item_status = 2;
-')->get();
+    WHERE si.item_status = 2
+    AND si.school_id = :id;
+',
+[
+    'id' => $_SESSION['user']['school_id'] ?? null
+])->get();
 
-view('resources/repair/index.view.php', [
+view('custodian-resources/repair/index.view.php', [
     'heading' => 'For Repair Resources',
     'resources' => $resources,
 ]);

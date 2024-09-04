@@ -87,18 +87,8 @@ $router->post('/coordinator/users/exportcsv', '/users/export_user_csv.php')->onl
 $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
 $router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
-$router->get('/custodian', 'custodian/create.php')->only('custodian');
 
 // Custodian Routes
-$router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
-$router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
-$router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
-$router->get('/custodian', 'custodian/create.php')->only('custodian');
-
-// Custodian Routes
-$router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
-$router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
-$router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
 $router->get('/custodian', 'custodian/create.php')->only('custodian');
 
 $router->post('/custodian/receipt', 'custodian/receipt/store.php')->only('custodian');
@@ -110,6 +100,12 @@ $router->post('/custodian/custodian-inventory', '/custodian-inventory/store.php'
 $router->patch('/custodian/custodian-inventory', '/custodian-inventory/patch.php')->only('custodian');
 //Delete Item
 $router->delete('/custodian/custodian-inventory', '/custodian-inventory/destroy.php')->only('custodian');
+
+$router->get('/custodian/custodian-resources', 'custodian-resources/index.php')->only('custodian');
+$router->get('/custodian/custodian-resources/new', 'custodian-resources/new/index.php')->only('custodian');
+$router->get('/custodian/custodian-resources/working', 'custodian-resources/working/index.php')->only('custodian');
+$router->get('/custodian/custodian-resources/repair', 'custodian-resources/repair/index.php')->only('custodian');
+$router->get('/custodian/custodian-resources/condemned', 'custodian-resources/condemned/index.php')->only('custodian');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');
