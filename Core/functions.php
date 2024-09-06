@@ -89,3 +89,15 @@ function error_throw($errors = [], $old = [])
 {
     ValidationException::throw($errors, $old);
 }
+
+function roles_to_int($role)
+{
+    $roles = [
+        'coordinator' => 1,
+        'custodian' => 2,
+    ];
+
+    $role_string =  trim(strtolower($role));
+
+    return array_key_exists($role_string, $roles) ? $roles[$role_string] : 2;
+}

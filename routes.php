@@ -59,7 +59,6 @@ $router->post('/coordinator/schools/exportcsv', '/schools/export_school_csv.php'
 
 //Import School
 $router->post('/coordinator/schools/importcsv', '/schools/import/store.php')->only('coordinator'); //upload
-$router->get('/coordinator/schools/importcsv', '/schools/import/create.php')->only('coordinator'); //download file
 
 //Export School Data to PDF
 $router->post('/coordinator/schools/exportpdf', '/schools/export_school_pdf.php')->only('coordinator');
@@ -88,6 +87,8 @@ $router->delete('/coordinator/users', 'users/destroy.php')->only('coordinator');
 $router->patch('/coordinator/users/changePassword', '/users/changePassword.php')->only('coordinator');
 //Export User Data to CSV
 $router->post('/coordinator/users/exportcsv', '/users/export_user_csv.php')->only('coordinator');
+//Import User
+$router->post('/coordinator/users/importcsv', '/users/import/store.php')->only('coordinator'); //upload
 
 $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
