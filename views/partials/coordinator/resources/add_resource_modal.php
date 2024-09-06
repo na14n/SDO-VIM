@@ -26,6 +26,13 @@
                         <?php text_input('Item Description', 'item_desc', 'Item Description', $old['item_desc'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors['add_resource']['item_article'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_article'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors['add_resource']['item_desc'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_desc'] ?></p>
+                <?php endif; ?>
+
                 <div class="flex items-center gap-2">
                     <span>
                         <?php text_input('Price', 'item_unit_value', 'Unit Price', $old['item_unit_value'] ?? '') ?>
@@ -34,6 +41,13 @@
                         <?php text_input('Qty.', 'item_quantity', 'Quantity', $old['item_quantity'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors['add_resource']['item_unit_value'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_unit_value'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors['add_resource']['item_quantity'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_quantity'] ?></p>
+                <?php endif; ?>
+
                 <div class="flex items-center gap-2">
                     <span>
                         <?php text_input('Active Items', 'item_active', 'No. Of Active Items', $old['item_active'] ?? '') ?>
@@ -42,12 +56,32 @@
                         <?php text_input('Inactive Items', 'item_inactive', 'No. Of Inactive Items', $old['item_inactive'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors['add_resource']['item_active'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_active'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors['add_resource']['item_inactive'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_inactive'] ?></p>
+                <?php endif; ?>
+
                 <div>
-                   <input type="date" name="date_acquired" value="$old['date_acquired']"/>
+                    <input type="date" name="date_acquired" value="$old['date_acquired']" />
                 </div>
                 <div>
                     <?php text_input('Source of Funds', 'item_funds_source', 'Source Of Funds', $old['item_funds_source'] ?? '') ?>
                 </div>
+                <?php if (isset($errors['add_resource']['item_funds_source'])): ?>
+                    <p class="error"><?= $errors['add_resource']['item_funds_source'] ?></p>
+                <?php endif; ?>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if (<?php echo json_encode(array_key_exists('add_resource', $errors) && count($errors['add_resource']) > 0) ?>) {
+                            var addResourceModal = new bootstrap.Modal(document.getElementById('addResourceModal'));
+                            addResourceModal.show();
+                        }
+                    });
+                </script>
+
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Add Item</button>

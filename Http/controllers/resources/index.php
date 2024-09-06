@@ -25,6 +25,7 @@
 
 use Core\Database;
 use Core\App;
+use Core\Session;
 
 $db = App::resolve(Database::class);
 
@@ -69,5 +70,7 @@ view('resources/index.view.php', [
     'statusMap' => $statusMap,
     'heading' => 'Resources',
     'resources' => $resources,
+    'errors' => Session::get('errors') ?? [],
+    'old' => Session::get('old') ?? [],
     'pagination' => $pagination
 ]);

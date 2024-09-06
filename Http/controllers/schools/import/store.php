@@ -2,9 +2,6 @@
 
 use Core\Database;
 use Core\App;
-use Http\Forms\SchoolAddForm;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 $db = App::resolve(Database::class);
@@ -31,7 +28,7 @@ if (in_array($file_ext, $allowed_ext)) {
 
     $rowCount = 0;
     foreach ($data as $row) {
-        if ($rowCount >= 7) {
+        if ($rowCount >= 8) {
             // Check if the row is empty
             if (array_filter($row)) {
                 $school_id = !empty($row[0]) ? $row[0] : null;

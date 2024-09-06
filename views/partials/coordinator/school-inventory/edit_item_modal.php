@@ -11,7 +11,7 @@
             <form action="/coordinator/school-inventory" method="POST" class="modal-body h-fit flex flex-col gap-2">
                 <input name="_method" value="PATCH" hidden />
                 <input name="id_to_update" value="<?php echo $item["item_code"]; ?>" hidden />
-                <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+                <input type="hidden" name="id" value="<?php echo $id; ?>" />
                 <div class="modal-header mb-4">
                     <div class="flex gap-2 justify-center items-center text-green-600 text-xl">
                         <i class="bi bi-person-fill-add"></i>
@@ -27,6 +27,13 @@
                         <?php text_input('Item Description', 'item_desc', 'Item Description', $item['item_desc'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_article'])): ?>
+                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_article'] ?></p>
+                <?php endif; ?>
+                <p class="error"><?= $errors[$school_inventory['item_code']]['item_desc'] ?? '' ?></p>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_desc'])): ?>
+                <?php endif; ?>
+
                 <div class="flex items-center gap-2">
                     <span>
                         <?php text_input('Price', 'item_unit_value', 'Unit Price', $item['item_unit_value'] ?? '') ?>
@@ -35,6 +42,13 @@
                         <?php text_input('Qty.', 'item_quantity', 'Quantity', $item['item_quantity'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_unit_value'])): ?>
+                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_unit_value'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_quantity'])): ?>
+                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_quantity'] ?></p>
+                <?php endif; ?>
+
                 <div class="flex items-center gap-2">
                     <span>
                         <?php text_input('Active Items', 'item_active', 'No. Of Active Items', $item['item_active'] ?? '') ?>
@@ -43,14 +57,25 @@
                         <?php text_input('Inactive Items', 'item_inactive', 'No. Of Inactive Items', $item['item_inactive'] ?? '') ?>
                     </span>
                 </div>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_active'])): ?>
+                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_active'] ?></p>
+                <?php endif; ?>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_inactive'])): ?>
+                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_inactive'] ?></p>
+                <?php endif; ?>
+
                 <div>
-                   <input type="date" name="date_acquired" value="<?php echo $item['date_acquired'] ?>"/>
+                    <input type="date" name="date_acquired" value="<?php echo $item['date_acquired'] ?>" />
                 </div>
                 <div>
                     <?php text_input('Source of Funds', 'item_funds_source', 'Source Of Funds', $item['item_funds_source'] ?? '') ?>
                 </div>
+                <?php if (isset($errors[$school_inventory['item_code']]['item_funds_source'])): ?>
+                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_funds_source'] ?></p>
+                <?php endif; ?>
+
                 <div>
-                <?php
+                    <?php
                     select_input(
                         'Item Status',
                         'item_status',
@@ -64,6 +89,15 @@
                     );
                     ?>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        if (<?php echo json_encode(array_key_exists($school_inventory['item_code'], $errors) && count($errors[$school_inventory['item_code']]) > 0) ?>) {
+                            var editItem = new bootstrap.Modal(document.getElementById('editItem<?php echo $school_inventory['item_code']; ?>'));
+                            editItem.show();
+                        }
+                    });
+                </script>
+
                 <div class="modal-footer mt-4">
                     <button type="button" class="btn font-bold text-[#000] hover:text-red-500 border-[1px] border-[#000] hover:border-red-500" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn font-bold text-white bg-green-500 hover:bg-green-400">Edit Item</button>
