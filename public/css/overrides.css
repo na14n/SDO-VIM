@@ -7,6 +7,16 @@
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.table tfoot tr td {
+  background-color: rgba(67, 79, 114);
+  color: rgb(255, 255, 255);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 0.5rem;
+  padding-right: 1.75rem;
+  vertical-align: middle;
+}
+
 .table td, th {
   vertical-align: middle;
   padding: 0.5rem 0.5rem;

@@ -12,19 +12,21 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/coordinator/resources/add_resource_modal.php') ?>
    </section>
-   <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
+   <section class="mx-12 mb-12 inline-block grow rounded">
       <?php require base_path('views/partials/coordinator/resources/tabs.php') ?>
-      <div class="table-responsive h-full mt-4 bg-zinc-50 rounded border-[1px]">
-         <table class="table table-striped">
+      <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
+         <table class="table table-striped m-0 ">
             <thead>
-               <th>ID</th>
-               <th>Item Article</th>
-               <th>School</th>
-               <th>Status</th>
-               <th>Date Acquired</th>
-               <th>Actions</th>
+               <tr>
+                  <th>ID</th>
+                  <th>Item Article</th>
+                  <th>School</th>
+                  <th>Status</th>
+                  <th>Date Acquired</th>
+                  <th>Actions</th>
+               </tr>
             </thead>
-            <tbody>
+            <tbody class="oveflow-y-scroll">
                <?php foreach ($resources as $resource): ?>
                   <tr>
                      <td><?= htmlspecialchars($resource['item_code']) ?></td>
@@ -41,6 +43,32 @@ require base_path('views/partials/head.php') ?>
                   </tr>
                <?php endforeach; ?>
             </tbody>
+            <tfoot class="overflow-hidden">
+               <tr>
+                  <td colspan="6" class="py-2 pr-4">
+                     <div class="w-full flex items-center justify-end gap-2">
+                        <p class="grow text-end mr-2">Page - <?= htmlspecialchars($pagination['pages_current']) ?> / <?= htmlspecialchars($pagination['pages_total']) ?></p>
+                        <a
+                           href="/coordinator/resources?page=1"
+                           class="pagination-link">
+                           <i class="bi bi-chevron-bar-left"></i>
+                        </a>
+                        <a
+                           href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] <= 1 ? 1 : $pagination['pages_current'] - 1) ?>" class="pagination-link">
+                           <i class="bi bi-chevron-left"></i>
+                        </a>
+                        <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] >= $pagination['pages_total'] ? $pagination['pages_total'] : $pagination['pages_current'] + 1) ?>"
+                           class="pagination-link">
+                           <i class="bi bi-chevron-right"></i>
+                        </a>
+                        <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_total']) ?>"
+                           class="pagination-link">
+                           <i class="bi bi-chevron-bar-right"></i>
+                        </a>
+                     </div>
+                  </td>
+               </tr>
+            </tfoot>
          </table>
       </div>
    </section>
