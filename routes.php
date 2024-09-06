@@ -45,6 +45,8 @@ $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php'
 $router->patch('/coordinator/resources/unassigned', '/resources/unassigned/patch.php')->only('coordinator');
 //Add resource
 $router->post('/coordinator/resources', 'resources/store.php')->only('coordinator');
+//Import Resource
+$router->post('/coordinator/resources/importcsv', '/resources/import/store.php')->only('coordinator');
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
 //Create School
