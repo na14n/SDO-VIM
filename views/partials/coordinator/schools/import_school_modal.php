@@ -19,7 +19,7 @@
                     <button type="button" class="btn-close hover:text-red-500" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="flex items-center">
-                    <p>Fill-up the provided form <a href="/uploads/export_with_letterhead" class="text-blue-500 font-bold">here <i class="bi bi-download"></i></a></p>
+                    <p>Fill-up the provided form <a href="/uploads/import_school_form" class="text-blue-500 font-bold">here <i class="bi bi-download"></i></a></p>
                 </div>
                 <form action="/coordinator/schools/importcsv" method="POST" enctype="multipart/form-data" class="w-full flex flex-col gap-3">
                     Upload The Form Below:

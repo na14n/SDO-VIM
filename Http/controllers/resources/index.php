@@ -31,7 +31,7 @@ $db = App::resolve(Database::class);
 
 $resources = [];
 $pagination = [
-    'pages_limit' => 12,
+    'pages_limit' => 10,
     'pages_current' => isset($_GET['page']) ? (int)$_GET['page'] : 1,
     'pages_total' => 0,
     'start' => 0,
