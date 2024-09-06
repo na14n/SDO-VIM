@@ -52,6 +52,21 @@ class Database
         return $this;
     }
 
+    public function paginate($query, $params = [])
+{
+    $this->statement = $this->connection->prepare($query);
+
+    foreach ($params as $key => $value) {
+        $type = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
+        $this->statement->bindValue(is_int($key) ? $key + 1 : ":$key", $value, $type);
+    }
+
+    $this->statement->execute();
+
+    return $this;
+}
+
+
     public function get()
     {
         try {
