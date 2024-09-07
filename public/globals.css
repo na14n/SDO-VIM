@@ -211,3 +211,38 @@ body {
 .pagination-link:hover {
   background-color: #3F4A6B;
 }
+
+.search-container{
+  margin-top: 1rem;
+  width: fit-content;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+}
+
+.search input {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  width: 24ch;
+  background: rgb(250, 250, 250);
+  color: #434F72;
+}
+
+.search button {
+  flex-grow: 1;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  background: #434F72;
+  color: #fff;
+}
+
+.search button:hover {
+  background: #3F4A6B;
+  cursor: pointer;
+}

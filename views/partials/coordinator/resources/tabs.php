@@ -1,9 +1,9 @@
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a
-            class="nav-link <?php echo $_SERVER['REQUEST_URI'] === '/coordinator/resources' ? 'active' : '' ?>"
+            class="nav-link <?php echo  parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === '/coordinator/resources' ? 'active' : '' ?>"
             aria-current="<?php echo $_SERVER['REQUEST_URI'] === '/coordinator/resources' ? 'page' : '' ?>"
-            href="/coordinator/resources">
+            href="/coordinator/resources">      
             All
         </a>
     </li>

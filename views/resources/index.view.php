@@ -12,8 +12,16 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/coordinator/resources/add_resource_modal.php') ?>
    </section>
-   <section class="mx-12 mb-12 inline-block grow rounded">
+   <section class="mx-12 flex flex-col">
       <?php require base_path('views/partials/coordinator/resources/tabs.php') ?>
+      <form class="search-container search" method="POST" action="/coordinator/resources/s">
+         <input type="text" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+         <button type="submit" class="search">
+            <i class="bi bi-search"></i>
+         </button>
+      </form>
+   </section>
+   <section class="mx-12 mb-12 inline-block grow rounded">
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped m-0 ">
             <thead>
@@ -48,23 +56,25 @@ require base_path('views/partials/head.php') ?>
                   <td colspan="6" class="py-2 pr-4">
                      <div class="w-full flex items-center justify-end gap-2">
                         <p class="grow text-end mr-2">Page - <?= htmlspecialchars($pagination['pages_current']) ?> / <?= htmlspecialchars($pagination['pages_total']) ?></p>
-                        <a
-                           href="/coordinator/resources?page=1"
-                           class="pagination-link">
-                           <i class="bi bi-chevron-bar-left"></i>
-                        </a>
-                        <a
-                           href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] <= 1 ? 1 : $pagination['pages_current'] - 1) ?>" class="pagination-link">
-                           <i class="bi bi-chevron-left"></i>
-                        </a>
-                        <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] >= $pagination['pages_total'] ? $pagination['pages_total'] : $pagination['pages_current'] + 1) ?>"
-                           class="pagination-link">
-                           <i class="bi bi-chevron-right"></i>
-                        </a>
-                        <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_total']) ?>"
-                           class="pagination-link">
-                           <i class="bi bi-chevron-bar-right"></i>
-                        </a>
+                        <?php if ($pagination['pages_total'] > 1): ?>
+                           <a
+                              href="/coordinator/resources?page=1"
+                              class="pagination-link">
+                              <i class="bi bi-chevron-bar-left"></i>
+                           </a>
+                           <a
+                              href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] <= 1 ? 1 : $pagination['pages_current'] - 1) ?>" class="pagination-link">
+                              <i class="bi bi-chevron-left"></i>
+                           </a>
+                           <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] >= $pagination['pages_total'] ? $pagination['pages_total'] : $pagination['pages_current'] + 1) ?>"
+                              class="pagination-link">
+                              <i class="bi bi-chevron-right"></i>
+                           </a>
+                           <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_total']) ?>"
+                              class="pagination-link">
+                              <i class="bi bi-chevron-bar-right"></i>
+                           </a>
+                        <?php endif; ?>
                      </div>
                   </td>
                </tr>
@@ -73,5 +83,4 @@ require base_path('views/partials/head.php') ?>
       </div>
    </section>
 </main>
-
 <?php require base_path('views/partials/footer.php') ?>

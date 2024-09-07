@@ -1,28 +1,5 @@
 <?php
 
-//  ==========================================
-//           This is the Controller 
-// ===========================================
-// 
-//  This is where you load the corresponding
-//  view file for this route if available
-// 
-//   Use the view() function and feed the 
-//   full path of the view.
-// 
-//   Being the controller file. This is where 
-//   the data is get, manipulated, and/or
-//   saved.
-//      
-//   You can pass variables to your view as the
-//   second parameter of the view function.
-//      
-//   view('notes/{id}', ['notes' => $notes])
-//
-//   view variables are passed as keu-value
-//   pairs as illustrated in the example above.
-//
-
 use Core\Database;
 use Core\App;
 use Core\Session;
@@ -38,7 +15,21 @@ $pagination = [
     'start' => 0,
 ];
 
-$resources_count = $db->query('SELECT COUNT(*) as total FROM school_inventory')->get();
+$resources_count = $db->query('
+SELECT 
+    COUNT(*) as total 
+FROM 
+    school_inventory
+WHERE
+	item_code LIKE :search_code OR
+    item_article LIKE :search_article OR
+    item_desc LIKE :search_desc
+', [
+    'search_code' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+    'search_article' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+    'search_desc' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+])->get();
+
 $pagination['pages_total'] = ceil($resources_count[0]['total'] / $pagination['pages_limit']);
 $pagination['pages_current'] = max(1, min($pagination['pages_current'], $pagination['pages_total']));
 
@@ -61,9 +52,9 @@ WHERE
     item_desc LIKE :search_desc
 LIMIT :start,:end
 ', [
-    'search_code' => '%' . strtolower(trim($_GET['search'] ?? '')) . '%',
-    'search_article' => '%' . strtolower(trim($_GET['search'] ?? '')) . '%',
-    'search_desc' => '%' . strtolower(trim($_GET['search'] ?? '')) . '%',
+    'search_code' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+    'search_article' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+    'search_desc' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
     'start' => (int)$pagination['start'],
     'end' => (int)$pagination['pages_limit'],
 ])->get();
@@ -80,5 +71,6 @@ view('resources/index.view.php', [
     'resources' => $resources,
     'errors' => Session::get('errors') ?? [],
     'old' => Session::get('old') ?? [],
-    'pagination' => $pagination
+    'pagination' => $pagination,
+    'search' => $_POST['search']
 ]);
