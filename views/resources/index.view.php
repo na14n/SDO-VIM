@@ -11,6 +11,7 @@ require base_path('views/partials/head.php') ?>
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/coordinator/resources/add_resource_modal.php') ?>
+      <?php require base_path('views/partials/coordinator/resources/import_resource_modal.php') ?>
    </section>
    <section class="mx-12 flex flex-col">
       <?php require base_path('views/partials/coordinator/resources/tabs.php') ?>
