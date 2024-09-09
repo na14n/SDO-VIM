@@ -32,4 +32,6 @@ $db->query('DELETE from users where user_id = :id_to_delete', [
     'id_to_delete' => $_POST['id_to_delete'],
 ]);
 
+toast('Account deletion done successfully!');
+
 redirect('/coordinator/users');
