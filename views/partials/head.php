@@ -19,6 +19,7 @@
     <link href="/css/tailwind.output.css" rel="stylesheet">
     <script src="/js/toastify.js"></script>
     <script src="/js/chart.umd.js"></script>
+    <script src="/js/axios.min.js"></script>
 </head>
 
 <body class="relative flex w-dvw bg-[#EFEFEF]">

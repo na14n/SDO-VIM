@@ -102,3 +102,13 @@ function roles_to_int($role)
 
     return array_key_exists($role_string, $roles) ? $roles[$role_string] : 2;
 }
+
+function toast($text = 'Toast!', $background = 'blue', $duration = 3000, $position = 'center')
+{
+    return Session::flash('notification', [
+        'text' => $text,
+        'background' => $background,
+        'duration' => $duration,
+        'position' => $position,
+    ]);
+}

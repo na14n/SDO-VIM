@@ -8,7 +8,7 @@
                         close: true,
                         gravity: "bottom",
                         position: "<?php echo $_SESSION['_flash']['notification']['position'] ?? 'center' ?>",
-                        backgroundColor: "<?php echo $_SESSION['_flash']['notification']['bg'] ?? 'blue' ?>",
+                        backgroundColor: "<?php echo $_SESSION['_flash']['notification']['bg'] ?? '#535E7D' ?>",
                         stopOnFocus: true,
                         offset: {
                             y: '3rem'

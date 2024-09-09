@@ -33,6 +33,9 @@ $router->get('/', 'index.php')->only('guest');
 $router->post('/', 'session/store.php')->only('guest');
 $router->delete('/', 'session/destroy.php')->only('auth');
 
+$router->get('/notifications/latest', 'notifications/latest/show.php')->only('auth');
+$router->get('/notifications', 'notifications/index.php')->only('auth');
+
 $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
 
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');

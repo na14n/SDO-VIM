@@ -37,9 +37,22 @@ $form = SchoolEditForm::validate($attributes = [
     'school_division' => $_POST['school_division'],
     'school_district' => $_POST['school_district'],
     'contact_name' => $_POST['contact_name'],
-    'contact_no' => $_POST['contact_no'],
+    'contact_no' => trim($_POST['contact_no']),
     'contact_email' => $_POST['contact_email'],
 ]);
+
+$custodian_id = $db->query('
+SELECT 
+    u.user_id
+FROM 
+    users u
+INNER JOIN 
+    schools s ON u.school_id = s.school_id
+WHERE 
+    s.school_id = :current_school_id;
+', [
+    'current_school_id' => $_POST['id_to_update']
+])->get();
 
 $db->query('UPDATE schools
     SET
@@ -81,5 +94,24 @@ $db->query('UPDATE school_contacts
     'contact_email' => $_POST['contact_email'],
     'school_id' => $_POST['school_id']
 ]);
+
+$db->query('
+    INSERT INTO notifications (
+        user_id, 
+        title, 
+        message
+    )
+    VALUES (
+    :user_id,
+    :title,
+    :message
+    )
+', [
+    'user_id' => $custodian_id,
+    'title' => 'School Details changes',
+    'message' => 'Some of your School Details were changed by a Coordinator.'
+]);
+
+toast('School Details changed successfully!');
 
 redirect('/coordinator/schools');
