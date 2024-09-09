@@ -49,7 +49,7 @@ $schools = $db->paginate('
             FROM receipts r2
             WHERE r2.school_id = r1.school_id
         )
-    ) r ON s.school_id = r.school_id;
+    ) r ON s.school_id = r.school_id
     LIMIT :start,:end
 ', [
     'start' => (int)$pagination['start'],

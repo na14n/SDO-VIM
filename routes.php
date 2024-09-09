@@ -72,7 +72,8 @@ $router->post('/coordinator/schools/importcsv', '/schools/import/store.php')->on
 $router->post('/coordinator/schools/exportpdf', '/schools/export_school_pdf.php')->only('coordinator');
 
 
-$router->get('/coordinator/school-inventory/{id}', 'school-inventory/index.php');
+$router->get('/coordinator/school-inventory/{id}', 'school-inventory/index.php')->only('coordinator');
+$router->post('/coordinator/school-inventory/{id}/s', 'school-inventory/show.php')->only('coordinator');
 //Create Item
 $router->post('/coordinator/school-inventory', '/school-inventory/store.php')->only('coordinator');
 //Edit Item
