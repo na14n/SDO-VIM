@@ -38,9 +38,13 @@ $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');
 $router->post('/coordinator/resources/s', 'resources/show.php')->only('coordinator');
 $router->get('/coordinator/resources/unassigned', 'resources/unassigned/index.php')->only('coordinator');
+$router->post('/coordinator/resources/unassigned/s', 'resources/unassigned/show.php')->only('coordinator');
 $router->get('/coordinator/resources/working', 'resources/working/index.php')->only('coordinator');
+$router->post('/coordinator/resources/working/s', 'resources/working/show.php')->only('coordinator');
 $router->get('/coordinator/resources/repair', 'resources/repair/index.php')->only('coordinator');
+$router->post('/coordinator/resources/repair/s', 'resources/repair/show.php')->only('coordinator');
 $router->get('/coordinator/resources/condemned', 'resources/condemned/index.php')->only('coordinator');
+$router->post('/coordinator/resources/condemned/s', 'resources/condemned/show.php')->only('coordinator');
 
 //Assign resource to school
 $router->patch('/coordinator/resources/unassigned', '/resources/unassigned/patch.php')->only('coordinator');

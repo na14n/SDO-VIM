@@ -9,10 +9,18 @@ require base_path('views/partials/head.php') ?>
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
    </section>
-   <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
+   <section class="mx-12 flex flex-col">
       <?php require base_path('views/partials/coordinator/resources/tabs.php') ?>
-      <div class="table-responsive h-full mt-4 bg-zinc-50 rounded border-[1px]">
-         <table class="table table-striped">
+      <form class="search-container search" method="POST" action="/coordinator/resources/unassigned/s">
+         <input type="text" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+         <button type="submit" class="search">
+            <i class="bi bi-search"></i>
+         </button>
+      </form>
+   </section>
+   <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
+      <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
+         <table class="table table-striped m-0">
             <thead>
                <th>ID</th>
                <th>Item Article</th>
@@ -21,20 +29,58 @@ require base_path('views/partials/head.php') ?>
                <th>Actions</th>
             </thead>
             <tbody>
-               <?php foreach ($resources as $resource): ?>
+               <?php if (count($resources) > 0): ?>
+                  <?php foreach ($resources as $resource): ?>
+                     <tr>
+                        <td><?= htmlspecialchars($resource['item_code']) ?></td>
+                        <td><?= htmlspecialchars($resource['item_article']) ?></td>
+                        <td><?= htmlspecialchars($resource['school_name'] ?? 'Unassigned') ?></td>
+                        <td><?= htmlspecialchars(formatTimestamp($resource['date_acquired'])) ?></td>
+                        <td>
+                           <div class="h-full w-full flex items-center gap-2">
+                              <?php require base_path('views/partials/coordinator/resources/assign_resource_modal.php') ?>
+                           </div>
+                        </td>
+                     </tr>
+                  <?php endforeach; ?>
+               <?php else: ?>
                   <tr>
-                     <td><?= htmlspecialchars($resource['item_code']) ?></td>
-                     <td><?= htmlspecialchars($resource['item_article']) ?></td>
-                     <td><?= htmlspecialchars($resource['school_name'] ?? 'Unassigned') ?></td>
-                     <td><?= htmlspecialchars(formatTimestamp($resource['date_acquired'])) ?></td>
-                     <td>
-                        <div class="h-full w-full flex items-center gap-2">
-                           <?php require base_path('views/partials/coordinator/resources/assign_resource_modal.php') ?>
+                     <td colspan="5">
+                        <div class="h-full w-full flex justify-center items-center py-4">
+                           No Resources Found
                         </div>
                      </td>
                   </tr>
-               <?php endforeach; ?>
+               <?php endif; ?>
             </tbody>
+            <tfoot class="overflow-hidden">
+               <tr>
+                  <td colspan="6" class="py-2 pr-4">
+                     <div class="w-full flex items-center justify-end gap-2">
+                        <p class="grow text-end mr-2">Page - <?= htmlspecialchars($pagination['pages_current']) ?> / <?= htmlspecialchars($pagination['pages_total']) ?></p>
+                        <?php if ($pagination['pages_total'] > 1): ?>
+                           <a
+                              href="/coordinator/resources?page=1"
+                              class="pagination-link">
+                              <i class="bi bi-chevron-bar-left"></i>
+                           </a>
+                           <a
+                              href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] <= 1 ? 1 : $pagination['pages_current'] - 1) ?>" class="pagination-link">
+                              <i class="bi bi-chevron-left"></i>
+                           </a>
+                           <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] >= $pagination['pages_total'] ? $pagination['pages_total'] : $pagination['pages_current'] + 1) ?>"
+                              class="pagination-link">
+                              <i class="bi bi-chevron-right"></i>
+                           </a>
+                           <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_total']) ?>"
+                              class="pagination-link">
+                              <i class="bi bi-chevron-bar-right"></i>
+                           </a>
+                        <?php endif; ?>
+                     </div>
+                  </td>
+               </tr>
+            </tfoot>
          </table>
       </div>
    </section>

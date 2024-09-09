@@ -55,15 +55,8 @@ FROM
     school_inventory si
 LEFT JOIN 
     schools s ON s.school_id = si.school_id
-WHERE
-	item_code LIKE :search_code OR
-    item_article LIKE :search_article OR
-    item_desc LIKE :search_desc
 LIMIT :start,:end
 ', [
-    'search_code' => '%' . strtolower(trim($_GET['search'] ?? '')) . '%',
-    'search_article' => '%' . strtolower(trim($_GET['search'] ?? '')) . '%',
-    'search_desc' => '%' . strtolower(trim($_GET['search'] ?? '')) . '%',
     'start' => (int)$pagination['start'],
     'end' => (int)$pagination['pages_limit'],
 ])->get();

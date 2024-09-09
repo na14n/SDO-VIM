@@ -11,7 +11,6 @@ require base_path('views/partials/head.php') ?>
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/coordinator/resources/add_resource_modal.php') ?>
-      <?php require base_path('views/partials/coordinator/resources/import_resource_modal.php') ?>
    </section>
    <section class="mx-12 flex flex-col">
       <?php require base_path('views/partials/coordinator/resources/tabs.php') ?>
@@ -68,23 +67,30 @@ require base_path('views/partials/head.php') ?>
                      <div class="w-full flex items-center justify-end gap-2">
                         <p class="grow text-end mr-2">Page - <?= htmlspecialchars($pagination['pages_current']) ?> / <?= htmlspecialchars($pagination['pages_total']) ?></p>
                         <?php if ($pagination['pages_total'] > 1): ?>
-                           <a
-                              href="/coordinator/resources?page=1"
-                              class="pagination-link">
-                              <i class="bi bi-chevron-bar-left"></i>
-                           </a>
-                           <a
-                              href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] <= 1 ? 1 : $pagination['pages_current'] - 1) ?>" class="pagination-link">
-                              <i class="bi bi-chevron-left"></i>
-                           </a>
-                           <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_current'] >= $pagination['pages_total'] ? $pagination['pages_total'] : $pagination['pages_current'] + 1) ?>"
-                              class="pagination-link">
-                              <i class="bi bi-chevron-right"></i>
-                           </a>
-                           <a href="/coordinator/resources?page=<?= htmlspecialchars($pagination['pages_total']) ?>"
-                              class="pagination-link">
-                              <i class="bi bi-chevron-bar-right"></i>
-                           </a>
+                           <form
+                              method="POST"
+                              action="/coordinator/resources/s?page=1">
+                              <input type="hidden" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+                              <button class="pagination-link" type="submit"><i class="bi bi-chevron-bar-left"></i></button>
+                           </form>
+                           <form
+                              method="POST"
+                              action="/coordinator/resources/s?page=<?= htmlspecialchars($pagination['pages_current'] <= 1 ? 1 : $pagination['pages_current'] - 1) ?>">
+                              <input type="hidden" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+                              <button class="pagination-link" type="submit"><i class="bi bi-chevron-left"></i></button>
+                           </form>
+                           <form
+                              method="POST"
+                              action="/coordinator/resources/s?page=<?= htmlspecialchars($pagination['pages_current'] >= $pagination['pages_total'] ? $pagination['pages_total'] : $pagination['pages_current'] + 1) ?>">
+                              <input type="hidden" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+                              <button class="pagination-link" type="submit"><i class="bi bi-chevron-right"></i></button>
+                           </form>
+                           <form
+                              method="POST"
+                              action="/coordinator/resources/s?page=<?= htmlspecialchars($pagination['pages_total']) ?>">
+                              <input type="hidden" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+                              <button class="pagination-link" type="submit"><i class="bi bi-chevron-bar-right"></i></button>
+                           </form>
                         <?php endif; ?>
                      </div>
                   </td>
