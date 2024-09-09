@@ -54,6 +54,7 @@ $router->post('/coordinator/resources', 'resources/store.php')->only('coordinato
 $router->post('/coordinator/resources/importcsv', '/resources/import/store.php')->only('coordinator');
 
 $router->get('/coordinator/schools', 'schools/index.php')->only('coordinator');
+$router->post('/coordinator/schools/s', 'schools/show.php')->only('coordinator');
 //Create School
 $router->post('/coordinator/schools', '/schools/store.php')->only('coordinator');
 //Edit School Details

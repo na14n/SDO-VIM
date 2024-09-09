@@ -1,28 +1,5 @@
 <?php
 
-//  ==========================================
-//           This is the Controller 
-// ===========================================
-// 
-//  This is where you load the corresponding
-//  view file for this route if available
-// 
-//   Use the view() function and feed the 
-//   full path of the view.
-// 
-//   Being the controller file. This is where 
-//   the data is get, manipulated, and/or
-//   saved.
-//      
-//   You can pass variables to your view as the
-//   second parameter of the view function.
-//      
-//   view('notes/{id}', ['notes' => $notes])
-//
-//   view variables are passed as keu-value
-//   pairs as illustrated in the example above.
-//
-
 use Core\Database;
 use Core\App;
 use Core\Session;
@@ -31,7 +8,19 @@ $db = App::resolve(Database::class);
 
 $schools = [];
 
-$schools = $db->query('
+$pagination = [
+    'pages_limit' => 10,
+    'pages_current' => isset($_GET['page']) ? (int)$_GET['page'] : 1,
+    'pages_total' => 0,
+    'start' => 0,
+];
+
+$resources_count = $db->query('SELECT COUNT(*) as total FROM schools s')->get();
+$pagination['pages_total'] = ceil($resources_count[0]['total'] / $pagination['pages_limit']);
+$pagination['pages_current'] = max(1, min($pagination['pages_current'], $pagination['pages_total']));
+$pagination['start'] = ($pagination['pages_current'] - 1) * $pagination['pages_limit'];
+
+$schools = $db->paginate('
     SELECT 
         s.school_id,
         s.school_name,
@@ -61,11 +50,16 @@ $schools = $db->query('
             WHERE r2.school_id = r1.school_id
         )
     ) r ON s.school_id = r.school_id;
-')->get();
+    LIMIT :start,:end
+', [
+    'start' => (int)$pagination['start'],
+    'end' => (int)$pagination['pages_limit'],
+])->get();
 
 view('schools/index.view.php', [
     'heading' => 'Schools',
     'schools' => $schools,
     'errors' => Session::get('errors') ?? [],
     'old' => Session::get('old') ?? [],
+    'pagination' => $pagination
 ]);
