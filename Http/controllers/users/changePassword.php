@@ -43,9 +43,25 @@ if ($password === $confirm_password) {
         'id_to_update' => $_POST['id_to_update']
     ]);
 } else {
-    //put error handling for verification failure
     echo "Passwords do not match.";
 }
 
+$db->query('
+    INSERT INTO notifications (
+        user_id, 
+        title, 
+        message
+    )
+    VALUES (
+    :user_id,
+    :title,
+    :message
+    )
+', [
+    'user_id' => $_POST['id_to_update'],
+    'title' => 'Password Reset',
+    'message' => 'Your Password was successfully reset by a Coordinator.'
+]);
 
+toast('Password Changed Successfully!');
 redirect('/coordinator/users');
