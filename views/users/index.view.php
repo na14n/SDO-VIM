@@ -15,11 +15,17 @@ require base_path('views/partials/head.php') ?>
         <?php require base_path('views/partials/coordinator/users/import_user_modal.php') ?>
         <?php require base_path('views/partials/coordinator/users/export_user_modal.php') ?>
     </section>
-    <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
+    <section class="mx-12 flex flex-col">
         <?php require base_path('views/partials/coordinator/users/tabs.php') ?>
-        <div class="grow mt-4 bg-zinc-50 rounded border-[1px] overflow-hidden">
-            <?php require base_path('views/partials/coordinator/users/users_table.php') ?>
-        </div>
+        <form class="search-container search" method="POST" action="/coordinator/users/s">
+            <input type="text" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+            <button type="submit" class="search">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+    </section>
+    <section class="mx-12 mb-12 inline-block grow rounded">
+        <?php require base_path('views/partials/coordinator/users/users_table.php') ?>
     </section>
 
 </main>

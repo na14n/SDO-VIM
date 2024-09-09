@@ -21,8 +21,16 @@ SELECT
 FROM 
     school_inventory
 WHERE 
-    school_id = :id
+    school_id = :id AND
+   (
+        item_code LIKE :search_code OR
+        item_article LIKE :search_article OR
+        item_desc LIKE :search_desc
+    )
 ', [
+    'search_code' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+    'search_article' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+    'search_desc' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
     'id' => $params['id'] ?? null
 ])->get();
 
@@ -61,10 +69,18 @@ $items = $db->paginate(
         ) h ON si.item_code = h.item_code
     INNER JOIN users u on h.user_id = u.user_id
     WHERE 
-        si.school_id = :id
+        si.school_id = :id AND
+        (
+            si.item_code LIKE :search_code OR
+            si.item_article LIKE :search_article OR
+            si.item_desc LIKE :search_desc
+        )
     LIMIT :start,:end
     ',
     [
+        'search_code' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+        'search_article' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
+        'search_desc' => '%' . strtolower(trim($_POST['search'] ?? '')) . '%',
         'id' => $params['id'] ?? null,
         'start' => (int)$pagination['start'],
         'end' => (int)$pagination['pages_limit'],
@@ -90,7 +106,7 @@ $statusMap = [
     3 => 'Condemned'
 ];
 
-view('school-inventory/index.view.php', [
+view('school-inventory/show.view.php', [
     'id' => $params['id'] ?? null,
     'heading' => $schoolName,
     'items' => $items,
