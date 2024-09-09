@@ -25,31 +25,30 @@
 
 use Core\Database;
 use Core\App;
+use Core\Session;
 
 $db = App::resolve(Database::class);
 
-$requests = [];
+$userInfo =[];
 
-$requests = $db->query("
+$userInfo = $db->query('
     SELECT 
-    u.user_name,
-    r.user_status,
-    r.request_id,
-    r.user_id,
-    r.new_username,
-    s.school_name,
-    r.date_requested
-FROM 
-    users u
-JOIN 
-    schools s ON u.school_id = s.school_id
-JOIN 
-    user_requests r ON u.user_id = r.user_id
-WHERE 
-    r.user_status = 1;
-")->get();
+    users.user_name,
+    users.user_id,
+    schools.school_name
+    FROM 
+        users
+    JOIN 
+        schools ON users.school_id = schools.school_id
+    WHERE 
+        users.user_id = :id;',
+    [
+        'id' => $_SESSION['user']['user_id'] ?? null
+    ])->get();
 
-view('users/pending/index.view.php', [
-    'heading' => 'Pending Requests',
-    'requests' => $requests
+view('profile/index.view.php', [
+    'heading' => 'User Profile',
+    'userInfo' => $userInfo,
+    'errors' => Session::get('errors') ?? [],
+    'old' => Session::get('old') ?? [],
 ]);

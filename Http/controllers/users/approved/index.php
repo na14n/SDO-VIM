@@ -28,29 +28,27 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$users = [];
+$requests = [];
 
-$users = $db->query("
+$requests = $db->query("
     SELECT 
-        u.user_id,
-        u.school_id,
-        u.user_name,
-        u.date_added,
-        u.date_modified,
-        CASE
-            WHEN u.role = 1 THEN 'Coordinator'
-            WHEN u.role = 2 THEN 'Custodian'
-        END as role,
-        s.school_name AS school,
-        c.contact_name,
-        c.contact_no,
-        c.contact_email
-    FROM users u
-    JOIN schools s ON u.school_id = s.school_id
-    LEFT JOIN school_contacts c ON u.school_id = c.school_id
+    u.user_name,
+    r.user_status,
+    r.request_id,
+    r.new_username,
+    s.school_name,
+    r.date_requested
+FROM 
+    users u
+JOIN 
+    schools s ON u.school_id = s.school_id
+JOIN 
+    user_requests r ON u.user_id = r.user_id
+WHERE 
+    r.user_status = 2;
 ")->get();
 
 view('users/approved/index.view.php', [
     'heading' => 'Approved Requests',
-    'users' => $users
+    'requests' => $requests
 ]);

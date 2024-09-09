@@ -99,6 +99,10 @@ $router->post('/coordinator/users/exportcsv', '/users/export_user_csv.php')->onl
 $router->post('/coordinator/users/importcsv', '/users/import/store.php')->only('coordinator'); //upload
 
 $router->get('/coordinator/users/pending', 'users/pending/index.php')->only('coordinator');
+//Approve Edit Username Request
+$router->patch('/coordinator/users/approve', '/users/approve.php')->only('coordinator');
+//Deny Edit Username Request
+$router->patch('/coordinator/users/deny', '/users/deny.php')->only('coordinator');
 $router->get('/coordinator/users/approved', 'users/approved/index.php')->only('coordinator');
 $router->get('/coordinator/users/denied', 'users/denied/index.php')->only('coordinator');
 
@@ -123,6 +127,11 @@ $router->get('/custodian/custodian-resources/condemned', 'custodian-resources/co
 
 //Assign Item to School
 $router->patch('/custodian/custodian-resources/unassigned', '/custodian-resources/unassigned/patch.php')->only('custodian');
+
+//Profile Page
+$router->get('/custodian/profile', 'profile/index.php')->only('custodian');
+//Edit Username Request
+$router->post('/custodian/profile', 'profile/store.php')->only('custodian');
 
 $router->get('/403', 'http_errors/403.php');
 $router->get('/404', 'http_errors/404.php');

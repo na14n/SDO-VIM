@@ -28,28 +28,17 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
-$requests = [];
-
-$requests = $db->query("
-    SELECT 
-    u.user_name,
-    r.user_status,
-    r.request_id,
-    r.user_id,
-    r.new_username,
-    s.school_name,
-    r.date_requested
-FROM 
+$db->query('UPDATE 
     users u
-JOIN 
-    schools s ON u.school_id = s.school_id
-JOIN 
-    user_requests r ON u.user_id = r.user_id
-WHERE 
-    r.user_status = 1;
-")->get();
-
-view('users/pending/index.view.php', [
-    'heading' => 'Pending Requests',
-    'requests' => $requests
+    JOIN 
+        user_requests r ON u.user_id = r.user_id  
+    SET         
+        r.user_status = 3                       
+    WHERE 
+        r.user_id = :id_to_update                
+    AND 
+        r.user_status = 1;',  [
+    'id_to_update' => $_POST['id_to_update']
 ]);
+
+redirect('/coordinator/users');

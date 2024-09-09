@@ -3,9 +3,8 @@
         <thead>
             <th class="w-[8ch]">ID</th>
             <th>Requester</th>
-            <th>Request</th>
-            <th class="w-[16ch]">Date Added</th>
-            <th class="w-[16ch]">Date Modified</th>
+            <th>Requested Username</th>
+            <th class="w-[16ch]">Date Requested</th>
             <?php if ($options ?? false): ?>
                 <th class="w-[12ch]">Actions</th>
             <?php endif; ?>
@@ -14,11 +13,10 @@
             <?php if (isset($requests)): ?>
                 <?php foreach ($requests as $request): ?>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?= htmlspecialchars($request['request_id']) ?></td>
+                        <td><?= htmlspecialchars($request['user_name']) ?></td>
+                        <td><?= htmlspecialchars($request['new_username']) ?></td>
+                        <td><?= htmlspecialchars($request['date_requested']) ?></td>
                         <?php if ($options ?? false): ?>
                             <td>
                                 <div class="h-full w-full flex items-center gap-2">
