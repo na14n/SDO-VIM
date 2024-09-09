@@ -43,16 +43,16 @@ $form = SchoolEditForm::validate($attributes = [
 
 $custodian_id = $db->query('
 SELECT 
-    users.user_id
+    u.user_id
 FROM 
-    users
+    users u
 INNER JOIN 
-    schools ON users.school_id = schools.school_id
+    schools s ON u.school_id = s.school_id
 WHERE 
-    schools.school_id = :current_school_id;
+    s.school_id = :current_school_id;
 ', [
     'current_school_id' => $_POST['id_to_update']
-])->find();
+])->get();
 
 $db->query('UPDATE schools
     SET
