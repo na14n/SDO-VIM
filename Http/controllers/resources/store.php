@@ -62,4 +62,23 @@ $db->query('INSERT INTO school_inventory (
     'item_inactive' => $_POST['item_inactive']
 ]);
 
+$db->query('
+    INSERT INTO notifications (
+        user_id, 
+        title, 
+        message
+    )
+    VALUES (
+    :user_id,
+    :title,
+    :message
+    )
+', [
+    'user_id' => get_uid(),
+    'title' => 'Added New Resource',
+    'message' => 'You successfully added ' . $_POST['item_quantity'] . ' new ' . $_POST['item_article'] . '.'
+]);
+
+toast('Sucessfully Added new Resource');
+
 redirect('/coordinator/resources');

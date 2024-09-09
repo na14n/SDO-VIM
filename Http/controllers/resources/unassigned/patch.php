@@ -40,5 +40,62 @@ $db->query('UPDATE school_inventory
     'school_id' => $_POST['school_id']
 ]);
 
+$school_name = $db->query('
+SELECT
+    school_name
+FROM schools
+WHERE school_id = :school_id
+', [
+    'school_id' => $_POST['school_id']
+]);
+
+$custodian_id = $db->query('
+SELECT 
+    u.user_id
+FROM 
+    users u
+INNER JOIN 
+    schools s ON u.school_id = s.school_id
+WHERE 
+    s.school_id = :current_school_id;
+', [
+    'current_school_id' => $_POST['id_to_update']
+])->get();
+
+$db->query('
+    INSERT INTO notifications (
+        user_id, 
+        title, 
+        message
+    )
+    VALUES (
+    :user_id,
+    :title,
+    :message
+    )
+', [
+    'user_id' => get_uid(),
+    'title' => 'Resource Allocated to School',
+    'message' => 'You successfully allocated item ' . $_POST['id'] . ' to ' . $school_name . '.'
+]);
+
+$db->query('
+    INSERT INTO notifications (
+        user_id, 
+        title, 
+        message
+    )
+    VALUES (
+    :user_id,
+    :title,
+    :message
+    )
+', [
+    'user_id' => $custodian_id,
+    'title' => 'New resource for your School',
+    'message' => 'The Coordinator successfully allocated the item ' . $_POST['id'] . ' to ' . $school_name . '.'
+]);
+
+toast('Sucessfully Delegated Resources');
 
 redirect('/coordinator/resources/unassigned');
