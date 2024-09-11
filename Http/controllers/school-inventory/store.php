@@ -53,4 +53,6 @@ $db->query('INSERT INTO school_inventory (
     'item_inactive' => $_POST['item_inactive']
 ]);
 
+toast('Sucessfully Added ' . $item_code);
+
 redirect('/coordinator/school-inventory/' . $id);
