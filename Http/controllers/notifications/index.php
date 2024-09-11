@@ -17,13 +17,9 @@ SELECT
     date_added
 FROM
     notifications
-WHERE
-    user_id = :user_id
 ORDER BY
     date_added DESC
-', [
-    'user_id' => get_uid(),
-])->get();
+')->get();
 
 view('notifications/index.view.php', [
     'heading' => 'Notifications',

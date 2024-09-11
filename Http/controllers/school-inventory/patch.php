@@ -41,6 +41,6 @@ WHERE item_code = :id_to_update;', [
     'item_status' => $_POST['item_status']
 ]);
 
-toast('Successfully updated item from ' . $old_item['item_code'] . ' to ' . $item_code);
+toast('Successfully updated item with item code: ' . $old_item['item_code']);
 
 redirect('/coordinator/school-inventory/' . $id);

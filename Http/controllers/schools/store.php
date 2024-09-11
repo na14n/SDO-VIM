@@ -77,4 +77,9 @@ $db->query('INSERT INTO school_contacts(
      'contact_email' => $_POST['contact_email']
 ]);
 
+$messageSchoolID = $_POST['school_id'];
+$messageSchoolName = $_POST['school_name'];
+
+toast('Sucessfully Added School: ' . $messageSchoolName . ' with School ID: ' . $messageSchoolID);
+
 redirect('/coordinator/schools');

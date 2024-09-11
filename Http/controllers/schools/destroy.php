@@ -28,8 +28,16 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
+// Fetch the old school_id before deleting
+$school = $db->query('SELECT school_id FROM schools WHERE school_id = :id_to_delete', [
+    'id_to_delete' => $_POST['id_to_delete'],
+])->findOrFail(); 
+
+
 $db->query('DELETE from schools where school_id = :id_to_delete', [
     'id_to_delete' => $_POST['id_to_delete'],
 ]);
+
+toast('Successfully deleted school with code: ' . $school['school_id']);
 
 redirect('/coordinator/schools');

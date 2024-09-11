@@ -62,40 +62,6 @@ WHERE
     'current_school_id' => $_POST['id_to_update']
 ])->get();
 
-$db->query('
-    INSERT INTO notifications (
-        user_id, 
-        title, 
-        message
-    )
-    VALUES (
-    :user_id,
-    :title,
-    :message
-    )
-', [
-    'user_id' => get_uid(),
-    'title' => 'Resource Allocated to School',
-    'message' => 'You successfully allocated item ' . $_POST['id'] . ' to ' . $school_name . '.'
-]);
-
-$db->query('
-    INSERT INTO notifications (
-        user_id, 
-        title, 
-        message
-    )
-    VALUES (
-    :user_id,
-    :title,
-    :message
-    )
-', [
-    'user_id' => $custodian_id,
-    'title' => 'New resource for your School',
-    'message' => 'The Coordinator successfully allocated the item ' . $_POST['id'] . ' to ' . $school_name . '.'
-]);
-
-toast('Sucessfully Delegated Resources');
+toast('Successfully allocated item ' . $_POST['id'] . ' to ' . $school_name . '.');
 
 redirect('/coordinator/resources/unassigned');
