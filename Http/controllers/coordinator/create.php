@@ -88,7 +88,7 @@ $statusCountsJson = json_encode($statusCounts);
 // Query to get the number of item_articles obtained per month
 $itemArticlePerMonthQuery = $db->query('
     SELECT 
-        DATE_FORMAT(date_acquired, "%b %Y") AS month,
+        DATE_FORMAT(date_acquired, "%b") AS month,
         COUNT(item_article) AS item_count
     FROM 
         school_inventory
@@ -98,6 +98,7 @@ $itemArticlePerMonthQuery = $db->query('
         month
     ORDER BY 
         MIN(date_acquired)
+
 ');
 
 $itemArticlePerMonth = $itemArticlePerMonthQuery->get();

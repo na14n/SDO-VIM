@@ -10,10 +10,10 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/custodian/add_receipt_modal.php') ?>
    </section>
    <section class="mx-6 px-12 flex gap-6">
-      <?php dashboard_card('Total Equipments', '5'); ?>
-      <?php dashboard_card('Working', '2', 'bi-patch-check-fill'); ?>
-      <?php dashboard_card('For Repair', '2', 'bi-tools'); ?>
-      <?php dashboard_card('Condemned', '1', 'bi-exclamation-diamond-fill'); ?>
+      <?php dashboard_card('Total Equipments', $totalEquipment); ?>
+      <?php dashboard_card('Working', $totalWorking, 'bi-patch-check-fill'); ?>
+      <?php dashboard_card('For Repair', $totalRepair, 'bi-tools'); ?>
+      <?php dashboard_card('Condemned', $totalCondemned, 'bi-exclamation-diamond-fill'); ?>
    </section>
    <section class="grow mx-12 px-6 py-6 flex flex-col gap-6 text-red-500">
       <div class="flex items-center gap-6 h-1/2">
@@ -28,14 +28,16 @@ require base_path('views/partials/head.php') ?>
 </main>
 
 <script>
+   const articleNames = JSON.parse('<?php echo $articleNames; ?>');
+   const articleCounts = JSON.parse('<?php echo $articleCounts; ?>');
    const article_ctx = document.getElementById('article').getContext('2d');
    const article = new Chart(article_ctx, {
       type: 'bar',
       data: {
-         labels: ['Mouse', 'Laptops', 'Keyboard', 'RAM Sticks', 'Desktop Sets', 'Monitors'],
+         labels: articleNames,
          datasets: [{
             label: '# of Equipments',
-            data: [12, 19, 3, 5, 2, 3],
+            data: articleCounts,
             backgroundColor: [
                'rgba(54, 162, 235, 0.2)',
             ],
@@ -62,22 +64,23 @@ require base_path('views/partials/head.php') ?>
       }
    });
 </script>
+
 <script>
+   const months = JSON.parse('<?php echo $months; ?>');
+   const itemCountsPerMonth = JSON.parse('<?php echo $itemCountsPerMonth; ?>');
    const inventory_ctx = document.getElementById('inventory').getContext('2d');
    const inventory = new Chart(inventory_ctx, {
-      type: 'bar',
+      type: 'line', 
       data: {
-         labels: ['Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+         labels: months, 
          datasets: [{
-            label: 'Inventory Received per Month',
-            data: [5, 11, 9, 5, 12, 9],
-            backgroundColor: [
-               'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-               'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
+            label: 'Inventory Received per Month', 
+            data: itemCountsPerMonth, 
+            backgroundColor: 'rgba(54, 162, 235, 0.2)', 
+            borderColor: 'rgba(54, 162, 235, 1)', 
+            borderWidth: 2, 
+            fill: false, 
+            tension: 0.1 
          }]
       },
       options: {
@@ -85,26 +88,39 @@ require base_path('views/partials/head.php') ?>
          maintainAspectRatio: false,
          scales: {
             y: {
-               beginAtZero: true
+               beginAtZero: true, 
+               title: {
+                  display: true,
+                  text: 'Number of Items Received' 
+               }
+            },
+            x: {
+               title: {
+                  display: true,
+                  text: 'Month' 
+               }
             }
          },
          plugins: {
             title: {
                display: true,
-               text: 'Monthly Inventory Stock Status'
+               text: 'Monthly Inventory Stock Status' 
             }
          }
       }
    });
 </script>
+
 <script>
+   const statusLabels = JSON.parse('<?php echo $statusLabels; ?>');
+   const statusCounts = JSON.parse('<?php echo $statusCounts; ?>');
    const ratio_ctx = document.getElementById('ratio').getContext('2d');
    const ratio = new Chart(ratio_ctx, {
       type: 'pie',
       data: {
-         labels: ['Working', 'Repair', 'Condemned'],
+         labels: statusLabels,
          datasets: [{
-            data: [65, 20, 25],
+            data: statusCounts,
             backgroundColor: [
                'rgba(22, 163, 72, 0.5)',
                'rgba(255, 159, 64, 0.5)',
@@ -130,15 +146,16 @@ require base_path('views/partials/head.php') ?>
       }
    });
 </script>
+
 <script>
    const i_ratio_ctx = document.getElementById('i_ratio').getContext('2d');
    const i_ratio = new Chart(i_ratio_ctx, {
       type: 'doughnut',
       data: {
-         labels: ['Mouse', 'Laptops', 'Keyboard', 'RAM Sticks', 'Desktop Sets', 'Monitors'],
+         labels: articleNames,
          datasets: [{
             label: 'Inventory Item Ratio',
-            data: [12, 19, 3, 5, 2, 3],
+            data: articleCounts,
             borderWidth: 1
          }]
       },
