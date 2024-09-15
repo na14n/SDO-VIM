@@ -8,7 +8,7 @@ require base_path('views/partials/head.php') ?>
 
 <main class="main-col">
    <section>
-      <?php require base_path('views/partials/banner.php') ?>
+      <?php require base_path('views/partials/banner.php') ?> 
    </section>
    <section class="mx-6 px-12 flex gap-6">
       <?php dashboard_card('Total Equipments', $totalEquipment); ?>
