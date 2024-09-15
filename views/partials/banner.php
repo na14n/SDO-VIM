@@ -15,19 +15,30 @@
                 <div class="modal-body flex flex-col gap-2">
                 </div>
                 <div class="modal-footer m-0 p-0">
-                    <a href="/notifications" class="w-full h-full text-center px-1 py-2 view-all" href="">View All Notifications</a>
+                    <?php if ($_SESSION['user']['role'] === 2): ?>
+                        <a href="/notifications/custodian" class="w-full h-full text-center px-1 py-2 view-all">View All Notifications</a>
+                    <?php else: ?>
+                        <a href="/notifications" class="w-full h-full text-center px-1 py-2 view-all">View All Notifications</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
 </main>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
         const notificationModal = document.getElementById('notificationModal');
         const modalBody = notificationModal.querySelector('.modal-body');
 
-        axios.get('/notifications/latest')
+        let apiUrl = '/notifications/latest'; 
+
+        <?php if ($_SESSION['user']['role'] === 2): ?>
+            apiUrl = '/notifications/custodian/latest';
+        <?php endif; ?>
+
+        axios.get(apiUrl)
             .then(response => {
                 const notifications = response.data.data;
                 if (notifications.length > 0) {
