@@ -57,4 +57,8 @@ $db->query('INSERT INTO users (
     'school_id' => $_POST['school_id'] ?? null,
 ]);
 
+$messageUserName = $_POST['user_name'];
+
+toast('Sucessfully Added User: ' . $messageUserName);
+
 redirect('/coordinator/users');
