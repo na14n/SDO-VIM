@@ -30,6 +30,10 @@
 // 
 
 $router->get('/', 'index.php')->only('guest');
+$router->get('/forgot-password', 'forgot-password/create.php')->only('guest');
+$router->post('/forgot-password', 'forgot-password/store.php')->only('guest');
+$router->get('/reset-password', 'reset-password/create.php')->only('guest');
+$router->post('/reset-password', 'reset-password/store.php')->only('guest');
 $router->post('/', 'session/store.php')->only('guest');
 $router->delete('/', 'session/destroy.php')->only('auth');
 

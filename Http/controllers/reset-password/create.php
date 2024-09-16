@@ -43,32 +43,25 @@ require base_path('views/partials/head.php')
 
 <main class="main">
     <div>
-        <form action="/" method="POST">
-
-            <i class="bi bi-person-circle person"></i>
-            <h4 class="font-black signin">Sign In</h4>
-
-            <span class="w-full mb-2">
-                <?php text_input('Username', 'user_name', 'your username', old('user_name')) ?>
-                <?php if (isset($errors['email'])): ?>
-                    <p class="error"><?= $errors['user_name'] ?></p>
-                <?php endif; ?>
-            </span>
-            <span class="w-full">
-                <?php text_input('Password', 'password', 'your password', '', 'password') ?>
+        <form action="/forgot-password" method="POST">
+            <span class="w-full mt-4 mb-2">
+                <?php text_input('Password', 'user_email', 'your password', '', 'password') ?>
                 <?php if (isset($errors['password'])): ?>
                     <p class="error"><?= $errors['password'] ?></p>
                 <?php endif; ?>
             </span>
+            <span class="w-full mt-4 mb-2">
+                <?php text_input('Confirm Password', 'password_confirm', 'confirm your password', '', 'password') ?>
+                <?php if (isset($errors['password_confirm'])): ?>
+                    <p class="error"><?= $errors['password_confirm'] ?></p>
+                <?php endif; ?>
+            </span>
 
-            <a href="/forgot-password" class="forgot-password">Forgot your password?</a>
-
-            <button class="btn-signin">Log In</button>
+            <button class="btn-signin">Reset Password</button>
         </form>
         <section>
-            <i class="bi bi-boxes boxes"></i>
-            <h2>ICT - Resource</h2>
-            <h2>Inventory System</h2>
+            <i class="bi bi-key-fill"></i>
+            <h2>Forgot Password</h2>
         </section>
     </div>
 </main>
