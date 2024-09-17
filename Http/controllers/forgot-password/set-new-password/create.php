@@ -41,21 +41,30 @@ require base_path('views/partials/head.php')
 
 <!-- Your HTML code goes here -->
 
+<?php
+
+// Get the current URI's ID
+$uri = $_SERVER['REQUEST_URI'];
+$segments = explode('/', $uri);
+$id = end($segments);
+
+?>
+
 <main class="main">
     <div>
         <form action="/forgot-password" method="POST">
+            <input name="_method" value="PATCH" hidden />
+            <input name="id_to_update" value="<?php echo $id; ?>" hidden />
             <span class="w-full mt-4 mb-2">
-                <?php text_input('Email', 'user_email', 'Your Email', old('user_email')) ?>
-                <?php if (isset($errors['email'])): ?>
-                    <p class="error"><?= $errors['user_email'] ?></p>
-                <?php endif; ?>
+                <?php text_input('Password', 'password', 'password', '', 'password') ?>
+                <?php text_input('Confirm Password', 'confirm_password', 'confirm password', '', 'password') ?>
             </span>
 
-            <button class="btn-signin" name="send_recovery_email">Send Recovery Email</button>
+            <button class="btn-signin" name="set_new_pass">Set New Password</button>
         </form>
         <section>
             <i class="bi bi-key-fill"></i>
-            <h2>Forgot Password</h2>
+            <h2>Set New Password</h2>
         </section>
     </div>
 </main>
