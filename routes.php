@@ -36,10 +36,6 @@ $router->post('/forgot-password', 'forgot-password/store.php')->only('guest');
 $router->patch('/forgot-password', 'forgot-password/patch.php')->only('guest');
 $router->get('/set-new-password/{id}', 'forgot-password/set-new-password/create.php')->only('guest');
 
-$router->get('/reset-password', 'reset-password/create.php')->only('guest');
-$router->post('/reset-password', 'reset-password/store.php')->only('guest');
-$router->patch('/reset-password', 'reset-password//patch.php')->only('guest');
-
 $router->post('/', 'session/store.php')->only('guest');
 $router->delete('/', 'session/destroy.php')->only('auth');
 
