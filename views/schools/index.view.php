@@ -22,6 +22,20 @@ require base_path('views/partials/head.php') ?>
             <i class="bi bi-search"></i>
          </button>
       </form>
+
+      <div class="dropdown">
+         <div class="select">
+            <span class="selected">Filter</span>
+            <div class="caret"></div>
+         </div>
+         <ul class="menu">
+            <li>School</li>
+            <li>School1</li>
+            <li>School2</li>
+            <li>School3</li>
+         </ul>
+      </div>
+
    </section>
    <section class="mx-12 mb-12 inline-block grow rounded">
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
@@ -108,3 +122,40 @@ require base_path('views/partials/head.php') ?>
    </section>
 </main>
 <?php require base_path('views/partials/footer.php') ?>
+
+<script>  
+   const dropdowns = document.querySelectorAll('.dropdown');
+
+   dropdowns.forEach(dropdown => {
+
+      const select =dropdown.querySelector('.select');
+      const caret =dropdown.querySelector('.caret');
+      const menu =dropdown.querySelector('.menu');
+      const options =dropdown.querySelector('.menu li');
+      const selected =dropdown.querySelector('.selected');
+
+      select.addEventListener('click', () => {
+      
+         select.classList.toggle('select-clicked');
+         caret.classList.toggle('caret-rotate');
+         menu.classList.toggle('menu-open');
+      });
+
+      
+
+   options.forEach(option => {
+
+      option.addEventListener('click', () => {
+
+         selected.innerText = option.innerText;
+         select.classList.remove('select-clicked');
+         caret.classList.remove('caret-rotate');
+         menu.classList.remove('menu-open');
+         options.forEach(option => {
+            option.classList.remove('active');
+         });
+         option.classList.add('active');
+      });   
+   });
+});
+</script> 
