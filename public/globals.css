@@ -383,6 +383,34 @@ body {
   box-sizing: border-box;
 }
 
+.sort {
+  width: 10rem;
+  line-height: 0%;
+  position: relative;
+  margin-left: 20rem;
+  margin-top: -2.4rem;
+  margin-bottom: 1.5rem;
+
+}
+
+.sort * {
+  box-sizing: border-box;
+}
+
+.sort1 {
+  width: 10rem;
+  line-height: 0%;
+  position: relative;
+  margin-left: 20rem;
+  margin-top: -2.2rem;
+  margin-bottom: 1.5rem;
+
+}
+
+.sort1 * {
+  box-sizing: border-box;
+}
+
 /* flex flex-col justify-center */
 .notifications-container{
   width: 100%;

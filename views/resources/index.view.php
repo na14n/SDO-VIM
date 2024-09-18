@@ -21,6 +21,16 @@ require base_path('views/partials/head.php') ?>
             <i class="bi bi-search"></i>
          </button>
       </form>
+      <div class="sort">
+         <div class="select">
+         <span class="selected">Sort by</span>
+            <div class="caret"></div>
+         </div>
+         <ul class="menu">
+            <li>Item Article</li>
+            <li>Date Acquired</li>
+         </ul>
+      </div>
    </section>
    <section class="mx-12 mb-12 inline-block grow rounded">
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
@@ -95,3 +105,101 @@ require base_path('views/partials/head.php') ?>
    </section>
 </main>
 <?php require base_path('views/partials/footer.php') ?>
+
+<script>
+   const ratio_ctx = document.getElementById('ratio').getContext('2d');
+   const ratio = new Chart(ratio_ctx, {
+      type: 'pie',
+      data: {
+         labels: ['Working', 'Repair', 'Condemned'],
+         datasets: [{
+            data: [65, 20, 25],
+            backgroundColor: [
+               'rgba(22, 163, 72, 0.5)',
+               'rgba(255, 159, 64, 0.5)',
+               'rgba(255, 99, 132, 0.5)',
+            ],
+            borderColor: [
+               'rgba(22, 163, 74, 1)',
+               'rgba(255, 144, 32, 1)',
+               'rgba(255, 64, 105, 1)',
+            ],
+            borderWidth: 1
+         }]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+            title: {
+               display: true,
+               text: 'Inventory Status Ratio'
+            }
+         }
+      }
+   });
+</script>
+
+<script>
+   const i_ratio_ctx = document.getElementById('i_ratio').getContext('2d');
+   const i_ratio = new Chart(i_ratio_ctx, {
+      type: 'doughnut',
+      data: {
+         labels: ['Mouse', 'Laptops', 'Keyboard', 'RAM Sticks', 'Desktop Sets', 'Monitors'],
+         datasets: [{
+            label: 'Inventory Item Ratio',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+         }]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+            title: {
+               display: true,
+               text: 'Inventory Item Ratio'
+            }
+         }
+      }
+   });
+</script>
+
+<?php require base_path('views/partials/footer.php') ?>
+
+<script>  
+   const dropdowns = document.querySelectorAll('.sort');
+
+   dropdowns.forEach(sort => {
+
+      const select =sort.querySelector('.select');
+      const caret =sort.querySelector('.caret');
+      const menu =sort.querySelector('.menu');
+      const options =sort.querySelector('.menu li');
+      const selected =sort.querySelector('.selected');
+
+      select.addEventListener('click', () => {
+      
+         select.classList.toggle('select-clicked');
+         caret.classList.toggle('caret-rotate');
+         menu.classList.toggle('menu-open');
+      });
+
+      
+
+   options.forEach(option => {
+
+      option.addEventListener('click', () => {
+
+         selected.innerText = option.innerText;
+         select.classList.remove('select-clicked');
+         caret.classList.remove('caret-rotate');
+         menu.classList.remove('menu-open');
+         options.forEach(option => {
+            option.classList.remove('active');
+         });
+         option.classList.add('active');
+      });   
+   });
+});
+</script> 
