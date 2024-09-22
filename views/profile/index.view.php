@@ -15,11 +15,18 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/custodian/profile/edit_request_modal.php') ?>
    </section>
    <section class="h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
-            <h1>Custodian Name<h1>
+        <div class="box-area">
+        <div class="single-box">
+            <div class="img-area"></div>
+            <div class="img-text">
+            <h1><span class="header-text"><strong>Custodian Name</strong></span></h1>
             <h1><?php echo $info['user_name']; ?></h1>
-            <h1>Assigned School<h1>
+            <h1><span class="header-text"><strong>Assigned School</strong></span></h1>
             <h1><?php echo $info['school_name']; ?></h1>
-        <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
    </section>
 </main>
 <?php require base_path('views/partials/footer.php') ?>

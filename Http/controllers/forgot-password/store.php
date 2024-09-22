@@ -27,66 +27,92 @@ if (isset($_POST['send_recovery_email'])) {
     $message = '
             <html>
             <head>
-                    <style>
-                    .email-card {
-                        border: 1px solid #ccc;
-                        border-radius: 10px;
-                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                        overflow: hidden;
-                        font-family: Arial, sans-serif;
-                    }
-                    .email-card-header {
-                        background-color: #003366;
-                        color: white;
-                        padding: 10px;
-                        text-align: center;
-                        font-size: 18px;
-                    }
-                    .email-card-body {
-                        padding: 20px;
-                        text-align:center; 
-                    }
-                    .email-card-body p {
-                        margin: 0 0 10px;
-                    }
-                    .email-card-body a {
-                        color: #003366;
-                        text-decoration: none;
-                    }
-                    /* Inline styles for Bootstrap-like primary button */
-                    .btn-primary {
-                        display: inline-block;
-                        padding: 10px 20px;
-                        font-size: 16px;
-                        font-weight: bold;
-                        color: white;
-                        background-color: #003366;
-                        border: none;
-                        border-radius: 5px;
-                        text-decoration: none;
-                        text-align: center;
-                        cursor: pointer;
-                    }
-                    .btn-primary:hover {
-                        background-color: #0056b3;
-                    }
-                </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+        }
+        .header {
+            background-color: #22223b;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .header img {
+            max-width: 100px;
+        }
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+        .content h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #22223b;
+        }
+        .content p {
+            font-size: 16px;
+            color: #555555;
+            margin-bottom: 30px;
+        }
+        .btn {
+            background-color: #22223b;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .footer {
+            background-color: #22223b;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+        .footer a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer .contact-info {
+            margin-top: 10px;
+        }
+    </style>
+
+                
             </head>
-            <body>
-                <div class="email-card">
-                    <div class="email-card-header">
-                        Password Reset
-                    </div>
-                    <div class="email-card-body">
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="sdo.png">
+        </div>
+        <!-- Content -->
+        <div class="content">
+            <h1>Please reset your password</h1>
+            
                         <p>Hi <strong>' . $recipient . '</strong>,</p>
                         <p>Your request has been received. Please click the button below to reset your password:</p>
-                        <a href="http://localhost:8888/set-new-password/' . $recipientID . '"><button class="btn-primary">Set a new password</button></a>
+                        <a href="http://localhost:8888/set-new-password/' . $recipientID . '"><button class="btn">Set a new password</button></a>
                         <p>If you did not request a password change, kindly disregard this email.</p>
                         <p>Regards,<br>SDO Valenzuela - ICT Coordinator</p>
                     </div>
                 </div>
             </body>
             </html>';
+
+            
 
     // Set up PHPMailer
     $mail = new PHPMailer;
