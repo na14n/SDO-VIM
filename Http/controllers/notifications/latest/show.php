@@ -17,14 +17,10 @@ SELECT
     date_added
 FROM
     notifications
-WHERE
-    user_id = :user_id
 ORDER BY
     date_added DESC
 LIMIT 5
-', [
-    'user_id' => get_uid(),
-])->get();
+')->get();
 
 echo json_encode([
     'status' => 'success',

@@ -57,10 +57,10 @@ $db->query('
     :title,
     :message
     )
-', [
+', [ 
     'user_id' => $_POST['id_to_update'],
     'title' => 'Password Reset',
-    'message' => 'Your Password was successfully reset by a Coordinator.'
+    'message' => 'Your Password was successfully reset by a Coordinator. Please contact them for further details.'
 ]);
 
 toast('Password Changed Successfully!');

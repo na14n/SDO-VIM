@@ -17,11 +17,16 @@ SELECT
     date_added
 FROM
     notifications
+WHERE
+    user_id = :user_id
 ORDER BY
     date_added DESC
-')->get();
+LIMIT 5
+', [
+    'user_id' => get_uid(),
+])->get();
 
-view('notifications/index.view.php', [
-    'heading' => 'Notifications',
-    'notifications' => $notifications,
+echo json_encode([
+    'status' => 'success',
+    'data' => $notifications
 ]);

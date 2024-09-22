@@ -47,23 +47,6 @@ $db->query('UPDATE users
     'id_to_update' => $_POST['id_to_update'],
 ]);
 
-$db->query('
-    INSERT INTO notifications (
-        user_id, 
-        title, 
-        message
-    )
-    VALUES (
-    :user_id,
-    :title,
-    :message
-    )
-', [
-    'user_id' => $_POST['id_to_update'],
-    'title' => 'Account Changes',
-    'message' => 'Some of your Account Details were changed by a Coordinator.'
-]);
-
 toast('Account Details changed successfully!');
 
 

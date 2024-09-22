@@ -49,7 +49,7 @@ class UserEditForm
     public function __construct(public array $attributes)
     {
 
-        if (!Validator::string($attributes['user_name'], 100)) {
+        if (!Validator::string($attributes['user_name'], 1, 100)) {
             $this->errors[$attributes['user_id']]['user_name'] = 'Please enter a valid user name.';
         }
 

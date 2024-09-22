@@ -62,23 +62,12 @@ $db->query('INSERT INTO school_inventory (
     'item_inactive' => $_POST['item_inactive']
 ]);
 
-$db->query('
-    INSERT INTO notifications (
-        user_id, 
-        title, 
-        message
-    )
-    VALUES (
-    :user_id,
-    :title,
-    :message
-    )
-', [
-    'user_id' => get_uid(),
-    'title' => 'Added New Resource',
-    'message' => 'You successfully added ' . $_POST['item_quantity'] . ' new ' . $_POST['item_article'] . '.'
-]);
+$user = $db->query('SELECT user_name FROM users WHERE user_id = :user_id', [
+    'user_id' => get_uid()
+])->findOrFail();
 
-toast('Sucessfully Added new Resource');
+$message = $user['user_name'] . ' successfully added Unassigned Resource: ' . $_POST['item_quantity'] . ' new ' . $_POST['item_article'] . '.';
+
+toast($message);
 
 redirect('/coordinator/resources');

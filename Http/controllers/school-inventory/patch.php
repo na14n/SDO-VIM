@@ -8,6 +8,11 @@ $db = App::resolve(Database::class);
 $id = $_POST['id'];
 $item_code = $id . '-' . generateSKU($_POST['item_article'], $_POST['item_desc'], $_POST['item_funds_source']);
 
+// Fetch the old values before updating
+$old_item = $db->query('SELECT * FROM school_inventory WHERE item_code = :id_to_update', [
+    'id_to_update' => $_POST['id_to_update']
+])->findOrFail();
+
 // Prepare and execute the update query
 $db->query('UPDATE school_inventory SET
     item_code = :item_code,
@@ -35,5 +40,7 @@ WHERE item_code = :id_to_update;', [
     'item_inactive' => $_POST['item_inactive'],
     'item_status' => $_POST['item_status']
 ]);
+
+toast('Successfully updated item with item code: ' . $old_item['item_code']);
 
 redirect('/coordinator/school-inventory/' . $id);
