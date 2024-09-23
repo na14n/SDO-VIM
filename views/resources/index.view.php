@@ -21,29 +21,113 @@ require base_path('views/partials/head.php') ?>
             <i class="bi bi-search"></i>
          </button>
       </form>
-      <div class="sort">
-         <div class="select">
-         <span class="selected">Sort by</span>
-            <div class="caret"></div>
-         </div>
-         <ul class="menu">
-            <li>Item Article</li>
-            <li>Date Acquired</li>
-         </ul>
-      </div>
    </section>
    <section class="mx-12 mb-12 inline-block grow rounded">
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped m-0">
             <thead>
+            <style>
+               th {
+                     position: relative;
+                     padding: 10px;
+                     color:black;
+               }
+               th .dropdown {
+                     display: inline-block;
+                     line-height: 2rem;
+                     margin-left: 5px;
+               }
+               th .fas {
+                     margin-left: 0.5rem;
+                     min-width: 100px;
+               }
+               .dropdown-menu {
+                     min-width: 100px;
+                     color:white;
+               }
+               .dropdown-toggle {
+                  background-color: white;
+                  color: black;
+               }
+               .dropdown-toggle:hover {
+                  background-color: #434F72;
+               }
+               .dropdown-item:hover {
+                  background-color: #434F72;
+                  color: white;
+               }
+               .view-btn {
+                  margin-left: 0rem;
+               }
+            </style>
                <tr>
-                  <th>ID</th>
-                  <th>Item Article</th>
-                  <th>School</th>
-                  <th>Status</th>
-                  <th>Date Acquired</th>
-                  <th>Actions</th>
-               </tr>
+            <th>
+                ID
+                <i class="fas fa-sort"></i>
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-sort-alpha-up"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                Item Article
+                <i class="fas fa-sort"></i>
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-sort-alpha-up"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                School
+                <i class="fas fa-sort"></i>
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-sort-alpha-up"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                Status
+                <i class="fas fa-sort"></i>
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-sort-alpha-up"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+            </th>
+            <th>
+                Date Acquired
+                <i class="fas fa-sort"></i>
+                <div class="dropdown">
+                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                        <i class="fas fa-sort-alpha-up"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Ascending</a>
+                        <a class="dropdown-item" href="#">Descending</a>
+                    </div>
+                </div>
+            </th>
+            <th>Actions</th>
+        </tr>
             </thead>
             <tbody class="oveflow-y-scroll">
                <?php if (count($resources) > 0): ?>
@@ -167,39 +251,5 @@ require base_path('views/partials/head.php') ?>
 
 <?php require base_path('views/partials/footer.php') ?>
 
-<script>  
-   const dropdowns = document.querySelectorAll('.sort');
-
-   dropdowns.forEach(sort => {
-
-      const select =sort.querySelector('.select');
-      const caret =sort.querySelector('.caret');
-      const menu =sort.querySelector('.menu');
-      const options =sort.querySelector('.menu li');
-      const selected =sort.querySelector('.selected');
-
-      select.addEventListener('click', () => {
-      
-         select.classList.toggle('select-clicked');
-         caret.classList.toggle('caret-rotate');
-         menu.classList.toggle('menu-open');
-      });
-
-      
-
-   options.forEach(option => {
-
-      option.addEventListener('click', () => {
-
-         selected.innerText = option.innerText;
-         select.classList.remove('select-clicked');
-         caret.classList.remove('caret-rotate');
-         menu.classList.remove('menu-open');
-         options.forEach(option => {
-            option.classList.remove('active');
-         });
-         option.classList.add('active');
-      });   
-   });
-});
-</script> 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>

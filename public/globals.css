@@ -229,6 +229,17 @@ body {
   background-color: #3F4A6B;
 }
 
+.search-container1 {
+  
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
+  width: fit-content;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  display: flex;
+}
+
 .search-containers {
   
   margin-bottom: 1rem;
