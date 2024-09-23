@@ -323,9 +323,7 @@ body {
     background-size:cover;
 
 }
-.single-box:nth-child(1) .img-area{
-    background-image: url("/logo/sdo.png");
-}
+
 .header-text{
     font-size: 24px;
     font-weight: 500px;

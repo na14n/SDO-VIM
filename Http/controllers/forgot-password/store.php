@@ -25,8 +25,8 @@ if (isset($_POST['send_recovery_email'])) {
 
     // HTML email message
     $message = '
-            <html>
-            <head>
+<html>
+<head>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,13 +41,14 @@ if (isset($_POST['send_recovery_email'])) {
             border: 1px solid #e0e0e0;
         }
         .header {
-            background-color: #22223b;
-            padding: 20px;
+            background-color: #353e5a;
+            padding: 15px;
             text-align: center;
             color: #ffffff;
         }
         .header img {
             max-width: 100px;
+            height: auto;
         }
         .content {
             padding: 40px;
@@ -56,7 +57,7 @@ if (isset($_POST['send_recovery_email'])) {
         .content h1 {
             font-size: 24px;
             margin-bottom: 20px;
-            color: #22223b;
+            color: #353e5a;
         }
         .content p {
             font-size: 16px;
@@ -64,17 +65,23 @@ if (isset($_POST['send_recovery_email'])) {
             margin-bottom: 30px;
         }
         .btn {
-            background-color: #22223b;
-            color: white;
+            background-color: #353e5a;
+            color: white !important;
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 5px;
             font-size: 16px;
             display: inline-block;
             margin-bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition effect */
+        }
+        .btn:hover {
+            background-color: rgba(67, 79, 114, 0.8);
+            color: white;
         }
         .footer {
-            background-color: #22223b;
+            background-color: #353e5a;
             color: #ffffff;
             text-align: center;
             padding: 20px;
@@ -89,28 +96,31 @@ if (isset($_POST['send_recovery_email'])) {
             margin-top: 10px;
         }
     </style>
-
-                
-            </head>
+</head>
 <body>
     <div class="email-container">
         <!-- Header -->
         <div class="header">
-            <img src="sdo.png">
+            <img src="https://depedvalenzuela.com/wp-content/uploads/2024/03/DO-LOGO.png" alt="SDO Logo">
         </div>
         <!-- Content -->
         <div class="content">
             <h1>Please reset your password</h1>
-            
-                        <p>Hi <strong>' . $recipient . '</strong>,</p>
-                        <p>Your request has been received. Please click the button below to reset your password:</p>
-                        <a href="http://localhost:8888/set-new-password/' . $recipientID . '"><button class="btn">Set a new password</button></a>
-                        <p>If you did not request a password change, kindly disregard this email.</p>
-                        <p>Regards,<br>SDO Valenzuela - ICT Coordinator</p>
-                    </div>
-                </div>
-            </body>
-            </html>';
+            <p>Hi <strong>' . $recipient . '</strong>,</p>
+            <p>Your request has been received. Please click the button below to reset your password:</p>
+            <!-- Apply btn class directly to the <a> tag -->
+            <a href="http://localhost:8888/set-new-password/' . $recipientID . '" class="btn">Set a new password</a>
+        </div>
+        <div class="footer">
+            <div class="contact-info">
+            <p>If you did not request a password change, kindly disregard this email.</p>
+            <p>Regards,<br>SDO Valenzuela - ICT Coordinator</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+';
 
             
 

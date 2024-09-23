@@ -17,7 +17,9 @@ require base_path('views/partials/head.php') ?>
    <section class="h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
         <div class="box-area">
         <div class="single-box">
-            <div class="img-area"></div>
+            <div class="img-area">
+            <img src="https://depedvalenzuela.com/wp-content/uploads/2024/03/DO-LOGO.png" alt="SDO Logo">
+            </div>
             <div class="img-text">
             <h1><span class="header-text"><strong>Custodian Name</strong></span></h1>
             <h1><?php echo $info['user_name']; ?></h1>
