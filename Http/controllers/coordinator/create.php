@@ -114,6 +114,12 @@ foreach ($itemArticlePerMonth as $entry) {
 $monthsJson = json_encode($months);
 $itemCountsJson = json_encode($itemCounts);
 
+
+$schoolDropdownContent = $db->query('
+        SELECT school_name FROM schools;
+
+') ->get();
+
 view('coordinator/create.view.php', [
     'heading' => 'Dashboard',
     'totalEquipment' => $total_equipment_count,
@@ -126,4 +132,7 @@ view('coordinator/create.view.php', [
     'statusCounts' => $statusCountsJson,
     'months' => $monthsJson,
     'itemCountsPerMonth' => $itemCountsJson,
+    'schoolDropdownContent' => $schoolDropdownContent
 ]);
+
+?>

@@ -21,13 +21,22 @@ require base_path('views/partials/head.php') ?>
             <span class="selected">Filter</span>
             <div class="caret"></div>
          </div>
-         <ul class="menu">
-            <li>School</li>
-            <li>School1</li>
-            <li>School2</li>
-            <li>School3</li>
-         </ul>
+         
+         <form id="schoolFilterForm" method="POST" action="/coordinator">
+            <input name="_method" value="PATCH" hidden />
+            <input id="schoolFilterValue" name="schoolFilterValue" value="All" type="hidden" /> <!-- Hidden input to store selected value -->
+            
+            <ul class="menu">
+                  <li data-value="All">All Schools</li> <!-- Default option to show all schools -->
+                  <?php foreach ($schoolDropdownContent as $school): ?>
+                     <li data-value="<?= htmlspecialchars($school['school_name']); ?>">
+                        <?= htmlspecialchars($school['school_name']); ?>
+                     </li>
+                  <?php endforeach; ?>
+            </ul>
+         </form>
       </div>
+
    </section>
    <section class="mx-6 px-12 flex gap-6">
       <?php dashboard_card('Total Equipments', $totalEquipment); ?>
@@ -271,3 +280,12 @@ require base_path('views/partials/head.php') ?>
 });
 </script> 
 
+<script>
+    document.querySelectorAll('.menu li').forEach(function(item) {
+        item.addEventListener('click', function() {
+            const selectedValue = this.getAttribute('data-value'); // Get the value from the clicked <li>
+            document.getElementById('schoolFilterValue').value = selectedValue; // Set the hidden input value
+            document.getElementById('schoolFilterForm').submit(); // Submit the form
+        });
+    });
+</script>

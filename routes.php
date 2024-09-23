@@ -47,6 +47,7 @@ $router->get('/notifications/custodian/latest', 'notifications/custodian/show.ph
 $router->get('/notifications/custodian', 'notifications/custodian/index.php')->only('custodian');
 
 $router->get('/coordinator', 'coordinator/create.php')->only('coordinator');
+$router->patch('/coordinator', 'coordinator/patch.php')->only('coordinator');
 
 $router->get('/coordinator/resources', 'resources/index.php')->only('coordinator');
 $router->post('/coordinator/resources/s', 'resources/show.php')->only('coordinator');
