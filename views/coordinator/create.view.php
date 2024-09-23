@@ -9,6 +9,25 @@ require base_path('views/partials/head.php') ?>
 <main class="main-col">
    <section>
       <?php require base_path('views/partials/banner.php') ?> 
+      <form class="search-containers search" method="POST" action="">
+         <input type="text" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+         <button type="submit" class="search">
+            <i class="bi bi-search"></i>
+         </button>
+      </form>
+
+      <div class="dropdown1">
+         <div class="select">
+            <span class="selected">Filter</span>
+            <div class="caret"></div>
+         </div>
+         <ul class="menu">
+            <li>School</li>
+            <li>School1</li>
+            <li>School2</li>
+            <li>School3</li>
+         </ul>
+      </div>
    </section>
    <section class="mx-6 px-12 flex gap-6">
       <?php dashboard_card('Total Equipments', $totalEquipment); ?>
@@ -214,3 +233,41 @@ require base_path('views/partials/head.php') ?>
 </script>
 
 <?php require base_path('views/partials/footer.php') ?>
+
+<script>  
+   const dropdowns = document.querySelectorAll('.dropdown1');
+
+   dropdowns.forEach(dropdown1 => {
+
+      const select =dropdown1.querySelector('.select');
+      const caret =dropdown1.querySelector('.caret');
+      const menu =dropdown1.querySelector('.menu');
+      const options =dropdown1.querySelector('.menu li');
+      const selected =dropdown1.querySelector('.selected');
+
+      select.addEventListener('click', () => {
+      
+         select.classList.toggle('select-clicked');
+         caret.classList.toggle('caret-rotate');
+         menu.classList.toggle('menu-open');
+      });
+
+      
+
+   options.forEach(option => {
+
+      option.addEventListener('click', () => {
+
+         selected.innerText = option.innerText;
+         select.classList.remove('select-clicked');
+         caret.classList.remove('caret-rotate');
+         menu.classList.remove('menu-open');
+         options.forEach(option => {
+            option.classList.remove('active');
+         });
+         option.classList.add('active');
+      });   
+   });
+});
+</script> 
+

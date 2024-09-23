@@ -17,6 +17,16 @@ require base_path('views/partials/head.php') ?>
             <i class="bi bi-search"></i>
          </button>
       </form>
+         <div class="sort1">
+         <div class="select">
+         <span class="selected">Sort by</span>
+            <div class="caret"></div>
+         </div>
+         <ul class="menu">
+            <li>Item Article</li>
+            <li>Date Acquired</li>
+         </ul>
+      </div>
       <div class="table-responsive h-full mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped">
             <thead>
@@ -78,3 +88,40 @@ require base_path('views/partials/head.php') ?>
 </main>
 
 <?php require base_path('views/partials/footer.php') ?>
+
+<script>  
+   const dropdowns = document.querySelectorAll('.sort1');
+
+   dropdowns.forEach(sort1 => {
+
+      const select =sort1.querySelector('.select');
+      const caret =sort1.querySelector('.caret');
+      const menu =sort1.querySelector('.menu');
+      const options =sort1.querySelector('.menu li');
+      const selected =sort1.querySelector('.selected');
+
+      select.addEventListener('click', () => {
+      
+         select.classList.toggle('select-clicked');
+         caret.classList.toggle('caret-rotate');
+         menu.classList.toggle('menu-open');
+      });
+
+      
+
+   options.forEach(option => {
+
+      option.addEventListener('click', () => {
+
+         selected.innerText = option.innerText;
+         select.classList.remove('select-clicked');
+         caret.classList.remove('caret-rotate');
+         menu.classList.remove('menu-open');
+         options.forEach(option => {
+            option.classList.remove('active');
+         });
+         option.classList.add('active');
+      });   
+   });
+});
+</script> 
