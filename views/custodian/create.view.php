@@ -9,27 +9,7 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/custodian/add_receipt_modal.php') ?>
    </section>
-   <section>
-   <form class="search-containers search" method="POST" action="">
-         <input type="text" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
-         <button type="submit" class="search">
-            <i class="bi bi-search"></i>
-         </button>
-      </form>
-      <div class="dropdown1">
-         <div class="select">
-            <span class="selected">Filter</span>
-            <div class="caret"></div>
-         </div>
-         <ul class="menu">
-            <li>School</li>
-            <li>School1</li>
-            <li>School2</li>
-            <li>School3</li>
-         </ul>
-      </div>
-   </section>
-   </section>
+   
    <section class="mx-6 px-12 flex gap-6">
       <?php dashboard_card('Total Equipments', $totalEquipment); ?>
       <?php dashboard_card('Working', $totalWorking, 'bi-patch-check-fill'); ?>
