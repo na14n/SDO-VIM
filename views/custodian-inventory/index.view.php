@@ -34,19 +34,211 @@ require base_path('views/partials/head.php') ?>
    <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
       <table class="table table-striped">
          <thead>
-            <th>Item Code</th>
-            <th>Article</th>
-            <th>Description</th>
-            <th>Date Acquired</th>
-            <th>Status</th>
-            <th>Source of Funds</th>
-            <th>Unit Value</th>
-            <th>Qty.</th>
-            <th>Total Value</th>
-            <th>Active</th>
-            <th>Inactive</th>
-            <th>Last Updated</th>
+         <style>
+        th {
+            position: relative;
+            padding: 10px;
+            white-space: nowrap;
+        }
+        th .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        th .dropdown {
+         display: inline-block;
+         line-height: 2rem;
+            margin-left: 5px;
+            margin-top: 0rem;
+        }
+        .dropdown-menu {
+            min-width: 100px;
+        }
+        .dropdown-toggle {
+            background-color: white;
+            color: black;
+            border: 1px solid #ced4da;
+        }
+        .dropdown-toggle:hover {
+            background-color: #f8f9fa;
+        }
+        .dropdown-item:hover {
+            background-color: #434F72;
+            color: white;
+        }
+    </style>
+          <tr>
+            <th>
+                <div class="header-content">
+                    Item Code
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Article
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Description
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Date Acquired
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Status
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Source of Funds
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Unit Value
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Qty.
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Total Value
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Active
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Inactive
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Last Updated
+                    <div class="dropdown">
+                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <i class="fas fa-sort-alpha-up"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Ascending</a>
+                            <a class="dropdown-item" href="#">Descending</a>
+                        </div>
+                    </div>
+                </div>
+            </th>
             <th>Action</th>
+        </tr>
          </thead>
          <tbody>
          <?php foreach ($items as $item): ?>
@@ -121,3 +313,5 @@ require base_path('views/partials/head.php') ?>
    });
 });
 </script> 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
