@@ -15,7 +15,7 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/custodian/profile/edit_request_modal.php') ?>
    </section>
    <section class="h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
-        <div class="box-area">
+        <div class="box-area shadow-lg p-3 mb-5 bg-white rounded">
         <div class="single-box">
             <div class="img-area">
             <img src="https://depedvalenzuela.com/wp-content/uploads/2024/03/DO-LOGO.png" alt="SDO Logo">
