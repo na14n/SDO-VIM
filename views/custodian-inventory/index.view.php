@@ -14,6 +14,23 @@ require base_path('views/partials/head.php') ?>
       <?php require base_path('views/partials/custodian/custodian-inventory/add_item_modal.php') ?>
       <?php require base_path('views/partials/coordinator/schools/export_school_modal.php') ?>
    </section>
+   <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
+      <form class="search-containers1 search" method="POST" action="">
+         <input type="text" name="search" id="search" placeholder="Search" value="<?= $search ?? '' ?>" />
+         <button type="submit" class="search">
+            <i class="bi bi-search"></i>
+         </button>
+      </form>
+      <div class="sort2">
+         <div class="select">
+         <span class="selected">Sort by</span>
+            <div class="caret"></div>
+         </div>
+         <ul class="menu">
+            <li>Item Article</li>
+            <li>Date Acquired</li>
+         </ul>
+      </div>
    <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
       <table class="table table-striped">
          <thead>
@@ -67,3 +84,40 @@ require base_path('views/partials/head.php') ?>
    </section>
 </main>
 <?php require base_path('views/partials/footer.php') ?>
+
+<script>  
+   const dropdowns = document.querySelectorAll('.sort2');
+
+   dropdowns.forEach(sort2 => {
+
+      const select =sort2.querySelector('.select');
+      const caret =sort2.querySelector('.caret');
+      const menu =sort2.querySelector('.menu');
+      const options =sort2.querySelector('.menu li');
+      const selected =sort2.querySelector('.selected');
+
+      select.addEventListener('click', () => {
+      
+         select.classList.toggle('select-clicked');
+         caret.classList.toggle('caret-rotate');
+         menu.classList.toggle('menu-open');
+      });
+
+      
+
+   options.forEach(option => {
+
+      option.addEventListener('click', () => {
+
+         selected.innerText = option.innerText;
+         select.classList.remove('select-clicked');
+         caret.classList.remove('caret-rotate');
+         menu.classList.remove('menu-open');
+         options.forEach(option => {
+            option.classList.remove('active');
+         });
+         option.classList.add('active');
+      });   
+   });
+});
+</script> 
