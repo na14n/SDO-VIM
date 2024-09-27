@@ -135,6 +135,13 @@ $router->patch('/custodian/custodian-inventory', '/custodian-inventory/patch.php
 //Delete Item
 $router->delete('/custodian/custodian-inventory', '/custodian-inventory/destroy.php')->only('custodian');
 
+//Export Inventory Data to CSV
+$router->post('/custodian/custodian-inventory/exportcsv', '/custodian-inventory/export_items_csv.php')->only('custodian');
+//Export Inventory Data to PDF
+$router->post('/custodian/custodian-inventory/exportpdf', '/custodian-inventory/export_items_pdf.php')->only('custodian');
+//Export Inventory Data to XLS
+$router->post('/custodian/custodian-inventory/exportxls', '/custodian-inventory/export_items_xls.php')->only('custodian');
+
 $router->get('/custodian/custodian-resources', 'custodian-resources/index.php')->only('custodian');
 $router->get('/custodian/custodian-resources/unassigned', 'custodian-resources/unassigned/index.php')->only('custodian');
 $router->get('/custodian/custodian-resources/working', 'custodian-resources/working/index.php')->only('custodian');
