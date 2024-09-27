@@ -12,7 +12,7 @@ require base_path('views/partials/head.php') ?>
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
       <?php require base_path('views/partials/custodian/custodian-inventory/add_item_modal.php') ?>
-      <?php require base_path('views/partials/coordinator/schools/export_school_modal.php') ?>
+      <?php require base_path('views/partials/custodian/custodian-inventory/export_items_modal.php') ?>
    </section>
    <section class="mx-12 mb-12 h-dvh rounded flex flex-col">
       <form class="search-containers1 search" method="POST" action="">
