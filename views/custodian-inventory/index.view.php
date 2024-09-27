@@ -7,7 +7,7 @@ require base_path('views/partials/head.php') ?>
 
 
 <!-- Your HTML code goes here -->
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <main class="main-col">
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
@@ -37,204 +37,136 @@ require base_path('views/partials/head.php') ?>
          <style>
         th {
             position: relative;
-            padding: 10px;
+            margin-right: auto;
+            padding: 4rem;
             white-space: nowrap;
         }
         th .header-content {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            margin-right: 5rem;
             
         }
-        th .dropdown {
-         display: inline-block;
-         line-height: 2rem;
-            margin-left: 5px;
+        .sort-icons {
+            display: inline-flex;
+            flex-direction: column; /* Ensure the icons are stacked vertically */
+        }
+        .sort-icon {
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: -0.8rem;
             margin-top: 0rem;
-        }
-        .dropdown-menu {
-            min-width: 100px;
-        }
-        .dropdown-toggle {
-            background-color: white;
-            color: black;
-            border: 1px solid #ced4da;
-        }
-        .dropdown-toggle:hover {
-            background-color: #f8f9fa;
-        }
-        .dropdown-item:hover {
-            background-color: #434F72;
+            margin-left: 1rem;
             color: white;
         }
     </style>
-          <tr>
+        <tr>
             <th>
                 <div class="header-content">
                     Item Code
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(0, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(0, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Article
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(1, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(1, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Description
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(2, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(2, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Date Acquired
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Status
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(4, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(4, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Source of Funds
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(5, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(5, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Unit Value
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(6, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(6, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Qty.
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(7, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(7, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Total Value
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(8, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(8, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Active
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(9, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(9, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Inactive
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(10, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(10, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
                 <div class="header-content">
                     Last Updated
-                    <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                            <i class="fas fa-sort-alpha-up"></i>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                        </div>
-                    </div>
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(11, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(11, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>Action</th>
@@ -315,3 +247,5 @@ require base_path('views/partials/head.php') ?>
 </script> 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
