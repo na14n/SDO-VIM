@@ -7,6 +7,7 @@ require base_path('views/partials/head.php') ?>
 
 <!-- Your HTML code goes here -->
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <main class="main-col">
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
@@ -27,107 +28,81 @@ require base_path('views/partials/head.php') ?>
          <table class="table table-striped m-0">
             <thead>
             <style>
-               th {
-                     position: relative;
-                     padding: 10px;
-                     color:black;
-               }
-               th .dropdown {
-                     display: inline-block;
-                     line-height: 2rem;
-                     margin-left: 5px;
-               }
-               th .fas {
-                     margin-left: 0.5rem;
-                     min-width: 100px;
-               }
-               .dropdown-menu {
-                     min-width: 100px;
-                     color:white;
-               }
-               .dropdown-toggle {
-                  background-color: white;
-                  color: black;
-               }
-               .dropdown-toggle:hover {
-                  background-color: #434F72;
-               }
-               .dropdown-item:hover {
-                  background-color: #434F72;
-                  color: white;
-               }
-               .view-btn {
-                  margin-left: 0rem;
-               }
-            </style>
+        th {
+            position: relative;
+            margin-right: auto;
+            padding: 4rem;
+            white-space: nowrap;
+        }
+        th .header-content {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 10rem;
+            
+        }
+        .sort-icons {
+            display: inline-flex;
+            flex-direction: column; /* Ensure the icons are stacked vertically */
+        }
+        .sort-icon {
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: -0.8rem;
+            margin-top: 0rem;
+            margin-right: 2rem;
+            color: white;
+        }
+    </style>
                <tr>
             <th>
-                ID
-                <i class="fas fa-sort"></i>
-                <div class="dropdown">
-                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descending</a>
-                    </div>
+                <div class="header-content">
+                    ID
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(0, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(0, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
-                Item Article
-                <i class="fas fa-sort"></i>
-                <div class="dropdown">
-                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descending</a>
-                    </div>
+                <div class="header-content">
+                    Item Article
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(1, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(1, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
-                School
-                <i class="fas fa-sort"></i>
-                <div class="dropdown">
-                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descending</a>
-                    </div>
+                <div class="header-content">
+                    School
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(2, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(2, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
-                Status
-                <i class="fas fa-sort"></i>
-                <div class="dropdown">
-                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descending</a>
-                    </div>
+                <div class="header-content">
+                    Status
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
                 </div>
             </th>
             <th>
-                Date Acquired
-                <i class="fas fa-sort"></i>
-                <div class="dropdown">
-                    <button class="btn btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fas fa-sort-alpha-up"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descending</a>
-                    </div>
+                <div class="header-content">
+                    Date Acquired
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
                 </div>
             </th>
-            <th>Actions</th>
-        </tr>
+            <th>
+                  Action
+            </th>
+         </tr>
             </thead>
             <tbody class="oveflow-y-scroll">
                <?php if (count($resources) > 0): ?>
@@ -253,3 +228,4 @@ require base_path('views/partials/head.php') ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
