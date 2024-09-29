@@ -229,16 +229,17 @@ body {
   background-color: #3F4A6B;
 }
 
-.search-containers1 {
+.search-container1 {
   
-  margin-bottom: 2.5rem;
-  margin-top: 1rem;
-  margin-left: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 0rem;
+  margin-left: 0rem;
   width: fit-content;
   border-radius: 0.25rem;
   overflow: hidden;
   display: flex;
 }
+
 
 .search-containers {
   
@@ -378,6 +379,10 @@ body {
 .menu-open{
   display: block;
   opacity: 1;
+}
+
+.select.active + .menu {
+  display: block;
 }
 
 .dropdown1 {

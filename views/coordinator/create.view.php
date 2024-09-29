@@ -244,39 +244,58 @@ require base_path('views/partials/head.php') ?>
 <?php require base_path('views/partials/footer.php') ?>
 
 <script>  
-   const dropdowns = document.querySelectorAll('.dropdown1');
+const dropdowns = document.querySelectorAll('.dropdown1');
 
-   dropdowns.forEach(dropdown1 => {
+dropdowns.forEach(dropdown1 => {
+  const select = dropdown1.querySelector('.select');
+  const caret = dropdown1.querySelector('.caret');
+  const menu = dropdown1.querySelector('.menu');
+  const options = dropdown1.querySelectorAll('.menu li'); // Fixed query to select all <li>
+  const selected = dropdown1.querySelector('.selected');
 
-      const select =dropdown1.querySelector('.select');
-      const caret =dropdown1.querySelector('.caret');
-      const menu =dropdown1.querySelector('.menu');
-      const options =dropdown1.querySelector('.menu li');
-      const selected =dropdown1.querySelector('.selected');
+  // Toggle dropdown open/close when the select box is clicked
+  select.addEventListener('click', () => {
+    select.classList.toggle('select-clicked');
+    caret.classList.toggle('caret-rotate');
+    menu.classList.toggle('menu-open');
+  });
 
-      select.addEventListener('click', () => {
-      
-         select.classList.toggle('select-clicked');
-         caret.classList.toggle('caret-rotate');
-         menu.classList.toggle('menu-open');
+  // Iterate through each option (list item) in the menu
+  options.forEach(option => {
+    option.addEventListener('click', () => {
+      // Update the selected text with the clicked option's text
+      selected.innerText = option.innerText;
+
+      // Close the dropdown by removing the toggled classes
+      select.classList.remove('select-clicked');
+      caret.classList.remove('caret-rotate');
+      menu.classList.remove('menu-open');
+
+      // Remove the 'active' class from all options
+      options.forEach(option => {
+        option.classList.remove('active');
       });
 
-      
+      // Add 'active' class to the clicked option
+      option.classList.add('active');
+    });
+  });
+});
 
-   options.forEach(option => {
+// Close the dropdown if clicked outside
+document.addEventListener('click', function(e) {
+  dropdowns.forEach(dropdown1 => {
+    if (!dropdown1.contains(e.target)) {
+      const select = dropdown1.querySelector('.select');
+      const caret = dropdown1.querySelector('.caret');
+      const menu = dropdown1.querySelector('.menu');
 
-      option.addEventListener('click', () => {
-
-         selected.innerText = option.innerText;
-         select.classList.remove('select-clicked');
-         caret.classList.remove('caret-rotate');
-         menu.classList.remove('menu-open');
-         options.forEach(option => {
-            option.classList.remove('active');
-         });
-         option.classList.add('active');
-      });   
-   });
+      // Ensure dropdown is closed if clicked outside
+      select.classList.remove('select-clicked');
+      caret.classList.remove('caret-rotate');
+      menu.classList.remove('menu-open');
+    }
+  });
 });
 </script> 
 
