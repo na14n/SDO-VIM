@@ -25,7 +25,10 @@
 
 use Core\Session;
 
+$notificationCount = 0;
+
 view('500.php', [
     'heading' => 'Oh No!',
+    'notificationCount' => $notificationCount,
     'errors' => Session::get('errors') ?? '',
 ]);
