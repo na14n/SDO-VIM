@@ -28,6 +28,22 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+    AND user_id = :user_id
+',[
+    'user_id' => get_uid()
+])->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 $resources = [];
 
 $resources = $db->query('
@@ -48,5 +64,6 @@ $resources = $db->query('
 
 view('custodian-resources/repair/index.view.php', [
     'heading' => 'For Repair Resources',
+    'notificationCount' => $notificationCount,
     'resources' => $resources,
 ]);

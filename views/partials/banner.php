@@ -4,6 +4,11 @@
     </h2>
     <button class="notification-container relative flex items-center justify-center" type="button" data-bs-toggle="modal" data-bs-target="#notificationModal">
         <i class="bi bi-bell-fill"></i>
+        <?php if ($notificationCount > 0): ?>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?php echo $notificationCount; ?>
+            </span>
+        <?php endif; ?>
     </button>
     <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

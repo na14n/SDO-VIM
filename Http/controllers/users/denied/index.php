@@ -28,6 +28,19 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+')->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 $requests = [];
 
 $requests = $db->query("
@@ -50,5 +63,6 @@ WHERE
 
 view('users/denied/index.view.php', [
     'heading' => 'Denied Requests',
+    'notificationCount' => $notificationCount,
     'requests' => $requests
 ]);

@@ -5,6 +5,19 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+')->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 $schoolFilterValue = $_POST['schoolFilterValue'];
 
 // Prepare base SQL and parameters
@@ -148,6 +161,7 @@ $schoolDropdownContent = $db->query('
 
 view('coordinator/create.view.php', [
     'heading' => 'Dashboard',
+    'notificationCount' => $notificationCount,
     'totalEquipment' => $total_equipment_count,
     'totalWorking' => $total_working_count,
     'totalRepair' => $total_repair_count,

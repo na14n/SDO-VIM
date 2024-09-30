@@ -6,6 +6,19 @@ use Core\Session;
 
 $db = App::resolve(Database::class);
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+')->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 $resources = [];
 
 $pagination = [
@@ -51,6 +64,7 @@ LIMIT :start,:end
 
 view('resources/repair/index.view.php', [
     'heading' => 'For Repair Resources',
+    'notificationCount' => $notificationCount,
     'resources' => $resources,
     'errors' => Session::get('errors') ?? [],
     'old' => Session::get('old') ?? [],

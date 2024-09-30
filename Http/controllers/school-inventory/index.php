@@ -90,8 +90,22 @@ $statusMap = [
     3 => 'Condemned'
 ];
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+')->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 view('school-inventory/index.view.php', [
     'id' => $params['id'] ?? null,
+    'notificationCount' => $notificationCount,
     'heading' => $schoolName,
     'items' => $items,
     'statusMap' => $statusMap,
