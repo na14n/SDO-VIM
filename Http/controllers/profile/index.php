@@ -46,8 +46,25 @@ $userInfo = $db->query('
         'id' => $_SESSION['user']['user_id'] ?? null
     ])->get();
 
+    $notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+    AND user_id = :user_id
+',[
+    'user_id' => get_uid()
+])->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 view('profile/index.view.php', [
     'heading' => 'User Profile',
+    'notificationCount' => $notificationCount,
     'userInfo' => $userInfo,
     'errors' => Session::get('errors') ?? [],
     'old' => Session::get('old') ?? [],

@@ -29,6 +29,22 @@ use Core\Session;
 
 $db = App::resolve(Database::class);
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+    AND user_id = :user_id
+',[
+    'user_id' => get_uid()
+])->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 $items = [];
 
 $items = $db->query('
@@ -82,6 +98,7 @@ $statusMap = [
 view('custodian-inventory/index.view.php', [
     'id' => $_SESSION['user']['school_id'] ?? null,
     'histories' => $histories,
+    'notificationCount' => $notificationCount,
     'heading' => $schoolName,
     'items' => $items,
     'statusMap' => $statusMap,

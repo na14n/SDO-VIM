@@ -120,8 +120,22 @@ $schoolDropdownContent = $db->query('
 
 ') ->get();
 
+$notificationCountQuery = $db->query('
+    SELECT COUNT(*) AS total
+    FROM notifications
+    WHERE viewed IS NULL
+')->find();
+
+// Extract the total count
+$notificationCount = $notificationCountQuery['total'];
+
+if ($notificationCount > 5){
+    $notificationCount = '5+';
+};
+
 view('coordinator/create.view.php', [
     'heading' => 'Dashboard',
+    'notificationCount' => $notificationCount,
     'totalEquipment' => $total_equipment_count,
     'totalWorking' => $total_working_count,
     'totalRepair' => $total_repair_count,
