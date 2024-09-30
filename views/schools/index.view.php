@@ -7,7 +7,7 @@ require base_path('views/partials/head.php') ?>
 
 
 <!-- Your HTML code goes here -->
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <main class="main-col">
    <section class="flex items-center pr-12 gap-3">
       <?php require base_path('views/partials/banner.php') ?>
@@ -41,16 +41,114 @@ require base_path('views/partials/head.php') ?>
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped m-0">
             <thead>
-               <th>ID</th>
-               <th>Name</th>
-               <th>Type</th>
-               <th>Division</th>
-               <th>District</th>
-               <th>Contact Name</th>
-               <th>Contact Number</th>
-               <th>Contact Email</th>
-               <th>Date Added</th>
-               <th>Actions</th>
+            <style>
+        th {
+            white-space: nowrap;
+        }
+        th .header-content {
+            display: flex;
+            justify-content: space-between;   
+            margin-right: 3.6rem;
+        }
+        .sort-icons {
+            display: inline-flex;
+            flex-direction: column; /* Ensure the icons are stacked vertically */
+        }
+        .sort-icon {
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: -0.8rem;
+            margin-top: 0rem;
+            margin-left: 0.8rem;
+            color: white;
+        }
+    </style>
+            <tr>
+            <th>
+                <div class="header-content">
+                    ID
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(0, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(0, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Name
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(1, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(1, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Type
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(2, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(2, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Division
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    District
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Contact Name
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Contact Number
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Contact Email
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                <div class="header-content">
+                    Date Added
+                    <span class="sort-icons">
+                        <i class="fas fa-sort-up sort-icon" onclick="sortTable(3, 'asc')"></i>
+                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(3, 'desc')"></i>
+                    </span>
+                </div>
+            </th>
+            <th>
+                  Action
+            </th>
+         </tr>
             </thead>
             <tbody>
                <?php if (count($schools) > 0): ?>
@@ -178,3 +276,7 @@ document.addEventListener('click', function(e) {
   });
 });
 </script> 
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
