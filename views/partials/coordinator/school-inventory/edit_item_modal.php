@@ -27,11 +27,11 @@
                         <?php text_input('Item Description', 'item_desc', 'Item Description', $item['item_desc'] ?? '') ?>
                     </span>
                 </div>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_article'])): ?>
-                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_article'] ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_article'])): ?>
+                    <p class="error"><?= $errors[$item['item_code']]['item_article'] ?></p>
                 <?php endif; ?>
-                <p class="error"><?= $errors[$school_inventory['item_code']]['item_desc'] ?? '' ?></p>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_desc'])): ?>
+                <p class="error"><?= $errors[$item['item_code']]['item_desc'] ?? '' ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_desc'])): ?>
                 <?php endif; ?>
 
                 <div class="flex items-center gap-2">
@@ -42,11 +42,11 @@
                         <?php text_input('Qty.', 'item_quantity', 'Quantity', $item['item_quantity'] ?? '') ?>
                     </span>
                 </div>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_unit_value'])): ?>
-                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_unit_value'] ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_unit_value'])): ?>
+                    <p class="error"><?= $errors[$item['item_code']]['item_unit_value'] ?></p>
                 <?php endif; ?>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_quantity'])): ?>
-                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_quantity'] ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_quantity'])): ?>
+                    <p class="error"><?= $errors[$item['item_code']]['item_quantity'] ?></p>
                 <?php endif; ?>
 
                 <div class="flex items-center gap-2">
@@ -57,11 +57,11 @@
                         <?php text_input('Inactive Items', 'item_inactive', 'No. Of Inactive Items', $item['item_inactive'] ?? '') ?>
                     </span>
                 </div>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_active'])): ?>
-                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_active'] ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_active'])): ?>
+                    <p class="error"><?= $errors[$item['item_code']]['item_active'] ?></p>
                 <?php endif; ?>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_inactive'])): ?>
-                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_inactive'] ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_inactive'])): ?>
+                    <p class="error"><?= $errors[$item['item_code']]['item_inactive'] ?></p>
                 <?php endif; ?>
 
                 <div>
@@ -70,8 +70,8 @@
                 <div>
                     <?php text_input('Source of Funds', 'item_funds_source', 'Source Of Funds', $item['item_funds_source'] ?? '') ?>
                 </div>
-                <?php if (isset($errors[$school_inventory['item_code']]['item_funds_source'])): ?>
-                    <p class="error"><?= $errors[$school_inventory['item_code']]['item_funds_source'] ?></p>
+                <?php if (isset($errors[$item['item_code']]['item_funds_source'])): ?>
+                    <p class="error"><?= $errors[$item['item_code']]['item_funds_source'] ?></p>
                 <?php endif; ?>
 
                 <div>
@@ -91,8 +91,8 @@
                 </div>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
-                        if (<?php echo json_encode(array_key_exists($school_inventory['item_code'], $errors) && count($errors[$school_inventory['item_code']]) > 0) ?>) {
-                            var editItem = new bootstrap.Modal(document.getElementById('editItem<?php echo $school_inventory['item_code']; ?>'));
+                        if (<?php echo json_encode(array_key_exists($item['item_code'], $errors) && count($errors[$item['item_code']]) > 0) ?>) {
+                            var editItem = new bootstrap.Modal(document.getElementById('editItem<?php echo $item['item_code']; ?>'));
                             editItem.show();
                         }
                     });
