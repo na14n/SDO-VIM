@@ -70,4 +70,4 @@ $message = $user['user_name'] . ' successfully added Unassigned Resource: ' . $_
 
 toast($message);
 
-redirect('/coordinator/resources');
+redirect('/coordinator/resources/unassigned');
