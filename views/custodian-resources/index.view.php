@@ -20,33 +20,8 @@ require base_path('views/partials/head.php') ?>
       <div class="table-responsive h-full mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped">
             <thead>
-            <style>
-        th {
-            position: relative;
-            margin-right: auto;
-            padding: 4rem;
-            white-space: nowrap;
-        }
-        th .header-content {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 10rem;
             
-        }
-        .sort-icons {
-            display: inline-flex;
-            flex-direction: column; /* Ensure the icons are stacked vertically */
-        }
-        .sort-icon {
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin: -0.8rem;
-            margin-top: 0rem;
-            margin-right: 2rem;
-            color: white;
-        }
-    </style>
-                           <tr>
+            <tr>
             <th>
                 <div class="header-content">
                     ID
