@@ -34,32 +34,6 @@ require base_path('views/partials/head.php') ?>
    <section class="table-responsive h-dvh mx-12 mb-12 bg-zinc-50 rounded border-[1px]">
       <table class="table table-striped">
          <thead>
-         <style>
-        th {
-            position: relative;
-            margin-right: auto;
-            padding: 4rem;
-            white-space: nowrap;
-        }
-        th .header-content {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 5rem;
-            
-        }
-        .sort-icons {
-            display: inline-flex;
-            flex-direction: column; /* Ensure the icons are stacked vertically */
-        }
-        .sort-icon {
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin: -0.8rem;
-            margin-top: 0rem;
-            margin-left: 1rem;
-            color: white;
-        }
-    </style>
         <tr>
             <th>
                 <div class="header-content">

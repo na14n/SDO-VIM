@@ -27,32 +27,6 @@ require base_path('views/partials/head.php') ?>
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped m-0">
             <thead>
-            <style>
-        th {
-            position: relative;
-            margin-right: auto;
-            padding: 4rem;
-            white-space: nowrap;
-        }
-        th .header-content {
-            display: flex;
-            justify-content: space-between;
-            margin-right: 10rem;
-            
-        }
-        .sort-icons {
-            display: inline-flex;
-            flex-direction: column; /* Ensure the icons are stacked vertically */
-        }
-        .sort-icon {
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin: -0.8rem;
-            margin-top: 0rem;
-            margin-right: 2rem;
-            color: white;
-        }
-    </style>
                <tr>
             <th>
                 <div class="header-content">
@@ -77,7 +51,7 @@ require base_path('views/partials/head.php') ?>
                     School
                     <span class="sort-icons">
                         <i class="fas fa-sort-up sort-icon" onclick="sortTable(2, 'asc')"></i>
-                        <i class="fas fa-sort-down sort-icon" onclick="sortTable(2, 'desc')"></i>
+                   <i class="fas fa-sort-down sort-icon" onclick="sortTable(2, 'desc')"></i>
                     </span>
                 </div>
             </th>

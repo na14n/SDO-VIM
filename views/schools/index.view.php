@@ -41,28 +41,7 @@ require base_path('views/partials/head.php') ?>
       <div class="table-responsive inline-block mt-4 bg-zinc-50 rounded border-[1px]">
          <table class="table table-striped m-0">
             <thead>
-            <style>
-        th {
-            white-space: nowrap;
-        }
-        th .header-content {
-            display: flex;
-            justify-content: space-between;   
-            margin-right: 3.6rem;
-        }
-        .sort-icons {
-            display: inline-flex;
-            flex-direction: column; /* Ensure the icons are stacked vertically */
-        }
-        .sort-icon {
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin: -0.8rem;
-            margin-top: 0rem;
-            margin-left: 0.8rem;
-            color: white;
-        }
-    </style>
+
             <tr>
             <th>
                 <div class="header-content">
