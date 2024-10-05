@@ -27,6 +27,8 @@ FROM
     notifications
 WHERE
     user_id = :user_id
+OR
+    is_public = 1
 ORDER BY
     date_added DESC
 ', [

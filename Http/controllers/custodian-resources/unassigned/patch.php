@@ -33,12 +33,15 @@ $item_code = $school_id . '-' . $_POST['item_code'];
 
 $db->query('UPDATE school_inventory 
             SET school_id = :school_id, 
-                item_code = :new_item_code
+                item_code = :new_item_code,
+                updated_by = :updated_by
             WHERE item_code = :id;', [
     'id' => $_POST['item_code'] ?? null,
     'new_item_code' => $item_code,
-    'school_id' => $school_id
+    'school_id' => $school_id,
+    'updated_by' => $_SESSION['user']['user_id'] ?? 'Admin'
 ]);
+
 
 
 redirect('/custodian/custodian-resources/unassigned');
