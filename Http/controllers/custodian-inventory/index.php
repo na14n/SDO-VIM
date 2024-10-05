@@ -47,6 +47,43 @@ if ($notificationCount > 5){
 
 $items = [];
 
+$pagination = [
+    'pages_limit' => 10,
+    'pages_current' => isset($_GET['page']) ? (int)$_GET['page'] : 1,
+    'pages_total' => 0,
+    'start' => 0,
+];
+
+$items_count = $db->query('SELECT COUNT(*) as total FROM school_inventory')->get();
+$pagination['pages_total'] = ceil($items_count[0]['total'] / $pagination['pages_limit']);
+$pagination['pages_current'] = max(1, min($pagination['pages_current'], $pagination['pages_total']));
+
+$pagination['start'] = ($pagination['pages_current'] - 1) * $pagination['pages_limit'];
+
+$items = $db->paginate('
+SELECT 
+        item_code,
+        item_article,
+        item_desc,
+        date_acquired,
+        date_updated,
+        item_unit_value,
+        item_total_value,
+        item_quantity,
+        item_funds_source,
+        item_status,
+        item_active,
+        item_inactive
+FROM 
+    school_inventory si
+LEFT JOIN 
+    schools s ON s.school_id = si.school_id
+LIMIT :start,:end
+', [
+    'start' => (int)$pagination['start'],
+    'end' => (int)$pagination['pages_limit'],
+])->get();
+
 $items = $db->query('
     SELECT 
         item_code,
@@ -104,4 +141,5 @@ view('custodian-inventory/index.view.php', [
     'statusMap' => $statusMap,
     'errors' => Session::get('errors') ?? [],
     'old' => Session::get('old') ?? [],
+    'pagination' => $pagination
 ]);
