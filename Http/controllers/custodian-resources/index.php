@@ -53,7 +53,8 @@ $pagination = [
     'start' => 0,
 ];
 
-$resources_count = $db->query('SELECT COUNT(*) as total FROM school_inventory')->get();
+$resources_count = $db->query('SELECT COUNT(*) as total FROM school_inventory si WHERE
+    si.school_id = :id', ['id' => $_SESSION['user']['school_id'] ?? null,])->get();
 $pagination['pages_total'] = ceil($resources_count[0]['total'] / $pagination['pages_limit']);
 $pagination['pages_current'] = max(1, min($pagination['pages_current'], $pagination['pages_total']));
 
@@ -70,31 +71,20 @@ FROM
     school_inventory si
 LEFT JOIN 
     schools s ON s.school_id = si.school_id
-LIMIT :start,:end
+WHERE
+    si.school_id = :id
+LIMIT :start ,:end
 ', [
+    'id' => $_SESSION['user']['school_id'] ?? null,
     'start' => (int)$pagination['start'],
     'end' => (int)$pagination['pages_limit'],
 ])->get();
 
-$resources = $db->query('
-    SELECT 
-       si.item_code,
-       si.item_article,
-       s.school_name,
-       si.item_status AS status,
-       si.date_acquired
-       FROM school_inventory si
-       JOIN schools s ON  s.school_id = si.school_id
-       WHERE si.school_id = :id',
-    [
-        'id' => $_SESSION['user']['school_id'] ?? null
-    ])->get();
-
-    $statusMap = [
-        1 => 'Working',
-        2 => 'Need Repair',
-        3 => 'Condemned'
-    ];
+$statusMap = [
+    1 => 'Working',
+    2 => 'Need Repair',
+    3 => 'Condemned'
+];
 
 view('custodian-resources/index.view.php', [
     'statusMap' => $statusMap,
